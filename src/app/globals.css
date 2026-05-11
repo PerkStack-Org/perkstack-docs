@@ -5,10 +5,11 @@
   --font-serif: "Playfair Display", Georgia, serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
-  --color-ps-accent: #8B0000;
-  --color-ps-accent-light: #A32626;
-  --color-ps-accent-lighter: #BB4D4D;
-  --color-ps-accent-dark: #760000;
+  --color-ps-accent: #34466A;
+  --color-ps-accent-light: #526280;
+  --color-ps-accent-lighter: #717E97;
+  --color-ps-accent-dark: #2C3C5A;
+  --color-ps-accent-tint: #E2EBF5;
 
   --color-lp-bg: #F5F3EF;
   --color-lp-bg-alt: #EBE8E2;
@@ -21,8 +22,8 @@
 
   --color-sidebar-bg: #FAFAF8;
   --color-sidebar-hover: #F0EDE7;
-  --color-sidebar-active: rgba(139, 0, 0, 0.08);
-  --color-sidebar-active-border: #8B0000;
+  --color-sidebar-active: rgba(52, 70, 106, 0.08);
+  --color-sidebar-active-border: #34466A;
 
   --color-code-bg: #F8F7F5;
   --color-code-border: #E8E4DD;
@@ -47,7 +48,7 @@
 
   --color-sidebar-bg: #121216;
   --color-sidebar-hover: #1C1C23;
-  --color-sidebar-active: rgba(139, 0, 0, 0.12);
+  --color-sidebar-active: rgba(52, 70, 106, 0.12);
 
   --color-code-bg: #171720;
   --color-code-border: #27272F;
@@ -81,11 +82,11 @@
   }
 
   ::selection {
-    background: rgba(139, 0, 0, 0.15);
+    background: rgba(52, 70, 106, 0.15);
   }
 
   [data-theme="dark"] ::selection {
-    background: rgba(139, 0, 0, 0.3);
+    background: rgba(52, 70, 106, 0.3);
   }
 
   /* Logo invert for dark mode */
@@ -104,9 +105,9 @@ body::before {
   pointer-events: none;
   opacity: 0.035;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 30%, #8B0000, transparent),
-    radial-gradient(ellipse 60% 80% at 80% 70%, #A32626, transparent),
-    radial-gradient(ellipse 70% 50% at 50% 10%, #BB4D4D, transparent);
+    radial-gradient(ellipse 80% 60% at 20% 30%, #34466A, transparent),
+    radial-gradient(ellipse 60% 80% at 80% 70%, #526280, transparent),
+    radial-gradient(ellipse 70% 50% at 50% 10%, #717E97, transparent);
   animation: mesh-drift 30s ease-in-out infinite alternate;
 }
 
@@ -117,27 +118,27 @@ body::before {
 @keyframes mesh-drift {
   0% {
     background:
-      radial-gradient(ellipse 80% 60% at 20% 30%, #8B0000, transparent),
-      radial-gradient(ellipse 60% 80% at 80% 70%, #A32626, transparent),
-      radial-gradient(ellipse 70% 50% at 50% 10%, #BB4D4D, transparent);
+      radial-gradient(ellipse 80% 60% at 20% 30%, #34466A, transparent),
+      radial-gradient(ellipse 60% 80% at 80% 70%, #526280, transparent),
+      radial-gradient(ellipse 70% 50% at 50% 10%, #717E97, transparent);
   }
   33% {
     background:
-      radial-gradient(ellipse 70% 70% at 30% 60%, #8B0000, transparent),
-      radial-gradient(ellipse 80% 60% at 70% 20%, #A32626, transparent),
-      radial-gradient(ellipse 60% 60% at 60% 80%, #BB4D4D, transparent);
+      radial-gradient(ellipse 70% 70% at 30% 60%, #34466A, transparent),
+      radial-gradient(ellipse 80% 60% at 70% 20%, #526280, transparent),
+      radial-gradient(ellipse 60% 60% at 60% 80%, #717E97, transparent);
   }
   66% {
     background:
-      radial-gradient(ellipse 60% 80% at 70% 40%, #8B0000, transparent),
-      radial-gradient(ellipse 70% 50% at 20% 80%, #A32626, transparent),
-      radial-gradient(ellipse 80% 70% at 50% 20%, #BB4D4D, transparent);
+      radial-gradient(ellipse 60% 80% at 70% 40%, #34466A, transparent),
+      radial-gradient(ellipse 70% 50% at 20% 80%, #526280, transparent),
+      radial-gradient(ellipse 80% 70% at 50% 20%, #717E97, transparent);
   }
   100% {
     background:
-      radial-gradient(ellipse 80% 60% at 40% 50%, #8B0000, transparent),
-      radial-gradient(ellipse 60% 70% at 60% 30%, #A32626, transparent),
-      radial-gradient(ellipse 70% 60% at 30% 70%, #BB4D4D, transparent);
+      radial-gradient(ellipse 80% 60% at 40% 50%, #34466A, transparent),
+      radial-gradient(ellipse 60% 70% at 60% 30%, #526280, transparent),
+      radial-gradient(ellipse 70% 60% at 30% 70%, #717E97, transparent);
   }
 }
 
@@ -230,7 +231,7 @@ body::before {
   .docs-prose a {
     color: var(--color-ps-accent);
     text-decoration: underline;
-    text-decoration-color: rgba(139, 0, 0, 0.3);
+    text-decoration-color: rgba(52, 70, 106, 0.3);
     text-underline-offset: 2px;
     transition: text-decoration-color 150ms ease;
   }
@@ -299,7 +300,7 @@ body::before {
     border-left: 3px solid var(--color-ps-accent);
     padding: 0.5rem 0 0.5rem 1rem;
     margin-bottom: 1rem;
-    background: rgba(139, 0, 0, 0.04);
+    background: rgba(52, 70, 106, 0.04);
     border-radius: 0 8px 8px 0;
   }
 
@@ -450,8 +451,8 @@ body::before {
   }
 
   .plan-studio {
-    background: rgba(139, 0, 0, 0.1);
-    color: #8B0000;
+    background: rgba(52, 70, 106, 0.1);
+    color: #34466A;
   }
 
   [data-theme="dark"] .plan-free {
@@ -467,8 +468,8 @@ body::before {
     color: #60A5FA;
   }
   [data-theme="dark"] .plan-studio {
-    background: rgba(163, 38, 38, 0.12);
-    color: #A32626;
+    background: rgba(82, 98, 128, 0.12);
+    color: #526280;
   }
 
   /* ─── Phone Frame ────────────────────────────────────────── */
@@ -484,7 +485,7 @@ body::before {
   }
 
   .phone-frame:hover {
-    box-shadow: 0 12px 40px rgba(139, 0, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(52, 70, 106, 0.1);
     border-color: var(--color-ps-accent-lighter);
   }
 
@@ -551,7 +552,7 @@ body::before {
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #8B0000;
+  color: #34466A;
 }
 
 .token.function,
@@ -606,7 +607,7 @@ body::before {
 [data-theme="dark"] .token.atrule,
 [data-theme="dark"] .token.attr-value,
 [data-theme="dark"] .token.keyword {
-  color: #BB4D4D;
+  color: #717E97;
 }
 
 [data-theme="dark"] .token.function,
@@ -715,7 +716,7 @@ body::before {
 /* ─── Search Highlight ───────────────────────────────────────── */
 
 .search-highlight {
-  background: rgba(139, 0, 0, 0.2);
+  background: rgba(52, 70, 106, 0.2);
   border-radius: 2px;
   padding: 1px 2px;
   animation: highlight-pulse 1.5s ease-in-out 2;
@@ -727,12 +728,12 @@ body::before {
 }
 
 @keyframes highlight-pulse {
-  0%, 100% { background: rgba(139, 0, 0, 0.2); }
-  50% { background: rgba(139, 0, 0, 0.35); }
+  0%, 100% { background: rgba(52, 70, 106, 0.2); }
+  50% { background: rgba(52, 70, 106, 0.35); }
 }
 
 [data-theme="dark"] .search-highlight {
-  background: rgba(139, 0, 0, 0.3);
+  background: rgba(52, 70, 106, 0.3);
 }
 
 /* ─── Image Lightbox ─────────────────────────────────────────── */
@@ -848,7 +849,7 @@ body::before {
 
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #8B0000 0%, #A32626 100%);
+    background: linear-gradient(135deg, #34466A 0%, #526280 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
