@@ -137,7 +137,7 @@ export const searchContent: SearchEntry[] = [
     title: "Billing plans pricing",
     href: "/docs/settings/billing",
     section: "Settings",
-    description: "Free, Growth ($49/mo), and Pro ($149/mo) plans",
+    description: "Free, Essential ($29/mo), Growth ($99/mo), and Studio ($299/mo) plans",
   },
   {
     title: "Webhook events",

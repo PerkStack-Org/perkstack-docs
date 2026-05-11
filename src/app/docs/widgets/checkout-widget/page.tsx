@@ -200,16 +200,16 @@ export default function CheckoutWidgetPage() {
       <h2>Plan Requirement</h2>
       <p>
         The checkout extension is gated behind the <code>checkoutExtension</code> feature flag,
-        which is available on the <PlanBadge plan="growth" /> plan and the <PlanBadge plan="pro" />{" "}
-        plan. On the <PlanBadge plan="free" /> plan, the extension does not render in the checkout.
+        which is available on the <PlanBadge plan="essential" /> plan and above. On the{" "}
+        <PlanBadge plan="free" /> plan, the extension does not render in the checkout.
       </p>
 
       <h2>Troubleshooting</h2>
       <ul>
         <li>
           <strong>Widget not visible at checkout</strong>: confirm your store is on the{" "}
-          <PlanBadge plan="growth" /> plan or higher. Also verify the block is added in the checkout
-          editor (<strong>Settings &gt; Checkout &gt; Customize</strong>).
+          <PlanBadge plan="essential" /> plan or higher. Also verify the block is added in the
+          checkout editor (<strong>Settings &gt; Checkout &gt; Customize</strong>).
         </li>
         <li>
           <strong>Customer sees &quot;Log in&quot; banner</strong>: the customer is checking out as

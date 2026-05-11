@@ -204,13 +204,19 @@ export default function PhotoReviewsPage() {
           </tr>
           <tr>
             <td>
+              <PlanBadge plan="essential" />
+            </td>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <td>
               <PlanBadge plan="growth" />
             </td>
             <td>Available</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="studio" />
             </td>
             <td>Available</td>
           </tr>
@@ -219,8 +225,8 @@ export default function PhotoReviewsPage() {
 
       <p>
         On the <PlanBadge plan="free" /> plan, the photo upload UI is hidden from the review form.
-        Upgrading to <PlanBadge plan="growth" /> or higher immediately enables photo uploads for all
-        new reviews.
+        Upgrading to <PlanBadge plan="essential" /> or higher immediately enables photo uploads for
+        all new reviews.
       </p>
 
       <h2>Related</h2>

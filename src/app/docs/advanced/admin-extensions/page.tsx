@@ -41,7 +41,7 @@ export default function AdminExtensionsPage() {
       <ul>
         <li>Current points balance</li>
         <li>
-          Current VIP tier (if tiers are enabled on the <PlanBadge plan="pro" /> plan)
+          Current VIP tier (if tiers are enabled on the <PlanBadge plan="growth" /> plan or above)
         </li>
         <li>Tier override status</li>
         <li>A quick action to edit the customer&apos;s tier directly from the admin</li>
@@ -49,7 +49,7 @@ export default function AdminExtensionsPage() {
 
       <Callout type="info">
         Both admin blocks are read-only on the <PlanBadge plan="free" /> plan. Editing tier
-        information requires the <PlanBadge plan="pro" /> plan with VIP tiers enabled.
+        information requires the <PlanBadge plan="growth" /> plan or above with VIP tiers enabled.
       </Callout>
 
       <h2>Technical Details</h2>

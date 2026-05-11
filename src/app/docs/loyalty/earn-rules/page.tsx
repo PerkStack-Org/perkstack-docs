@@ -76,32 +76,35 @@ export default function EarnRulesPage() {
           </tr>
           <tr>
             <td>
-              <strong>Birthday</strong> <PlanBadge plan="growth" />
+              <strong>Birthday</strong> <PlanBadge plan="essential" />
             </td>
             <td>Fixed points</td>
             <td>200 points (inactive)</td>
             <td>
               Awarded once per year on the customer&apos;s birthday. Inactive by default and
-              requires the Custom Rewards feature on the Growth plan or above
+              requires the Essential plan or above
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Social share</strong>
+              <strong>Social share</strong> <PlanBadge plan="essential" />
             </td>
             <td>Fixed points</td>
             <td>100 points</td>
-            <td>Awarded when a customer shares a product on social media</td>
+            <td>
+              Awarded when a customer shares a product on social media. Requires the Essential plan
+              or above
+            </td>
           </tr>
           <tr>
             <td>
-              <strong>Referral</strong> <PlanBadge plan="pro" />
+              <strong>Referral</strong> <PlanBadge plan="growth" />
             </td>
             <td>Fixed points (dual)</td>
             <td>500 / 200 points</td>
             <td>
               Separate point amounts for the referrer (500) and referee (200). Requires the Referral
-              Program feature on the Pro plan
+              Program feature on the Growth plan or above
             </td>
           </tr>
         </tbody>

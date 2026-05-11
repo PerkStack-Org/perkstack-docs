@@ -96,7 +96,7 @@ export default function ExtensionStatusPage() {
             <td>Shopify Flow</td>
             <td>Extension API</td>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="growth" />
             </td>
           </tr>
         </tbody>

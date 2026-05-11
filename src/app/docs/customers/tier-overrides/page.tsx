@@ -19,7 +19,7 @@ export default function TierOverridesPage() {
       </p>
 
       <Callout type="info">
-        Tier overrides require the <PlanBadge plan="pro" /> plan. The VIP tiers feature must be
+        Tier overrides require the <PlanBadge plan="growth" /> plan or above. The VIP tiers feature must be
         enabled in your settings before overrides can be applied.
       </Callout>
 
@@ -138,7 +138,7 @@ export default function TierOverridesPage() {
           <a href="/docs/customers/detail">Customer Detail</a>: where tier overrides are managed
         </li>
         <li>
-          <a href="/docs/settings/billing">Billing &amp; Plans</a>: VIP tiers require the Pro plan
+          <a href="/docs/settings/billing">Billing &amp; Plans</a>: VIP tiers require the Growth plan or above
         </li>
         <li>
           <a href="/docs/advanced/admin-extensions">Admin Extensions</a>: the admin block also shows

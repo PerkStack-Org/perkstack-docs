@@ -439,12 +439,17 @@ body::before {
     color: #059669;
   }
 
+  .plan-essential {
+    background: rgba(245, 158, 11, 0.12);
+    color: #B45309;
+  }
+
   .plan-growth {
     background: rgba(59, 130, 246, 0.1);
     color: #2563EB;
   }
 
-  .plan-pro {
+  .plan-studio {
     background: rgba(139, 0, 0, 0.1);
     color: #8B0000;
   }
@@ -453,11 +458,15 @@ body::before {
     background: rgba(52, 211, 153, 0.12);
     color: #34D399;
   }
+  [data-theme="dark"] .plan-essential {
+    background: rgba(251, 191, 36, 0.14);
+    color: #FBBF24;
+  }
   [data-theme="dark"] .plan-growth {
     background: rgba(96, 165, 250, 0.12);
     color: #60A5FA;
   }
-  [data-theme="dark"] .plan-pro {
+  [data-theme="dark"] .plan-studio {
     background: rgba(163, 38, 38, 0.12);
     color: #A32626;
   }

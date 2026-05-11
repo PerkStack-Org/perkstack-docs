@@ -189,8 +189,8 @@ export default function ReviewSettingsPage() {
       </table>
 
       <Callout type="info">
-        Photo reviews require the <PlanBadge plan="growth" /> plan or higher. Video reviews require
-        the <PlanBadge plan="pro" /> plan. On the Free plan, only text reviews are available.
+        Photo reviews require the <PlanBadge plan="essential" /> plan or higher. On the Free plan,
+        only text reviews are available.
       </Callout>
 
       <h2>Saving Changes</h2>

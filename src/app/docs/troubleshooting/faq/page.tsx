@@ -48,7 +48,7 @@ export default function FAQPage() {
       </p>
 
       <Callout type="info">
-        VIP tiers require the <PlanBadge plan="pro" /> plan. See{" "}
+        VIP tiers require the <PlanBadge plan="growth" /> plan or above. See{" "}
         <a href="/docs/customers/tier-overrides">Tier Overrides</a> for manual tier management.
       </Callout>
 
@@ -126,8 +126,8 @@ export default function FAQPage() {
 
       <h3>Does PerkStack integrate with Shopify Flow?</h3>
       <p>
-        Yes, on the <PlanBadge plan="pro" /> plan. PerkStack provides a Flow trigger that fires
-        whenever a new review is submitted. This lets you build automations like:
+        Yes, on the <PlanBadge plan="growth" /> plan or above. PerkStack provides a Flow trigger
+        that fires whenever a new review is submitted. This lets you build automations like:
       </p>
       <ul>
         <li>Send a Slack notification when a negative review is submitted</li>
@@ -139,9 +139,10 @@ export default function FAQPage() {
 
       <h3>Can I try a paid plan before committing?</h3>
       <p>
-        Yes. Both the <PlanBadge plan="growth" /> and <PlanBadge plan="pro" /> plans include a{" "}
-        <strong>7-day free trial</strong>. You get full access to all plan features during the
-        trial. If you downgrade or cancel before the trial ends, you are not charged.
+        Yes. <PlanBadge plan="essential" /> includes a 14-day free trial,{" "}
+        <PlanBadge plan="growth" /> a 21-day trial, and <PlanBadge plan="studio" /> a 30-day trial.
+        You get full access to all plan features during the trial. If you downgrade or cancel
+        before the trial ends, you are not charged.
       </p>
 
       <h3>How does billing work?</h3>

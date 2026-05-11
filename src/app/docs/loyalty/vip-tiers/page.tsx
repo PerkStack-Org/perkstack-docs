@@ -12,7 +12,7 @@ export default function VipTiersPage() {
   return (
     <div className="docs-prose">
       <h1>
-        VIP Tiers <PlanBadge plan="pro" />
+        VIP Tiers <PlanBadge plan="growth" />
       </h1>
       <p>
         VIP tiers let you recognize and reward your most loyal customers. As customers earn lifetime
@@ -21,8 +21,8 @@ export default function VipTiersPage() {
       </p>
 
       <Callout type="info">
-        VIP tiers require the <PlanBadge plan="pro" /> plan. Enable tiers from your loyalty settings
-        by toggling <code>settings.tiersEnabled</code>.
+        VIP tiers require the <PlanBadge plan="growth" /> plan or above. Enable tiers from your
+        loyalty settings by toggling <code>settings.tiersEnabled</code>.
       </Callout>
 
       <h2>Tier Structure</h2>

@@ -12,7 +12,7 @@ export default function ReferralsPage() {
   return (
     <div className="docs-prose">
       <h1>
-        Referrals <PlanBadge plan="pro" />
+        Referrals <PlanBadge plan="growth" />
       </h1>
       <p>
         The referral program turns your existing customers into advocates by rewarding them for
@@ -21,8 +21,8 @@ export default function ReferralsPage() {
       </p>
 
       <Callout type="info">
-        The referral program requires the <PlanBadge plan="pro" /> plan. Configure referral settings
-        from <strong>PerkStack → Loyalty → Referrals</strong>.
+        The referral program requires the <PlanBadge plan="growth" /> plan or above. Configure
+        referral settings from <strong>PerkStack → Loyalty → Referrals</strong>.
       </Callout>
 
       <h2>How Referrals Work</h2>

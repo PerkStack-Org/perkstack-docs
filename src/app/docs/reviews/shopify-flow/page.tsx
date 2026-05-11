@@ -5,7 +5,7 @@ import PlanBadge from "@/components/PlanBadge";
 export const metadata: Metadata = {
   title: "Shopify Flow Integration",
   description:
-    "Use PerkStack's Shopify Flow trigger to build automations when reviews are approved. Available on the Pro plan.",
+    "Use PerkStack's Shopify Flow trigger to build automations when reviews are approved. Available on the Growth plan or above.",
 };
 
 export default function ShopifyFlowPage() {
@@ -19,7 +19,7 @@ export default function ShopifyFlowPage() {
       </p>
 
       <Callout type="info">
-        The Shopify Flow integration requires the <PlanBadge plan="pro" /> plan.
+        The Shopify Flow integration requires the <PlanBadge plan="growth" /> plan or above.
       </Callout>
 
       <h2>Trigger: Review Approved</h2>
@@ -210,13 +210,19 @@ export default function ShopifyFlowPage() {
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="growth" />
+              <PlanBadge plan="essential" />
             </td>
             <td>Not available</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="growth" />
+            </td>
+            <td>Available</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="studio" />
             </td>
             <td>Available</td>
           </tr>

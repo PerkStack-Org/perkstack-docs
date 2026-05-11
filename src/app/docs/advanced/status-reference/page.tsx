@@ -30,27 +30,53 @@ export default function StatusReferencePage() {
             <td>
               <code>free</code>
             </td>
-            <td>Free plan with core features and limited email quota</td>
+            <td>
+              Free plan — core loyalty, unlimited text reviews, 100 monthly orders, ~150 emails/mo
+              (bounded by the order cap)
+            </td>
           </tr>
           <tr>
             <td>
-              <code>starter</code>
+              <code>essential</code>
             </td>
-            <td>Legacy starter plan (no longer offered for new signups)</td>
+            <td>
+              Essential plan ($29/mo, 14-day trial) — adds photo reviews, custom rewards (fixed
+              amount + free shipping), checkout extension, branding removal, CSV import, and the
+              Cap-Recovery flow. 500 orders/mo · 5,000 emails/mo
+            </td>
           </tr>
           <tr>
             <td>
               <code>growth</code>
             </td>
-            <td>Growth plan with photo reviews, custom rewards, and checkout extension</td>
+            <td>
+              Growth plan ($99/mo, 21-day trial) — adds referrals, VIP tiers, Shopify Flow
+              triggers, live Klaviyo &amp; Judge.me integrations, custom points currency, and
+              custom launcher hero. 2,500 orders/mo · 25,000 emails/mo (with overage)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>studio</code>
+            </td>
+            <td>
+              Studio plan ($299/mo, 30-day trial) — full white-label: custom email sender domain,
+              custom CSS, custom review-email templates, bulk operations, activity log export,
+              advanced moderation, multi-store (coming soon). 10,000 orders/mo · 50,000 emails/mo
+              (with overage)
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>starter</code>
+            </td>
+            <td>Legacy starter plan (no longer offered for new signups; grandfathered only)</td>
           </tr>
           <tr>
             <td>
               <code>pro</code>
             </td>
-            <td>
-              Pro plan with all features including VIP tiers, referrals, Flow, and data export
-            </td>
+            <td>Legacy pro plan (no longer offered for new signups; grandfathered only)</td>
           </tr>
         </tbody>
       </table>

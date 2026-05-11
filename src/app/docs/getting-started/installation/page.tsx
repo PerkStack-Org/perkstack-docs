@@ -149,24 +149,32 @@ export default function InstallationPage() {
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="growth" />
+              <PlanBadge plan="essential" />
             </td>
-            <td>$49 / month</td>
-            <td>7-day free trial</td>
+            <td>$29 / month</td>
+            <td>14-day free trial</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="growth" />
             </td>
-            <td>$149 / month</td>
-            <td>7-day free trial</td>
+            <td>$99 / month</td>
+            <td>21-day free trial</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="studio" />
+            </td>
+            <td>$299 / month</td>
+            <td>30-day free trial</td>
           </tr>
         </tbody>
       </table>
 
       <p>
-        Both paid plans include a <strong>7-day free trial</strong>. You won&apos;t be charged until
-        the trial period ends, and you can cancel any time before then.
+        Every paid plan includes a free trial — 14 days on <PlanBadge plan="essential" />, 21 days
+        on <PlanBadge plan="growth" />, and 30 days on <PlanBadge plan="studio" />. You won&apos;t
+        be charged until the trial ends, and you can cancel any time before then.
       </p>
 
       <h2>Self-Hosting (Advanced)</h2>

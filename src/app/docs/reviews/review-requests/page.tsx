@@ -235,27 +235,35 @@ export default function ReviewRequestsPage() {
             <td>
               <PlanBadge plan="free" />
             </td>
-            <td>50 emails / month</td>
+            <td>~150 emails / month (bounded by the 100-order cap)</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="essential" />
+            </td>
+            <td>5,000 emails / month</td>
           </tr>
           <tr>
             <td>
               <PlanBadge plan="growth" />
             </td>
-            <td>Unlimited</td>
+            <td>25,000 emails / month</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="studio" />
             </td>
-            <td>Unlimited</td>
+            <td>50,000 emails / month</td>
           </tr>
         </tbody>
       </table>
 
       <Callout type="warning">
-        On the Free plan, once you hit the 50-email monthly limit, new review requests are still
-        created but remain in <code>scheduled</code> status until the next billing cycle. Upgrade to{" "}
-        <PlanBadge plan="growth" /> or <PlanBadge plan="pro" /> for unlimited sends.
+        Email caps are a unified counter covering all outbound mail (review requests, reminders,
+        points earned, redemption confirmations, birthday, expiry warnings). Once the cap is hit
+        for the current calendar month, new sends are paused — submission and on-storefront display
+        still work, so customers never see a broken experience. Upgrade to lift the cap or wait for
+        the 1st of the next month.
       </Callout>
 
       <h2>Unique Constraint</h2>

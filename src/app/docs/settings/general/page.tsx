@@ -138,15 +138,21 @@ export default function GeneralSettingsPage() {
           </tr>
           <tr>
             <td>
+              <PlanBadge plan="essential" />
+            </td>
+            <td>Toggle to show or hide branding</td>
+          </tr>
+          <tr>
+            <td>
               <PlanBadge plan="growth" />
             </td>
             <td>Toggle to show or hide branding</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="studio" />
             </td>
-            <td>Toggle to show or hide branding</td>
+            <td>Toggle to show or hide branding (custom sender domain available)</td>
           </tr>
         </tbody>
       </table>

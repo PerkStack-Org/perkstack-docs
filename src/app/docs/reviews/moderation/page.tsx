@@ -91,7 +91,7 @@ export default function ReviewModerationPage() {
           photo amount depending on whether the review includes photos)
         </li>
         <li>
-          If your store is on the <PlanBadge plan="pro" /> plan, a Shopify Flow trigger fires with
+          If your store is on the <PlanBadge plan="growth" /> plan or above, a Shopify Flow trigger fires with
           the review data, enabling custom automations
         </li>
       </ol>

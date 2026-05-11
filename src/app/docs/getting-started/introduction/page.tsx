@@ -137,7 +137,7 @@ export default function IntroductionPage() {
       </ul>
 
       <h2>Plans &amp; Pricing</h2>
-      <p>PerkStack offers three plans to fit stores of every size:</p>
+      <p>PerkStack offers four plans to fit stores of every size:</p>
 
       <table>
         <thead>
@@ -155,31 +155,42 @@ export default function IntroductionPage() {
             </td>
             <td>$0 / month</td>
             <td>-</td>
-            <td>Core loyalty &amp; reviews, up to 100 monthly orders</td>
+            <td>Core loyalty + unlimited text reviews, up to 100 monthly orders</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="essential" />
+            </td>
+            <td>$29 / month</td>
+            <td>14-day free trial</td>
+            <td>Photo reviews, checkout extension, branding removal, 500 orders/mo</td>
           </tr>
           <tr>
             <td>
               <PlanBadge plan="growth" />
             </td>
-            <td>$49 / month</td>
-            <td>7-day free trial</td>
-            <td>VIP tiers, referrals, advanced review features, priority support</td>
+            <td>$99 / month</td>
+            <td>21-day free trial</td>
+            <td>
+              Referrals, VIP tiers, Shopify Flow, Klaviyo &amp; Judge.me integrations, 2,500
+              orders/mo
+            </td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="studio" />
             </td>
-            <td>$149 / month</td>
-            <td>7-day free trial</td>
-            <td>Unlimited orders, API access, custom branding, dedicated support</td>
+            <td>$299 / month</td>
+            <td>30-day free trial</td>
+            <td>Full white-label, custom domain &amp; CSS, bulk ops, 10,000 orders/mo</td>
           </tr>
         </tbody>
       </table>
 
       <Callout type="info">
-        Both the Growth and Pro plans include a <strong>7-day free trial</strong> so you can explore
-        every feature before you&apos;re charged. You can upgrade or downgrade at any time from the
-        PerkStack settings page in your Shopify admin.
+        All paid plans include a free trial (14 / 21 / 30 days). You can upgrade or downgrade at any
+        time from the PerkStack settings page in your Shopify admin. See{" "}
+        <a href="/docs/settings/billing">Billing &amp; Plans</a> for the full feature comparison.
       </Callout>
 
       <h2>Next Steps</h2>

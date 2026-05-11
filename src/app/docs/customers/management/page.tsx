@@ -54,7 +54,7 @@ export default function CustomerManagementPage() {
               <strong>Tier</strong>
             </td>
             <td>
-              Current VIP tier (if tiers are enabled on the <PlanBadge plan="pro" /> plan)
+              Current VIP tier (if tiers are enabled on the <PlanBadge plan="growth" /> plan or above)
             </td>
           </tr>
           <tr>

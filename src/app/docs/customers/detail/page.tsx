@@ -126,7 +126,7 @@ export default function CustomerDetailPage() {
 
       <h2>Tier Information</h2>
       <p>
-        If VIP tiers are enabled (<PlanBadge plan="pro" /> plan required), the detail page shows:
+        If VIP tiers are enabled (<PlanBadge plan="growth" /> plan or above required), the detail page shows:
       </p>
       <ul>
         <li>

@@ -36,13 +36,19 @@ export default function DashboardAnalyticsPage() {
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="growth" />
+              <PlanBadge plan="essential" />
             </td>
             <td>90 days</td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="pro" />
+              <PlanBadge plan="growth" />
+            </td>
+            <td>180 days</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="studio" />
             </td>
             <td>Unlimited</td>
           </tr>
@@ -132,8 +138,8 @@ export default function DashboardAnalyticsPage() {
       </ul>
 
       <Callout type="tip">
-        Export your analytics data on the <PlanBadge plan="pro" /> plan. Use the export button to
-        download a CSV of the raw data behind any chart.
+        Export your analytics data on the <PlanBadge plan="studio" /> plan. Use the export button
+        to download a CSV of the raw data behind any chart.
       </Callout>
 
       <h2>Related</h2>
