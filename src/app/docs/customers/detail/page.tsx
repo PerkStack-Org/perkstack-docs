@@ -5,7 +5,7 @@ import PlanBadge from "@/components/PlanBadge";
 export const metadata: Metadata = {
   title: "Customer Detail",
   description:
-    "View a customer's full profile including points balance, transaction history, reviews, tier information, and manual point adjustments.",
+    "View a customer's full profile including points balance, transaction history, reviews, tier information, manual point adjustments, and one-off granted rewards.",
 };
 
 export default function CustomerDetailPage() {
@@ -171,6 +171,51 @@ export default function CustomerDetailPage() {
       <Callout type="warning">
         Manual adjustments to add points <strong>do</strong> increase lifetime earned points and may
         affect tier placement. Use them carefully.
+      </Callout>
+
+      <h2>
+        Grant Reward <PlanBadge plan="essential" />
+      </h2>
+      <p>
+        The <strong>Grant reward</strong> button on the customer detail page lets you issue a
+        one-off catalog reward to this customer without going through the normal points
+        spend. Use it for support recoveries, surprise-and-delight, or anniversary gifts.
+      </p>
+      <ol>
+        <li>
+          Click <strong>Grant reward</strong>. A modal opens.
+        </li>
+        <li>
+          Pick a reward from your active catalog. The merchant-set points cost is shown next to
+          each option.
+        </li>
+        <li>
+          Optionally override the points cost. Leave it blank to charge the customer the
+          reward&apos;s normal cost. Enter <code>0</code> to grant it for free.
+        </li>
+        <li>
+          Provide a reason (required, minimum 10 characters). The reason is recorded in the
+          audit log so you can trace who granted what to whom later.
+        </li>
+        <li>
+          Click <strong>Grant reward</strong>. PerkStack creates a pending redemption tagged
+          with your actor identity, then enqueues the same discount-creation worker the
+          customer-initiated flow uses. The customer receives the discount code within seconds.
+        </li>
+      </ol>
+
+      <Callout type="info">
+        Granted redemptions <strong>bypass</strong> the reward&apos;s total and per-customer
+        limits, and they do <strong>not</strong> increment the sold-out counter or fire the
+        Reward Sold Out Flow trigger. Manual grants are exceptions to the campaign, not
+        consumers of it.
+      </Callout>
+
+      <Callout type="warning">
+        If the customer already has a pending redemption (an unused discount code they
+        previously created themselves), grant fails with a clear error message. Ask them to
+        use or discard their existing code before granting another, so they cannot accumulate
+        unused discount codes.
       </Callout>
 
       <h2>Related</h2>
