@@ -69,6 +69,15 @@ export default function Header() {
               <ExternalLink size={11} />
             </a>
             <a
+              href="https://blog.perk-stack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:flex items-center gap-1.5 text-[13px] text-lp-text-secondary hover:text-ps-accent transition-colors"
+            >
+              Blog
+              <ExternalLink size={11} />
+            </a>
+            <a
               href="https://apps.shopify.com"
               target="_blank"
               rel="noopener noreferrer"

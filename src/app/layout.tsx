@@ -44,6 +44,34 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "PerkStack Documentation",
+              url: "https://docs.perk-stack.com",
+              publisher: {
+                "@type": "Organization",
+                name: "PerkStack",
+                url: "https://perk-stack.com",
+              },
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "PerkStack",
+              url: "https://perk-stack.com",
+              logo: "https://docs.perk-stack.com/perkstack.svg",
+            }),
+          }}
+        />
         <ThemeProvider>
           <UIPreferencesProvider>
             <ToastProvider>

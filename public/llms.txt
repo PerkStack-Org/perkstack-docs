@@ -1,0 +1,44 @@
+# PerkStack Documentation
+
+> Complete documentation for PerkStack, the loyalty points and product reviews platform for Shopify merchants. These docs cover setup, loyalty programs, reviews, storefront widgets, integrations, billing, and troubleshooting.
+
+## Getting Started
+
+- [Getting Started](https://docs.perk-stack.com/docs/getting-started/introduction): Install PerkStack, complete first time setup, and learn the core concepts.
+- [Welcome](https://docs.perk-stack.com/docs/welcome): Orientation and overview of what PerkStack does.
+- [Dashboard](https://docs.perk-stack.com/docs/dashboard): The PerkStack admin home and how to read it.
+
+## Loyalty
+
+- [Loyalty](https://docs.perk-stack.com/docs/loyalty/points-system): Points programs, earn rules, rewards, tiers, and birthday rewards.
+
+## Reviews
+
+- [Reviews](https://docs.perk-stack.com/docs/reviews): Collecting, moderating, and displaying product reviews.
+
+## Storefront and Customization
+
+- [Widgets](https://docs.perk-stack.com/docs/widgets/loyalty-launcher): Storefront widgets including the loyalty launcher, checkout widget, and review stars.
+- [Customizing](https://docs.perk-stack.com/docs/customizing): Theme and appearance options for storefront elements.
+
+## Customers and Analytics
+
+- [Customers](https://docs.perk-stack.com/docs/customers): Managing customer loyalty profiles and activity.
+- [Analytics](https://docs.perk-stack.com/docs/analytics): Reporting on loyalty and review performance.
+
+## Settings and Integrations
+
+- [Settings](https://docs.perk-stack.com/docs/settings): App configuration and program settings.
+- [Integrations](https://docs.perk-stack.com/docs/integrations): Connecting PerkStack with other tools and platforms.
+- [Advanced](https://docs.perk-stack.com/docs/advanced): Advanced configuration for power users.
+
+## Operations and Billing
+
+- [Operations](https://docs.perk-stack.com/docs/operations): Day to day running of your program.
+- [Billing](https://docs.perk-stack.com/docs/billing): Plans, pricing, and subscription management.
+- [Troubleshooting](https://docs.perk-stack.com/docs/troubleshooting/faq): Common issues and frequently asked questions.
+
+## More
+
+- [PerkStack Website](https://perk-stack.com): Product site and Shopify app listing.
+- [PerkStack Blog](https://blog.perk-stack.com): Guides, updates, and merchant tips.
