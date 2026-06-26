@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 import StarBadgePreview from "@/components/widget-previews/StarBadgePreview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/star-badge", {
   title: "Star Badge",
   description:
     "Show average star ratings and review counts inline on product pages with the PerkStack Star Badge widget.",
-};
+});
 
 export default function StarBadgePage() {
   return (
@@ -23,7 +25,7 @@ export default function StarBadgePage() {
 
       <StarBadgePreview />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is rendered by <code>review-star-badge.liquid</code> and uses a{" "}
         <code>section</code> target. It loads <code>perkstack-star-badge.js</code> to fetch and
@@ -35,7 +37,7 @@ export default function StarBadgePage() {
         entirely or show &quot;No reviews yet&quot; depending on your configuration.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
@@ -64,7 +66,7 @@ export default function StarBadgePage() {
         is visible immediately without scrolling.
       </Callout>
 
-      <h2>Display</h2>
+      <H2>Display</H2>
       <p>The Star Badge shows two pieces of information:</p>
       <ul>
         <li>
@@ -81,7 +83,7 @@ export default function StarBadgePage() {
         customers a quick way to jump to the full reviews.
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>
         The following settings are available in the theme editor when the Star Badge block is
         selected:
@@ -123,7 +125,7 @@ export default function StarBadgePage() {
         </tbody>
       </table>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Badge not showing</strong>: the product may have no approved reviews and the empty

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/dashboard/overview", {
   title: "Dashboard Overview",
   description:
     "Understand the PerkStack dashboard: key metrics, extension status cards, theme block detection, and quick links.",
-};
+});
 
 export default function DashboardOverviewPage() {
   return (
@@ -18,7 +20,7 @@ export default function DashboardOverviewPage() {
         which storefront extensions are active, and provides quick links to the areas you use most.
       </p>
 
-      <h2>Key Metrics</h2>
+      <H2>Key Metrics</H2>
       <p>
         The top of the dashboard displays summary cards for the most important metrics across your
         loyalty program and reviews:
@@ -75,7 +77,7 @@ export default function DashboardOverviewPage() {
         large order came through, refresh the page to see the latest numbers.
       </Callout>
 
-      <h2>Theme Block Detection</h2>
+      <H2>Theme Block Detection</H2>
       <p>
         PerkStack automatically inspects your store&apos;s main published theme to determine which
         app blocks are installed. It reads the theme&apos;s JSON templates and checks for the
@@ -110,7 +112,7 @@ export default function DashboardOverviewPage() {
         until that theme is published.
       </Callout>
 
-      <h2>Extension Status Cards</h2>
+      <H2>Extension Status Cards</H2>
       <p>
         Below the theme block detection section, extension status cards show the state of each
         Shopify extension bundled with PerkStack:
@@ -167,7 +169,7 @@ export default function DashboardOverviewPage() {
         are on the Free plan, it will appear as unavailable until you upgrade.
       </Callout>
 
-      <h2>Quick Links</h2>
+      <H2>Quick Links</H2>
       <p>The dashboard provides shortcut links to the most commonly used areas of PerkStack:</p>
       <ul>
         <li>
@@ -192,7 +194,7 @@ export default function DashboardOverviewPage() {
         </li>
       </ul>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/dashboard/analytics">Dashboard Analytics</a>: detailed charts and metric

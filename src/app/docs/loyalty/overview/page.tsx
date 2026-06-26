@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/overview", {
   title: "Loyalty Overview",
   description:
     "Learn how PerkStack's loyalty program works, including earn rules, rewards catalog, referrals, and how to enable or disable loyalty for your store.",
-};
+});
 
 export default function LoyaltyOverviewPage() {
   return (
@@ -17,7 +19,7 @@ export default function LoyaltyOverviewPage() {
         repeat purchases and long-term engagement.
       </p>
 
-      <h2>Enabling and Disabling Loyalty</h2>
+      <H2>Enabling and Disabling Loyalty</H2>
       <p>
         Toggle the loyalty program on or off from the <strong>Loyalty</strong> page in your Shopify
         admin under <strong>PerkStack → Loyalty</strong>. This updates the{" "}
@@ -30,7 +32,7 @@ export default function LoyaltyOverviewPage() {
         point balances are preserved and become active again when you re-enable loyalty.
       </Callout>
 
-      <h2>Loyalty Dashboard</h2>
+      <H2>Loyalty Dashboard</H2>
       <p>
         The loyalty page is organized into three tabs, each managing a different aspect of your
         program:
@@ -74,7 +76,7 @@ export default function LoyaltyOverviewPage() {
         </tbody>
       </table>
 
-      <h2>View Modes</h2>
+      <H2>View Modes</H2>
       <p>
         Both the Earn Rules and Rewards Catalog tabs support two view modes that you can toggle
         between:
@@ -90,7 +92,7 @@ export default function LoyaltyOverviewPage() {
         </li>
       </ul>
 
-      <h2>How It All Fits Together</h2>
+      <H2>How It All Fits Together</H2>
       <p>
         The loyalty system is built around a simple loop: customers perform actions (purchase,
         review, share, refer) to earn points, then spend those points on rewards from your catalog.
@@ -117,7 +119,7 @@ export default function LoyaltyOverviewPage() {
         which generates social proof and drives more sales.
       </Callout>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/earn-rules">Earn Rules</a>: configure how customers earn points

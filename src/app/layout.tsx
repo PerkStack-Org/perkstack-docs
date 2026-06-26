@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ORGANIZATION, SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/seo";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { SearchProvider } from "@/components/SearchProvider";
@@ -17,6 +19,19 @@ import LinkPreview from "@/components/LinkPreview";
 import GlossaryTooltips from "@/components/GlossaryTooltips";
 import SwipeNavigation from "@/components/SwipeNavigation";
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "PerkStack Documentation",
@@ -24,19 +39,36 @@ export const metadata: Metadata = {
   },
   description:
     "Complete documentation for PerkStack, the loyalty and reviews platform for Shopify.",
-  metadataBase: new URL("https://docs.perk-stack.com"),
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: "PerkStack Documentation",
+    description:
+      "Complete documentation for PerkStack, the loyalty and reviews platform for Shopify.",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PerkStack Documentation",
+    description:
+      "Complete documentation for PerkStack, the loyalty and reviews platform for Shopify.",
+    images: [OG_IMAGE],
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem("perkstack-docs-theme");var r=t==="dark"||t==="light"?t:t==="system"||!t?window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light":"light";document.documentElement.setAttribute("data-theme",r)}catch(e){}})()`,
@@ -50,12 +82,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "PerkStack Documentation",
-              url: "https://docs.perk-stack.com",
+              name: SITE_NAME,
+              url: SITE_URL,
               publisher: {
                 "@type": "Organization",
-                name: "PerkStack",
-                url: "https://perk-stack.com",
+                name: ORGANIZATION.name,
+                url: ORGANIZATION.url,
               },
             }),
           }}
@@ -66,9 +98,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "PerkStack",
-              url: "https://perk-stack.com",
-              logo: "https://docs.perk-stack.com/perkstack.svg",
+              name: ORGANIZATION.name,
+              url: ORGANIZATION.url,
+              logo: ORGANIZATION.logo,
             }),
           }}
         />

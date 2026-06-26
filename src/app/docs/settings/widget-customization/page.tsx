@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/widget-customization", {
   title: "Widget Customization",
   description:
     "Customise the loyalty launcher widget including header image, overlay opacity, fullscreen mode, and live preview.",
-};
+});
 
 export default function WidgetCustomizationPage() {
   return (
@@ -17,7 +19,7 @@ export default function WidgetCustomizationPage() {
         previewed in real time using the built-in LauncherPreview component.
       </p>
 
-      <h2>Launcher Header Image</h2>
+      <H2>Launcher Header Image</H2>
       <p>Upload a custom header image that appears at the top of the loyalty launcher panel.</p>
       <ol>
         <li>
@@ -40,7 +42,7 @@ export default function WidgetCustomizationPage() {
         that&apos;s too small to read on mobile devices.
       </Callout>
 
-      <h2>Overlay Opacity</h2>
+      <H2>Overlay Opacity</H2>
       <p>
         The overlay is the semi-transparent backdrop that appears behind the launcher panel when
         it&apos;s open. Use the slider to adjust opacity:
@@ -74,7 +76,7 @@ export default function WidgetCustomizationPage() {
         </tbody>
       </table>
 
-      <h2>Image Fullscreen</h2>
+      <H2>Image Fullscreen</H2>
       <p>
         Toggle the <strong>Image Fullscreen</strong> option to control whether the header image
         stretches to fill the full width of the launcher panel or maintains its aspect ratio with
@@ -89,7 +91,7 @@ export default function WidgetCustomizationPage() {
         </li>
       </ul>
 
-      <h2>Live Preview</h2>
+      <H2>Live Preview</H2>
       <p>
         The right side of the customization page shows a live preview of the launcher panel via the{" "}
         <code>LauncherPreview</code> component. Every change you make to the settings is reflected
@@ -103,14 +105,14 @@ export default function WidgetCustomizationPage() {
         store after saving.
       </Callout>
 
-      <h2>Navigation</h2>
+      <H2>Navigation</H2>
       <p>
         Use the <strong>Back</strong> link at the top of the page to return to the main settings
         page. If you have unsaved changes, the Contextual Save Bar prompts you to save or discard
         before navigating away.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/settings/trigger-button">Trigger Button</a> to customise the floating

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/advanced/web-pixel", {
   title: "Web Pixel",
   description:
     "How the PerkStack app pixel tracks storefront events, processes checkout data, and feeds analytics.",
-};
+});
 
 export default function WebPixelPage() {
   return (
@@ -17,7 +19,7 @@ export default function WebPixelPage() {
         backend for processing.
       </p>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <ol>
         <li>The pixel extension is automatically registered when PerkStack is installed</li>
         <li>
@@ -31,7 +33,7 @@ export default function WebPixelPage() {
         <li>PerkStack processes the data to update customer records and analytics</li>
       </ol>
 
-      <h2>Event: Checkout Completed</h2>
+      <H2>Event: Checkout Completed</H2>
       <p>
         When the <code>checkout_completed</code> event fires, the pixel posts the following data to{" "}
         <code>/apps/perkstack/api/pixel/checkout</code>:
@@ -76,7 +78,7 @@ export default function WebPixelPage() {
         </tbody>
       </table>
 
-      <h2>Server-Side Processing</h2>
+      <H2>Server-Side Processing</H2>
       <p>When the pixel endpoint receives checkout data, it performs the following:</p>
       <ol>
         <li>
@@ -99,7 +101,7 @@ export default function WebPixelPage() {
         via discount codes.
       </Callout>
 
-      <h2>Strict Runtime</h2>
+      <H2>Strict Runtime</H2>
       <p>Shopify&apos;s web pixel strict runtime imposes the following constraints:</p>
       <ul>
         <li>No DOM access. The pixel cannot read or modify the page</li>
@@ -112,7 +114,7 @@ export default function WebPixelPage() {
         capture checkout events.
       </p>
 
-      <h2>Privacy</h2>
+      <H2>Privacy</H2>
       <p>
         The PerkStack pixel only collects data that Shopify exposes through the{" "}
         <code>checkout_completed</code> event. It does not:
@@ -130,7 +132,7 @@ export default function WebPixelPage() {
         <a href="/docs/dashboard/extension-status">dashboard</a>.
       </Callout>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <table>
         <thead>
           <tr>
@@ -160,7 +162,7 @@ export default function WebPixelPage() {
         </tbody>
       </table>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/advanced/webhooks">Webhooks</a>: order webhooks that complement pixel data

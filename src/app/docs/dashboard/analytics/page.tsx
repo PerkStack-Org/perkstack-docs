@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/dashboard/analytics", {
   title: "Dashboard Analytics",
   description:
     "Explore loyalty and review analytics including points trends, top spenders, top products, review approval rates, and chart visualizations.",
-};
+});
 
 export default function DashboardAnalyticsPage() {
   return (
@@ -18,7 +20,7 @@ export default function DashboardAnalyticsPage() {
         Viz and adapt to your selected date range.
       </p>
 
-      <h2>Data Retention by Plan</h2>
+      <H2>Data Retention by Plan</H2>
       <p>The amount of historical data available depends on your plan:</p>
       <table>
         <thead>
@@ -60,69 +62,69 @@ export default function DashboardAnalyticsPage() {
         history without any gaps.
       </Callout>
 
-      <h2>Loyalty Metrics</h2>
+      <H2>Loyalty Metrics</H2>
       <p>
         The loyalty section of the analytics page tracks the health and engagement of your rewards
         program:
       </p>
 
-      <h3>Points Earned &amp; Redeemed</h3>
+      <H3>Points Earned &amp; Redeemed</H3>
       <p>
         A line chart showing daily points earned and points redeemed over the selected period. Use
         this to spot trends. A healthy program shows consistent earning activity with growing
         redemption rates.
       </p>
 
-      <h3>Active Customers</h3>
+      <H3>Active Customers</H3>
       <p>
         Tracks the number of unique customers who earned or redeemed points each day. A rising
         active customer count indicates that your loyalty program is reaching more of your customer
         base.
       </p>
 
-      <h3>Top Spenders</h3>
+      <H3>Top Spenders</H3>
       <p>
         A ranked list of customers with the highest lifetime points earned. This helps you identify
         your most valuable customers and consider VIP tier placement or manual rewards.
       </p>
 
-      <h3>Top Rewards</h3>
+      <H3>Top Rewards</H3>
       <p>
         Shows which rewards are redeemed most frequently. Use this data to optimise your reward
         catalogue. Double down on popular rewards and reconsider underperforming ones.
       </p>
 
-      <h2>Reviews Metrics</h2>
+      <H2>Reviews Metrics</H2>
       <p>
         The reviews section provides insight into your review collection and moderation pipeline:
       </p>
 
-      <h3>Total Reviews</h3>
+      <H3>Total Reviews</H3>
       <p>
         A cumulative count of all reviews submitted to your store, broken down by status (approved,
         pending, rejected, spam).
       </p>
 
-      <h3>Monthly Trends</h3>
+      <H3>Monthly Trends</H3>
       <p>
         A bar chart showing the number of reviews submitted per month. Look for seasonal patterns or
         the impact of review request email campaigns.
       </p>
 
-      <h3>Approval Rate</h3>
+      <H3>Approval Rate</H3>
       <p>
         The percentage of reviews that are approved versus total submissions. A high approval rate
         (above 80%) is typical for stores with genuine customer traffic. A low rate may indicate
         spam or a need to adjust your auto-approve threshold.
       </p>
 
-      <h3>Top Reviewed Products</h3>
+      <H3>Top Reviewed Products</H3>
       <p>
         A ranked list of products with the most reviews. This helps you identify which products
         generate the most customer feedback and which may benefit from more review request emails.
       </p>
 
-      <h2>Using the Charts</h2>
+      <H2>Using the Charts</H2>
       <p>All charts support the following interactions:</p>
       <ul>
         <li>
@@ -142,7 +144,7 @@ export default function DashboardAnalyticsPage() {
         to download a CSV of the raw data behind any chart.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/dashboard/overview">Dashboard Overview</a>: summary metrics and quick links

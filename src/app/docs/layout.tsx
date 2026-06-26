@@ -4,6 +4,7 @@ import PrevNextNav from "@/components/PrevNextNav";
 import FeedbackWidget from "@/components/FeedbackWidget";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeadingAnchors from "@/components/HeadingAnchors";
+import ArticleSchema from "@/components/ArticleSchema";
 import ReadingTime from "@/components/ReadingTime";
 import SearchHighlight from "@/components/SearchHighlight";
 import PageTransition from "@/components/PageTransition";
@@ -16,6 +17,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="max-w-[88rem] mx-auto px-6 py-10 xl:flex xl:gap-10">
       <article className="flex-1 min-w-0 max-w-4xl mx-auto xl:mx-0">
+        <ArticleSchema />
         <ContinueReadingBanner />
         <Breadcrumbs />
         <div className="mb-4">

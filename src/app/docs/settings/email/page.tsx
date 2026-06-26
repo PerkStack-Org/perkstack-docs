@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/email", {
   title: "Email Settings",
   description:
     "Configure your email sender name, reply-to address, and understand the email delivery infrastructure.",
-};
+});
 
 export default function EmailSettingsPage() {
   return (
@@ -18,7 +20,7 @@ export default function EmailSettingsPage() {
         your customers.
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <table>
         <thead>
           <tr>
@@ -55,7 +57,7 @@ export default function EmailSettingsPage() {
         </tbody>
       </table>
 
-      <h2>Validation</h2>
+      <H2>Validation</H2>
       <p>
         The reply-to address is validated on save to ensure it is a properly formatted email
         address. Invalid addresses will be rejected with a validation error.
@@ -67,7 +69,7 @@ export default function EmailSettingsPage() {
         with questions.
       </Callout>
 
-      <h2>Email Delivery</h2>
+      <H2>Email Delivery</H2>
       <p>
         All emails are sent via <strong>Resend</strong>, a transactional email provider. The
         integration is handled entirely server-side, so you do not need to configure Resend
@@ -80,7 +82,7 @@ export default function EmailSettingsPage() {
         <li>Rate limiting within your plan&apos;s email quota</li>
       </ul>
 
-      <h2>Email Limits</h2>
+      <H2>Email Limits</H2>
       <p>
         The number of emails you can send per month depends on your plan. See the{" "}
         <a href="/docs/settings/billing">Billing &amp; Plans</a> page for details.
@@ -92,7 +94,7 @@ export default function EmailSettingsPage() {
         billing cycle. Critical emails (e.g. reward confirmations) are always delivered.
       </Callout>
 
-      <h2>Email Types</h2>
+      <H2>Email Types</H2>
       <p>PerkStack sends the following email types:</p>
       <table>
         <thead>
@@ -136,7 +138,7 @@ export default function EmailSettingsPage() {
         </tbody>
       </table>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/settings/review-settings">Review Settings</a> to configure review request

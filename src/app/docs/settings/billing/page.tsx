@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/billing", {
   title: "Billing & Plans",
   description:
     "PerkStack pricing — Free, Essential ($29/mo), Growth ($99/mo), and Studio ($299/mo). Feature comparison, billing statuses, and how to upgrade, downgrade, or cancel.",
-};
+});
 
 export default function BillingPage() {
   return (
@@ -23,7 +25,7 @@ export default function BillingPage() {
         trial. You won&apos;t be charged until the trial ends.
       </Callout>
 
-      <h2>Plan Comparison</h2>
+      <H2>Plan Comparison</H2>
       <table>
         <thead>
           <tr>
@@ -242,7 +244,7 @@ export default function BillingPage() {
         with Judge.me so you don&apos;t have to choose between platforms.
       </Callout>
 
-      <h2>Upgrading</h2>
+      <H2>Upgrading</H2>
       <ol>
         <li>
           Navigate to <strong>PerkStack → Settings → Billing</strong>
@@ -255,7 +257,7 @@ export default function BillingPage() {
         <li>Once approved, your plan activates immediately and all features unlock</li>
       </ol>
 
-      <h2>Downgrading</h2>
+      <H2>Downgrading</H2>
       <p>
         To downgrade, click <strong>Downgrade</strong> on a lower plan card. The downgrade takes
         effect at the end of your current billing cycle. Features exclusive to your current plan
@@ -269,13 +271,13 @@ export default function BillingPage() {
         plan comparison table before downgrading.
       </Callout>
 
-      <h2>Cancelling</h2>
+      <H2>Cancelling</H2>
       <p>
         You can cancel your paid subscription at any time. Cancellation reverts your account to the{" "}
         <PlanBadge plan="free" /> plan at the end of the current billing cycle.
       </p>
 
-      <h2>Order &amp; Email Caps</h2>
+      <H2>Order &amp; Email Caps</H2>
       <p>
         Each plan includes a monthly order cap and (on paid plans) a unified outbound-email cap.
         Caps reset on the 1st of each calendar month in your store&apos;s timezone.
@@ -294,7 +296,7 @@ export default function BillingPage() {
         </li>
       </ul>
 
-      <h2>Billing Statuses</h2>
+      <H2>Billing Statuses</H2>
       <table>
         <thead>
           <tr>
@@ -340,7 +342,7 @@ export default function BillingPage() {
         as possible. Prolonged frozen status may result in restricted access to paid features.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/settings/general">General Settings</a> to configure branding and loyalty

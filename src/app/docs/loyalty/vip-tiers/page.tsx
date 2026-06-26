@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/vip-tiers", {
   title: "VIP Tiers",
   description:
     "Set up VIP tiers in PerkStack to reward your best customers with points multipliers and exclusive rewards.",
-};
+});
 
 export default function VipTiersPage() {
   return (
@@ -25,13 +27,13 @@ export default function VipTiersPage() {
         loyalty settings by toggling <code>settings.tiersEnabled</code>.
       </Callout>
 
-      <h2>Tier Structure</h2>
+      <H2>Tier Structure</H2>
       <p>
         PerkStack uses a fixed 3-tier structure. You can customize the name, icon, threshold, and
         multiplier for each tier, but the total number of tiers is always three.
       </p>
 
-      <h3>Default Tiers</h3>
+      <H3>Default Tiers</H3>
       <table>
         <thead>
           <tr>
@@ -65,7 +67,7 @@ export default function VipTiersPage() {
         </tbody>
       </table>
 
-      <h2>Tier Configuration</h2>
+      <H2>Tier Configuration</H2>
       <p>Each tier has the following configurable fields:</p>
 
       <table>
@@ -118,7 +120,7 @@ export default function VipTiersPage() {
         at least <code>1.00</code> (no penalty multipliers).
       </Callout>
 
-      <h2>How Tier Placement Works</h2>
+      <H2>How Tier Placement Works</H2>
       <p>
         A customer&apos;s tier is determined by their <strong>lifetime earned points</strong>, the
         total number of points they have ever earned (not their current redeemable balance). This
@@ -140,7 +142,7 @@ export default function VipTiersPage() {
         redeeming rewards. This encourages spending without fear of demotion.
       </Callout>
 
-      <h2>Manual Tier Override</h2>
+      <H2>Manual Tier Override</H2>
       <p>
         Merchants can manually override a customer&apos;s tier using the <code>tierOverrideId</code>{" "}
         field on the customer record. When set, the customer is placed in the specified tier
@@ -157,14 +159,14 @@ export default function VipTiersPage() {
         <code>tierOverrideId</code> field.
       </Callout>
 
-      <h2>Tier-Gated Rewards</h2>
+      <H2>Tier-Gated Rewards</H2>
       <p>
         Rewards in your catalog can be restricted to specific tiers using the <code>minTierId</code>{" "}
         field. Customers below the required tier will not see or be able to redeem those rewards.
         See <a href="/docs/loyalty/rewards">Rewards Catalog</a> for details.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works

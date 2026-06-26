@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/dashboard/extension-status", {
   title: "Extension Status",
   description:
     "Understand how PerkStack detects and displays the status of each Shopify extension on the dashboard.",
-};
+});
 
 export default function ExtensionStatusPage() {
   return (
@@ -17,7 +19,7 @@ export default function ExtensionStatusPage() {
         one so you can verify your store is fully configured at a glance.
       </p>
 
-      <h2>How Detection Works</h2>
+      <H2>How Detection Works</H2>
       <p>When the dashboard loads, PerkStack performs two checks:</p>
       <ol>
         <li>
@@ -32,7 +34,7 @@ export default function ExtensionStatusPage() {
       </ol>
       <p>The results are combined to produce the status indicators you see on the dashboard.</p>
 
-      <h2>Extension Reference</h2>
+      <H2>Extension Reference</H2>
       <table>
         <thead>
           <tr>
@@ -102,7 +104,7 @@ export default function ExtensionStatusPage() {
         </tbody>
       </table>
 
-      <h2>Status Indicators</h2>
+      <H2>Status Indicators</H2>
       <table>
         <thead>
           <tr>
@@ -142,7 +144,7 @@ export default function ExtensionStatusPage() {
         are not detected.
       </Callout>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ol>
         <li>
           <strong>All blocks show &ldquo;Not Installed&rdquo;</strong>: ensure the PerkStack theme
@@ -159,7 +161,7 @@ export default function ExtensionStatusPage() {
         </li>
       </ol>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/dashboard/overview">Dashboard Overview</a>: summary metrics and quick links

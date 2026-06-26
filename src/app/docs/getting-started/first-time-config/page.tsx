@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/getting-started/first-time-config", {
   title: "First-Time Configuration",
   description:
     "Walk through PerkStack's onboarding wizard and understand the default settings for loyalty and reviews.",
-};
+});
 
 export default function FirstTimeConfigPage() {
   return (
@@ -18,15 +20,15 @@ export default function FirstTimeConfigPage() {
         can always change these settings later from the app&apos;s settings pages.
       </p>
 
-      <h2>Onboarding Wizard</h2>
+      <H2>Onboarding Wizard</H2>
 
-      <h3>Step 1: Welcome</h3>
+      <H3>Step 1: Welcome</H3>
       <p>
         The first screen introduces PerkStack and gives you a quick overview of what the app does.
         No configuration is needed here; just click <strong>Get Started</strong> to continue.
       </p>
 
-      <h3>Step 2: Points Configuration</h3>
+      <H3>Step 2: Points Configuration</H3>
       <p>
         This step lets you configure how customers earn points. The main setting is the{" "}
         <strong>points-per-dollar</strong> rate for purchases:
@@ -45,7 +47,7 @@ export default function FirstTimeConfigPage() {
         costs accordingly.
       </Callout>
 
-      <h3>Step 3: Branding</h3>
+      <H3>Step 3: Branding</H3>
       <p>Customize the look and feel of your loyalty widgets on the storefront:</p>
       <ul>
         <li>
@@ -62,7 +64,7 @@ export default function FirstTimeConfigPage() {
         </li>
       </ul>
 
-      <h3>Step 4: Launch</h3>
+      <H3>Step 4: Launch</H3>
       <p>
         The final step confirms your configuration and activates PerkStack on your store. Once you
         click <strong>Launch</strong>, the loyalty program and review system are live on your
@@ -76,7 +78,7 @@ export default function FirstTimeConfigPage() {
         active from day one.
       </Callout>
 
-      <h2>Default Earn Rules</h2>
+      <H2>Default Earn Rules</H2>
       <p>
         PerkStack creates the following earn rules automatically during installation. Active rules
         start working immediately; inactive rules are pre-configured but disabled until you turn
@@ -154,7 +156,7 @@ export default function FirstTimeConfigPage() {
         require the <PlanBadge plan="growth" /> plan or higher.
       </Callout>
 
-      <h2>Default Reward</h2>
+      <H2>Default Reward</H2>
       <p>PerkStack creates one starter reward during installation:</p>
 
       <table>
@@ -185,7 +187,7 @@ export default function FirstTimeConfigPage() {
         $10 at 200 pts, $25 at 500 pts). This gives customers multiple milestones to work toward.
       </Callout>
 
-      <h2>Default Review Settings</h2>
+      <H2>Default Review Settings</H2>
       <p>PerkStack&apos;s review system is pre-configured with sensible defaults:</p>
 
       <table>
@@ -230,7 +232,7 @@ export default function FirstTimeConfigPage() {
         stars).
       </Callout>
 
-      <h2>Recommended First Steps After Onboarding</h2>
+      <H2>Recommended First Steps After Onboarding</H2>
       <p>
         Once you&apos;ve completed the wizard, here are the recommended next steps to get the most
         out of PerkStack:
@@ -269,7 +271,7 @@ export default function FirstTimeConfigPage() {
         </li>
       </ol>
 
-      <h2>Resetting to Defaults</h2>
+      <H2>Resetting to Defaults</H2>
       <p>
         If you&apos;ve changed settings and want to start over, you can reset individual sections
         from their respective settings pages. There is no global &quot;reset all&quot; button. Each
@@ -281,7 +283,7 @@ export default function FirstTimeConfigPage() {
         customers. Only future point calculations will use the new configuration.
       </Callout>
 
-      <h2>Summary of Defaults</h2>
+      <H2>Summary of Defaults</H2>
       <p>Here&apos;s a quick reference of everything PerkStack creates during installation:</p>
       <ul>
         <li>

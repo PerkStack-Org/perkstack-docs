@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/trigger-button", {
   title: "Trigger Button",
   description:
     "Customise the floating rewards trigger button including text, colours, shape, icon, and border radius with live preview.",
-};
+});
 
 export default function TriggerButtonPage() {
   return (
@@ -18,7 +20,7 @@ export default function TriggerButtonPage() {
         you style this button to match your brand.
       </p>
 
-      <h2>Customization Options</h2>
+      <H2>Customization Options</H2>
       <table>
         <thead>
           <tr>
@@ -92,9 +94,9 @@ export default function TriggerButtonPage() {
         </tbody>
       </table>
 
-      <h2>Styling Guide</h2>
+      <H2>Styling Guide</H2>
 
-      <h3>Choosing Colours</h3>
+      <H3>Choosing Colours</H3>
       <p>
         Pick colours that stand out against your storefront background while staying on-brand. The
         trigger button should be noticeable but not distracting. Test on both desktop and mobile
@@ -106,7 +108,7 @@ export default function TriggerButtonPage() {
         creates a consistent look that draws attention without clashing with your theme.
       </Callout>
 
-      <h3>Custom Icons</h3>
+      <H3>Custom Icons</H3>
       <p>If you upload a custom icon:</p>
       <ul>
         <li>Use an SVG for the sharpest rendering at any size</li>
@@ -118,7 +120,7 @@ export default function TriggerButtonPage() {
         </li>
       </ul>
 
-      <h3>Border Radius</h3>
+      <H3>Border Radius</H3>
       <table>
         <thead>
           <tr>
@@ -154,7 +156,7 @@ export default function TriggerButtonPage() {
         </tbody>
       </table>
 
-      <h2>Live Preview</h2>
+      <H2>Live Preview</H2>
       <p>
         The page includes a live preview that updates as you change settings. The preview shows the
         trigger button as it will appear on your storefront, rendered against a neutral background.
@@ -165,7 +167,7 @@ export default function TriggerButtonPage() {
         page. Position is determined by the theme app extension block settings in your theme editor.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/settings/widget-customization">Widget Customization</a> for styling the

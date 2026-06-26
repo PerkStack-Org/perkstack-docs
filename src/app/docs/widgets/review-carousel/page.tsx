@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 import ReviewCarouselPreview from "@/components/widget-previews/ReviewCarouselPreview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/review-carousel", {
   title: "Review Carousel",
   description:
     "Display a horizontal carousel of photo reviews on any page of your storefront with the PerkStack Review Carousel.",
-};
+});
 
 export default function ReviewCarouselPage() {
   return (
@@ -24,7 +26,7 @@ export default function ReviewCarouselPage() {
 
       <ReviewCarouselPreview />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is rendered by <code>review-carousel.liquid</code> and uses a{" "}
         <code>section</code> target. It loads <code>perkstack-carousel.js</code> to handle the
@@ -36,7 +38,7 @@ export default function ReviewCarouselPage() {
         metafield <code>shop.metafields.perkstack.r2_public_url</code>.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
@@ -63,7 +65,7 @@ export default function ReviewCarouselPage() {
         your entire product catalogue, not just a single product.
       </Callout>
 
-      <h2>What Each Slide Shows</h2>
+      <H2>What Each Slide Shows</H2>
       <p>Each carousel slide displays:</p>
       <ul>
         <li>
@@ -84,7 +86,7 @@ export default function ReviewCarouselPage() {
         </li>
       </ul>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>
         The following settings are available in the theme editor when the Review Carousel section is
         selected:
@@ -129,7 +131,7 @@ export default function ReviewCarouselPage() {
         </tbody>
       </table>
 
-      <h2>Interaction</h2>
+      <H2>Interaction</H2>
       <ul>
         <li>
           <strong>Desktop</strong>: left/right arrow buttons on either side of the carousel, plus
@@ -149,7 +151,7 @@ export default function ReviewCarouselPage() {
         touches it (mobile), so it never interrupts active browsing.
       </Callout>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Carousel is empty</strong>: make sure you have approved photo reviews. If

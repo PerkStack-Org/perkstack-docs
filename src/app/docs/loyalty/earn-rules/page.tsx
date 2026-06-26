@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/earn-rules", {
   title: "Earn Rules",
   description:
     "Configure how customers earn loyalty points in PerkStack, including purchases, reviews, signups, birthdays, social shares, and referrals.",
-};
+});
 
 export default function EarnRulesPage() {
   return (
@@ -18,7 +20,7 @@ export default function EarnRulesPage() {
         earn rules from <strong>PerkStack → Loyalty → Earn Rules</strong>.
       </p>
 
-      <h2>Available Earn Rules</h2>
+      <H2>Available Earn Rules</H2>
       <p>
         PerkStack supports the following earn rule types. Each rule has a default configuration that
         you can customize:
@@ -110,7 +112,7 @@ export default function EarnRulesPage() {
         </tbody>
       </table>
 
-      <h2>Purchase Rule Details</h2>
+      <H2>Purchase Rule Details</H2>
       <p>
         The purchase rule awards points proportionally to order value. You configure a
         dollar-per-point ratio. For example, setting $1 per point means a $50 order earns 50 points.
@@ -128,7 +130,7 @@ export default function EarnRulesPage() {
         orders at or above this threshold will earn points. Orders below the minimum earn nothing.
       </p>
 
-      <h2>Review Rules</h2>
+      <H2>Review Rules</H2>
       <p>
         Text review and photo review are separate earn rules with independent point values. When a
         review includes photos, the customer earns the <strong>photo review</strong> amount (not
@@ -144,7 +146,7 @@ export default function EarnRulesPage() {
         photos, which provides stronger social proof on your product pages.
       </Callout>
 
-      <h2>Managing Earn Rules</h2>
+      <H2>Managing Earn Rules</H2>
       <p>Each earn rule supports the following operations:</p>
       <ul>
         <li>
@@ -165,7 +167,7 @@ export default function EarnRulesPage() {
         action, use the active/inactive toggle instead.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works

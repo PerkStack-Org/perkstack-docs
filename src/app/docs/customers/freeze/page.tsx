@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/customers/freeze", {
   title: "Freeze & Unfreeze Customers",
   description:
     "Suspend and restore a customer's ability to earn and redeem loyalty points using the freeze/unfreeze feature.",
-};
+});
 
 export default function FreezeUnfreezePage() {
   return (
@@ -18,7 +20,7 @@ export default function FreezeUnfreezePage() {
         situation where you need to pause loyalty activity for a specific customer.
       </p>
 
-      <h2>How Freezing Works</h2>
+      <H2>How Freezing Works</H2>
       <p>
         Each customer in PerkStack has a <code>loyaltyFrozen</code> flag in the database. When set
         to <code>true</code>:
@@ -49,10 +51,10 @@ export default function FreezeUnfreezePage() {
         their ability to place orders, or their reviews.
       </Callout>
 
-      <h2>Freezing a Customer</h2>
+      <H2>Freezing a Customer</H2>
       <p>You can freeze a customer from two places:</p>
 
-      <h3>From the Customer List</h3>
+      <H3>From the Customer List</H3>
       <ol>
         <li>
           Navigate to <strong>PerkStack → Customers</strong>
@@ -64,7 +66,7 @@ export default function FreezeUnfreezePage() {
         <li>Confirm the action in the dialog</li>
       </ol>
 
-      <h3>From the Customer Detail Page</h3>
+      <H3>From the Customer Detail Page</H3>
       <ol>
         <li>
           Navigate to <strong>PerkStack → Customers → [Customer]</strong>
@@ -80,7 +82,7 @@ export default function FreezeUnfreezePage() {
         list, and a frozen indicator appears on their detail page.
       </p>
 
-      <h2>Unfreezing a Customer</h2>
+      <H2>Unfreezing a Customer</H2>
       <p>
         To restore a customer&apos;s loyalty participation, follow the same steps as above but click{" "}
         <strong>Unfreeze</strong> instead. The <code>loyaltyFrozen</code> flag is set back to{" "}
@@ -98,7 +100,7 @@ export default function FreezeUnfreezePage() {
         points for that order after unfreezing.
       </Callout>
 
-      <h2>Common Use Cases</h2>
+      <H2>Common Use Cases</H2>
       <table>
         <thead>
           <tr>
@@ -126,7 +128,7 @@ export default function FreezeUnfreezePage() {
         </tbody>
       </table>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/customers/management">Customer Management</a>: searchable customer list

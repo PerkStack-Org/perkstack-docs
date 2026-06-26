@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/overview", {
   title: "Widgets Overview",
   description:
     "An overview of all PerkStack storefront widgets, including theme app extension blocks, checkout UI, and customer account extensions.",
-};
+});
 
 export default function WidgetsOverviewPage() {
   return (
@@ -18,7 +20,7 @@ export default function WidgetsOverviewPage() {
         requiring no manual code edits.
       </p>
 
-      <h2>Architecture</h2>
+      <H2>Architecture</H2>
       <p>
         All storefront widgets are delivered as <strong>theme app extension blocks</strong>,
         compatible with Online Store 2.0 themes. They belong to the{" "}
@@ -37,7 +39,7 @@ export default function WidgetsOverviewPage() {
         is nothing to clean up manually.
       </Callout>
 
-      <h2>Available Widgets</h2>
+      <H2>Available Widgets</H2>
       <p>
         PerkStack ships 8 theme app extension blocks, plus a checkout extension and a customer
         account extension, making 10 widgets in total:
@@ -160,7 +162,7 @@ export default function WidgetsOverviewPage() {
         </tbody>
       </table>
 
-      <h2>How to Add Widgets</h2>
+      <H2>How to Add Widgets</H2>
       <ol>
         <li>
           In your Shopify admin, go to <strong>Online Store &gt; Themes</strong>.
@@ -187,7 +189,7 @@ export default function WidgetsOverviewPage() {
         where you want them to appear.
       </Callout>
 
-      <h2>Configuration Delivery</h2>
+      <H2>Configuration Delivery</H2>
       <p>
         All widgets fetch their configuration from the <code>/api/storefront-config</code> endpoint
         at runtime. This single endpoint delivers shared settings such as:
@@ -211,14 +213,14 @@ export default function WidgetsOverviewPage() {
         immediately, with no theme editor changes needed.
       </p>
 
-      <h2>Translations</h2>
+      <H2>Translations</H2>
       <p>
         All widget text labels and messages are defined in the <code>locales/en.default.json</code>{" "}
         file inside the theme app extension. Shopify uses this file to power the translation system,
         so your widgets automatically respect the store&apos;s language settings.
       </p>
 
-      <h2>Block Targets Explained</h2>
+      <H2>Block Targets Explained</H2>
       <table>
         <thead>
           <tr>
@@ -254,7 +256,7 @@ export default function WidgetsOverviewPage() {
         </tbody>
       </table>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <p>
         Explore each widget in detail to learn about its specific configuration options, placement
         instructions, and API endpoints:

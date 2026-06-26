@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/getting-started/shopify-setup", {
   title: "Shopify Setup",
   description:
     "Configure theme extensions, app proxy, and webhooks to complete your PerkStack integration.",
-};
+});
 
 export default function ShopifySetupPage() {
   return (
@@ -17,7 +19,7 @@ export default function ShopifySetupPage() {
         This page covers the Shopify-side configuration that makes everything work.
       </p>
 
-      <h2>Embedded App Experience</h2>
+      <H2>Embedded App Experience</H2>
       <p>
         After installation, PerkStack appears as an app in your Shopify admin sidebar. The entire
         interface, including settings, analytics, reviews management, and loyalty configuration, is
@@ -35,7 +37,7 @@ export default function ShopifySetupPage() {
         </li>
       </ul>
 
-      <h2>Enabling Theme App Extensions</h2>
+      <H2>Enabling Theme App Extensions</H2>
       <p>
         PerkStack&apos;s storefront widgets are delivered through Shopify&apos;s{" "}
         <strong>theme app extensions</strong>, requiring no code editing. To enable them:
@@ -66,7 +68,7 @@ export default function ShopifySetupPage() {
         custom or legacy theme, check with your theme developer.
       </Callout>
 
-      <h3>Available Theme Blocks</h3>
+      <H3>Available Theme Blocks</H3>
       <p>
         Once the app embed is enabled, you can add PerkStack blocks to any section of your theme.
         The theme app extension includes <strong>8 blocks</strong>:
@@ -130,7 +132,7 @@ export default function ShopifySetupPage() {
         Reviews List and Star Rating blocks.
       </Callout>
 
-      <h2>App Proxy</h2>
+      <H2>App Proxy</H2>
       <p>
         PerkStack uses a Shopify <strong>app proxy</strong> to securely handle storefront API
         requests. The proxy is configured at:
@@ -157,13 +159,13 @@ export default function ShopifySetupPage() {
         dashboard under <strong>App setup → App proxy</strong>.
       </Callout>
 
-      <h2>Webhook Configuration</h2>
+      <H2>Webhook Configuration</H2>
       <p>
         PerkStack automatically registers webhooks during installation. These webhooks keep your
         loyalty and reviews data in sync with your Shopify store in real time.
       </p>
 
-      <h3>Registered Webhooks</h3>
+      <H3>Registered Webhooks</H3>
       <table>
         <thead>
           <tr>
@@ -237,7 +239,7 @@ export default function ShopifySetupPage() {
         entries above are listed.
       </Callout>
 
-      <h2>Admin Block Extensions</h2>
+      <H2>Admin Block Extensions</H2>
       <p>PerkStack adds two admin blocks to your Shopify customer detail pages:</p>
       <ul>
         <li>
@@ -255,7 +257,7 @@ export default function ShopifySetupPage() {
         support team quick access to loyalty and review data without switching to PerkStack.
       </p>
 
-      <h2>Checkout UI Extension</h2>
+      <H2>Checkout UI Extension</H2>
       <p>
         PerkStack includes a <strong>checkout UI extension</strong> that displays loyalty
         information during checkout:
@@ -271,7 +273,7 @@ export default function ShopifySetupPage() {
         when they&apos;re completing a purchase, encouraging repeat visits.
       </Callout>
 
-      <h2>Customer Account Extension</h2>
+      <H2>Customer Account Extension</H2>
       <p>
         If your store uses the <strong>new customer accounts</strong> (Shopify&apos;s extensible
         account pages), PerkStack adds a section where customers can:
@@ -283,7 +285,7 @@ export default function ShopifySetupPage() {
         <li>Access their referral link</li>
       </ul>
 
-      <h2>App Pixel</h2>
+      <H2>App Pixel</H2>
       <p>
         PerkStack registers an <strong>app pixel</strong> for tracking storefront events. The pixel
         handles:
@@ -299,9 +301,9 @@ export default function ShopifySetupPage() {
         already provides.
       </p>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
 
-      <h3>App blocks not appearing in the theme editor</h3>
+      <H3>App blocks not appearing in the theme editor</H3>
       <ul>
         <li>
           Make sure you&apos;re using an Online Store 2.0 theme. Legacy themes do not support app
@@ -314,7 +316,7 @@ export default function ShopifySetupPage() {
         <li>Try refreshing the theme editor or clearing your browser cache.</li>
       </ul>
 
-      <h3>Webhooks not registered</h3>
+      <H3>Webhooks not registered</H3>
       <ul>
         <li>
           Uninstall and reinstall PerkStack. Webhooks are registered during the installation flow.
@@ -325,7 +327,7 @@ export default function ShopifySetupPage() {
         </li>
       </ul>
 
-      <h3>App proxy returning errors</h3>
+      <H3>App proxy returning errors</H3>
       <ul>
         <li>
           Verify the app proxy URL at <code>https://your-store.myshopify.com/apps/perkstack/</code>.
@@ -336,7 +338,7 @@ export default function ShopifySetupPage() {
         </li>
       </ul>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <ul>
         <li>
           <a href="/docs/getting-started/first-time-config">First-Time Configuration</a>: configure

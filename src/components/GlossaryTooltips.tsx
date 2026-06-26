@@ -115,7 +115,8 @@ export default function GlossaryTooltips() {
 
   useEffect(() => {
     function handleEnter(e: Event) {
-      const el = e.target as HTMLElement;
+      const el = e.target;
+      if (!(el instanceof HTMLElement)) return;
       if (!el.classList.contains("glossary-term")) return;
 
       const key = el.getAttribute("data-glossary")?.toLowerCase();
@@ -135,7 +136,8 @@ export default function GlossaryTooltips() {
     }
 
     function handleLeave(e: Event) {
-      const el = e.target as HTMLElement;
+      const el = e.target;
+      if (!(el instanceof HTMLElement)) return;
       if (!el.classList.contains("glossary-term")) return;
       hide();
     }

@@ -28,11 +28,12 @@ export default function Header() {
 
             <Link
               href="/docs/getting-started/introduction"
-              className="flex items-center gap-2 flex-shrink-0"
+              className="flex items-center gap-2.5 flex-shrink-0"
             >
-              <img src="/perkstack.svg" alt="PerkStack" className="h-6 w-auto dark-invert" />
-              <span className="text-[14px] font-semibold text-lp-text tracking-tight hidden sm:inline">
-                PerkStack <span className="text-lp-text-muted font-normal">Docs</span>
+              <img src="/perkstack-logo.svg" alt="PerkStack" className="h-7 w-auto dark-invert" />
+              <span className="h-5 w-px bg-lp-border hidden sm:block" aria-hidden />
+              <span className="text-lg font-semibold text-lp-text-muted tracking-tight hidden sm:inline">
+                Docs
               </span>
             </Link>
           </div>

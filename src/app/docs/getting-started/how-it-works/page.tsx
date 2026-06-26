@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/getting-started/how-it-works", {
   title: "How It Works",
   description:
     "Understand PerkStack's architecture, data flow, and how loyalty and reviews work end-to-end.",
-};
+});
 
 export default function HowItWorksPage() {
   return (
@@ -17,7 +19,7 @@ export default function HowItWorksPage() {
         moving parts and how they fit together.
       </p>
 
-      <h2>High-Level Architecture</h2>
+      <H2>High-Level Architecture</H2>
       <p>
         The platform is split into three layers, each running independently but sharing the same
         PostgreSQL database:
@@ -59,7 +61,7 @@ export default function HowItWorksPage() {
 └─────────────────────────────────────────┘`}</code>
       </pre>
 
-      <h2>Data Storage</h2>
+      <H2>Data Storage</H2>
 
       <table>
         <thead>
@@ -93,10 +95,10 @@ export default function HowItWorksPage() {
         </tbody>
       </table>
 
-      <h2>Loyalty Program Flow</h2>
+      <H2>Loyalty Program Flow</H2>
       <p>Here is how points move through the system from a customer action to a redeemed reward:</p>
 
-      <h3>1. Earning Points</h3>
+      <H3>1. Earning Points</H3>
       <p>
         Points are awarded when a qualifying event occurs. PerkStack listens for Shopify webhooks (
         <code>orders/paid</code>, <code>customers/create</code>) and also detects in-app actions
@@ -117,7 +119,7 @@ export default function HowItWorksPage() {
         <li>If email notifications are enabled, a follow-up email job is queued.</li>
       </ol>
 
-      <h3>2. Redeeming Rewards</h3>
+      <H3>2. Redeeming Rewards</H3>
       <p>
         When a customer has enough points, they can redeem a reward from the storefront widget or
         their customer account page:
@@ -142,13 +144,13 @@ export default function HowItWorksPage() {
         admin.
       </Callout>
 
-      <h2>Reviews Flow</h2>
+      <H2>Reviews Flow</H2>
       <p>
         PerkStack automates the full review lifecycle, from requesting reviews to displaying them on
         your storefront:
       </p>
 
-      <h3>1. Review Request</h3>
+      <H3>1. Review Request</H3>
       <ol>
         <li>
           When an order is fulfilled, PerkStack waits for the configured delay (default: 7 days).
@@ -163,7 +165,7 @@ export default function HowItWorksPage() {
         </li>
       </ol>
 
-      <h3>2. Review Submission &amp; Moderation</h3>
+      <H3>2. Review Submission &amp; Moderation</H3>
       <ol>
         <li>The customer submits a review, either text-only or with photos (uploaded to R2).</li>
         <li>
@@ -178,7 +180,7 @@ export default function HowItWorksPage() {
         </li>
       </ol>
 
-      <h3>3. Points for Reviews</h3>
+      <H3>3. Points for Reviews</H3>
       <p>
         When a review is approved, PerkStack awards loyalty points based on the configured earn
         rules:
@@ -197,7 +199,7 @@ export default function HowItWorksPage() {
         increases trust and conversion rates for future shoppers.
       </Callout>
 
-      <h2>Storefront Integration</h2>
+      <H2>Storefront Integration</H2>
       <p>
         PerkStack uses Shopify&apos;s <strong>theme app extensions</strong> (Online Store 2.0) to
         render widgets on your storefront. This means:
@@ -213,7 +215,7 @@ export default function HowItWorksPage() {
         storefront domain to PerkStack&apos;s server without exposing any API keys.
       </p>
 
-      <h2>Webhook Processing</h2>
+      <H2>Webhook Processing</H2>
       <p>PerkStack automatically registers and listens for the following Shopify webhooks:</p>
 
       <table>
@@ -286,7 +288,7 @@ export default function HowItWorksPage() {
         subscriptions are active.
       </Callout>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <ul>
         <li>
           <a href="/docs/getting-started/installation">Installation</a>: install PerkStack and

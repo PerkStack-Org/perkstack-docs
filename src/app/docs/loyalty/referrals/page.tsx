@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/referrals", {
   title: "Referrals",
   description:
     "Grow your store with PerkStack's referral program, featuring unique referral codes, dual-sided rewards, and referral tracking.",
-};
+});
 
 export default function ReferralsPage() {
   return (
@@ -25,7 +27,7 @@ export default function ReferralsPage() {
         referral settings from <strong>PerkStack → Loyalty → Referrals</strong>.
       </Callout>
 
-      <h2>How Referrals Work</h2>
+      <H2>How Referrals Work</H2>
       <ol>
         <li>
           Each customer receives a <strong>unique referral code</strong> that they can share
@@ -41,7 +43,7 @@ export default function ReferralsPage() {
         </li>
       </ol>
 
-      <h2>Point Rewards</h2>
+      <H2>Point Rewards</H2>
       <p>Referral points are awarded to both sides of the referral. The default values are:</p>
 
       <table>
@@ -76,7 +78,7 @@ export default function ReferralsPage() {
         visiting your store directly.
       </Callout>
 
-      <h2>Referral Statuses</h2>
+      <H2>Referral Statuses</H2>
       <p>Each referral passes through a lifecycle tracked by its status:</p>
 
       <table>
@@ -122,7 +124,7 @@ export default function ReferralsPage() {
         </tbody>
       </table>
 
-      <h2>Referral Tracking</h2>
+      <H2>Referral Tracking</H2>
       <p>PerkStack stores detailed information for each referral in the referrals table:</p>
 
       <table>
@@ -172,7 +174,7 @@ export default function ReferralsPage() {
         </tbody>
       </table>
 
-      <h2>Referral Statistics</h2>
+      <H2>Referral Statistics</H2>
       <p>
         The Referrals tab in the loyalty dashboard shows aggregate statistics for your referral
         program:
@@ -195,7 +197,7 @@ export default function ReferralsPage() {
         on both the referrer and referee.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works

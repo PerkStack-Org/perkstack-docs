@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/customers/detail", {
   title: "Customer Detail",
   description:
     "View a customer's full profile including points balance, transaction history, reviews, tier information, manual point adjustments, and one-off granted rewards.",
-};
+});
 
 export default function CustomerDetailPage() {
   return (
@@ -18,7 +20,7 @@ export default function CustomerDetailPage() {
         database and the Shopify Admin GraphQL API.
       </p>
 
-      <h2>Customer Profile</h2>
+      <H2>Customer Profile</H2>
       <p>
         The top section displays the customer&apos;s profile information fetched via the Shopify{" "}
         <code>CUSTOMER_QUERY</code> GraphQL query:
@@ -32,7 +34,7 @@ export default function CustomerDetailPage() {
         <li>Tags applied in Shopify</li>
       </ul>
 
-      <h2>Points Balance</h2>
+      <H2>Points Balance</H2>
       <p>A summary card shows the customer&apos;s current points status:</p>
       <table>
         <thead>
@@ -69,7 +71,7 @@ export default function CustomerDetailPage() {
         </tbody>
       </table>
 
-      <h2>Transaction History</h2>
+      <H2>Transaction History</H2>
       <p>
         A chronological table lists every points transaction for the customer. Each row includes:
       </p>
@@ -117,14 +119,14 @@ export default function CustomerDetailPage() {
         </tbody>
       </table>
 
-      <h2>Reviews</h2>
+      <H2>Reviews</H2>
       <p>
         The reviews section lists all reviews submitted by this customer, along with their status
         (pending, approved, rejected, spam), rating, and submission date. Click any review to jump
         to the review detail/moderation page.
       </p>
 
-      <h2>Tier Information</h2>
+      <H2>Tier Information</H2>
       <p>
         If VIP tiers are enabled (<PlanBadge plan="growth" /> plan or above required), the detail page shows:
       </p>
@@ -148,7 +150,7 @@ export default function CustomerDetailPage() {
         customer&apos;s tier.
       </Callout>
 
-      <h2>Manual Point Adjustments</h2>
+      <H2>Manual Point Adjustments</H2>
       <p>
         You can manually add or subtract points from a customer&apos;s balance using the adjustment
         form on the detail page:
@@ -173,9 +175,9 @@ export default function CustomerDetailPage() {
         affect tier placement. Use them carefully.
       </Callout>
 
-      <h2>
+      <H2>
         Grant Reward <PlanBadge plan="essential" />
-      </h2>
+      </H2>
       <p>
         The <strong>Grant reward</strong> button on the customer detail page lets you issue a
         one-off catalog reward to this customer without going through the normal points
@@ -218,7 +220,7 @@ export default function CustomerDetailPage() {
         unused discount codes.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/customers/management">Customer Management</a>: searchable customer list

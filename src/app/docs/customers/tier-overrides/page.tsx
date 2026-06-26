@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/customers/tier-overrides", {
   title: "Tier Overrides",
   description:
     "Manually assign or clear a customer's VIP tier. Learn how tier overrides work and when to use them.",
-};
+});
 
 export default function TierOverridesPage() {
   return (
@@ -23,7 +25,7 @@ export default function TierOverridesPage() {
         enabled in your settings before overrides can be applied.
       </Callout>
 
-      <h2>How Tier Overrides Work</h2>
+      <H2>How Tier Overrides Work</H2>
       <ol>
         <li>
           Navigate to a customer&apos;s detail page (
@@ -40,7 +42,7 @@ export default function TierOverridesPage() {
         the selected tier. This value takes precedence over the automatically calculated tier.
       </p>
 
-      <h2>Override vs. Automatic Tier</h2>
+      <H2>Override vs. Automatic Tier</H2>
       <table>
         <thead>
           <tr>
@@ -73,7 +75,7 @@ export default function TierOverridesPage() {
         </tbody>
       </table>
 
-      <h2>Clearing an Override</h2>
+      <H2>Clearing an Override</H2>
       <p>To revert a customer to their automatically calculated tier:</p>
       <ol>
         <li>Open the customer&apos;s detail page</li>
@@ -93,7 +95,7 @@ export default function TierOverridesPage() {
         should be honoured.
       </Callout>
 
-      <h2>API Reference</h2>
+      <H2>API Reference</H2>
       <p>
         Tier overrides are managed through the <code>api.admin-customer-tier</code> route, which
         accepts:
@@ -132,7 +134,7 @@ export default function TierOverridesPage() {
         resume.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/customers/detail">Customer Detail</a>: where tier overrides are managed

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/shopify-flow", {
   title: "Shopify Flow Integration",
   description:
     "Use PerkStack's Shopify Flow trigger to build automations when reviews are approved. Available on the Growth plan or above.",
-};
+});
 
 export default function ShopifyFlowPage() {
   return (
@@ -22,7 +24,7 @@ export default function ShopifyFlowPage() {
         The Shopify Flow integration requires the <PlanBadge plan="growth" /> plan or above.
       </Callout>
 
-      <h2>Trigger: Review Approved</h2>
+      <H2>Trigger: Review Approved</H2>
       <p>
         The <code>review-approved</code> trigger fires every time a review status changes to{" "}
         <code>approved</code>, whether through manual approval, bulk approval, or auto-approve
@@ -30,7 +32,7 @@ export default function ShopifyFlowPage() {
         <code>flowTriggerReceive</code> GraphQL mutation.
       </p>
 
-      <h2>Trigger Fields</h2>
+      <H2>Trigger Fields</H2>
       <p>
         The following data is included in every trigger payload, available for use in Flow
         conditions and actions:
@@ -107,10 +109,10 @@ export default function ShopifyFlowPage() {
         </tbody>
       </table>
 
-      <h2>Automation Examples</h2>
+      <H2>Automation Examples</H2>
       <p>Here are some practical workflows you can build with the review-approved trigger:</p>
 
-      <h3>Notify on Negative Reviews</h3>
+      <H3>Notify on Negative Reviews</H3>
       <p>
         Alert your support team immediately when a low-rated review is approved so they can follow
         up with the customer:
@@ -128,7 +130,7 @@ export default function ShopifyFlowPage() {
         </li>
       </ul>
 
-      <h3>Thank High-Rated Reviewers</h3>
+      <H3>Thank High-Rated Reviewers</H3>
       <p>Send a personalised thank-you email to customers who leave 5-star reviews:</p>
       <ul>
         <li>
@@ -142,7 +144,7 @@ export default function ShopifyFlowPage() {
         </li>
       </ul>
 
-      <h3>Tag Photo Reviewers</h3>
+      <H3>Tag Photo Reviewers</H3>
       <p>Automatically tag customers who submit photo reviews for targeted marketing:</p>
       <ul>
         <li>
@@ -156,7 +158,7 @@ export default function ShopifyFlowPage() {
         </li>
       </ul>
 
-      <h3>Flag Unverified Reviews</h3>
+      <H3>Flag Unverified Reviews</H3>
       <p>Get notified when an unverified review is approved so you can spot-check it:</p>
       <ul>
         <li>
@@ -175,7 +177,7 @@ export default function ShopifyFlowPage() {
         reviews <em>and</em> tag the customer for follow-up in one automation.
       </Callout>
 
-      <h2>Setting Up a Flow Workflow</h2>
+      <H2>Setting Up a Flow Workflow</H2>
       <ol>
         <li>
           Open <strong>Shopify Admin → Apps → Flow</strong>
@@ -192,7 +194,7 @@ export default function ShopifyFlowPage() {
         <li>Activate the workflow</li>
       </ol>
 
-      <h2>Plan Availability</h2>
+      <H2>Plan Availability</H2>
 
       <table>
         <thead>
@@ -234,7 +236,7 @@ export default function ShopifyFlowPage() {
         is needed in PerkStack. Just build your workflows in Shopify Flow.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/moderation">Review Moderation</a>: where approvals happen

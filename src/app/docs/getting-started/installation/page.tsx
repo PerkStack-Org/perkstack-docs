@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/getting-started/installation", {
   title: "Installation",
   description:
     "Install PerkStack from the Shopify App Store and complete the initial setup process.",
-};
+});
 
 export default function InstallationPage() {
   return (
@@ -17,7 +19,7 @@ export default function InstallationPage() {
         minutes and requires no code changes to your theme.
       </p>
 
-      <h2>Install from the Shopify App Store</h2>
+      <H2>Install from the Shopify App Store</H2>
       <ol>
         <li>
           Visit the{" "}
@@ -39,7 +41,7 @@ export default function InstallationPage() {
         </li>
       </ol>
 
-      <h2>Required Permissions</h2>
+      <H2>Required Permissions</H2>
       <p>
         During installation, Shopify asks you to approve the following access scopes. PerkStack uses
         the minimum permissions necessary for its features:
@@ -92,7 +94,7 @@ export default function InstallationPage() {
         generate reward discount codes on behalf of your customers.
       </Callout>
 
-      <h2>What Happens Behind the Scenes</h2>
+      <H2>What Happens Behind the Scenes</H2>
       <p>
         When you approve the installation, PerkStack performs the following steps automatically:
       </p>
@@ -125,7 +127,7 @@ export default function InstallationPage() {
         defaults so you can launch a loyalty program with zero changes if you want.
       </Callout>
 
-      <h2>Choosing a Plan</h2>
+      <H2>Choosing a Plan</H2>
       <p>
         After installation, PerkStack starts on the <PlanBadge plan="free" /> plan. You can upgrade
         at any time from the <strong>Settings → Plan</strong> page inside the app.
@@ -177,7 +179,7 @@ export default function InstallationPage() {
         be charged until the trial ends, and you can cancel any time before then.
       </p>
 
-      <h2>Self-Hosting (Advanced)</h2>
+      <H2>Self-Hosting (Advanced)</H2>
       <p>
         If you&apos;re a developer running PerkStack from source, you&apos;ll need to configure the
         following environment variables before starting the app:
@@ -274,7 +276,7 @@ RESEND_API_KEY=re_xxxxxxxxxx
 TOKEN_ENCRYPTION_KEY=your_256_bit_key`}</code>
       </pre>
 
-      <h2>Verifying the Installation</h2>
+      <H2>Verifying the Installation</H2>
       <p>After installing, confirm everything is working:</p>
       <ol>
         <li>
@@ -296,7 +298,7 @@ TOKEN_ENCRYPTION_KEY=your_256_bit_key`}</code>
         blocks.
       </Callout>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <ul>
         <li>
           <a href="/docs/getting-started/shopify-setup">Shopify Setup</a>: enable app blocks and

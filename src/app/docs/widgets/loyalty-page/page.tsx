@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/loyalty-page", {
   title: "Loyalty Page",
   description:
     "Add a full-page loyalty program display to your storefront showing earn rules, rewards, tiers, and referral information.",
-};
+});
 
 export default function LoyaltyPagePage() {
   return (
@@ -21,7 +23,7 @@ export default function LoyaltyPagePage() {
 
       <PlanBadge plan="free" />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is rendered by <code>loyalty-page.liquid</code> and uses a <code>section</code>{" "}
         target. It loads <code>perkstack-loyalty-page.js</code> to handle dynamic data fetching and
@@ -33,7 +35,7 @@ export default function LoyaltyPagePage() {
         and renders them in a full-page layout.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           In your Shopify admin, create a new <strong>page</strong> (e.g. titled &quot;Rewards&quot;
@@ -63,18 +65,18 @@ export default function LoyaltyPagePage() {
         link like &quot;Rewards&quot; in the header menu works well.
       </Callout>
 
-      <h2>Page Sections</h2>
+      <H2>Page Sections</H2>
       <p>
         The loyalty page is divided into several sections, each of which can be toggled on or off:
       </p>
 
-      <h3>Points Balance</h3>
+      <H3>Points Balance</H3>
       <p>
         For logged-in customers, a prominent banner shows their current points balance and lifetime
         earned points. Guests see a prompt to log in or create an account.
       </p>
 
-      <h3>Earn Rules</h3>
+      <H3>Earn Rules</H3>
       <p>A visual list of all the ways customers can earn points, including:</p>
       <ul>
         <li>Placing an order (points per dollar spent)</li>
@@ -85,13 +87,13 @@ export default function LoyaltyPagePage() {
         <li>Social media follows</li>
       </ul>
 
-      <h3>Available Rewards</h3>
+      <H3>Available Rewards</H3>
       <p>
         A grid of rewards customers can redeem with their points. Each reward card shows the reward
         name, points cost, and a redeem button (if the customer has enough points).
       </p>
 
-      <h3>VIP Tiers</h3>
+      <H3>VIP Tiers</H3>
       <p>
         If your loyalty program uses VIP tiers, this section displays the tier ladder with
         requirements, benefits, and the customer&apos;s current tier highlighted.
@@ -102,13 +104,13 @@ export default function LoyaltyPagePage() {
         enabled, this section is hidden automatically.
       </Callout>
 
-      <h3>Referral Program</h3>
+      <H3>Referral Program</H3>
       <p>
         Shows the customer&apos;s unique referral link, the reward for both referrer and referee,
         and sharing options (copy link, email, social media).
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <table>
         <thead>
           <tr>
@@ -146,7 +148,7 @@ export default function LoyaltyPagePage() {
         </tbody>
       </table>
 
-      <h2>Guest Experience</h2>
+      <H2>Guest Experience</H2>
       <p>
         When a guest (not logged in) visits the loyalty page, they see the full program details
         (earn rules, rewards catalogue, and tier information), but personalised elements like points
@@ -154,7 +156,7 @@ export default function LoyaltyPagePage() {
         account or log in.
       </p>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Page is blank</strong>: ensure the PerkStack Loyalty Page section is added to the

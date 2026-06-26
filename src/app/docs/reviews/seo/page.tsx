@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/seo", {
   title: "SEO & Rich Snippets",
   description:
     "Add structured review data to your product pages for Google rich snippets, including star ratings in search results.",
-};
+});
 
 export default function SeoPage() {
   return (
@@ -17,7 +19,7 @@ export default function SeoPage() {
         significantly improve click-through rates from organic search.
       </p>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         PerkStack ships a theme app extension block called <code>review-jsonld.liquid</code> that
         targets the <code>&lt;head&gt;</code> section of your product pages. When a customer (or
@@ -37,7 +39,7 @@ export default function SeoPage() {
         <li>Injects the script into the page head so search engines can parse it</li>
       </ol>
 
-      <h2>JSON-LD Structure</h2>
+      <H2>JSON-LD Structure</H2>
       <p>
         The generated structured data follows Google&apos;s recommended format for product reviews.
         Here is an example of the output:
@@ -71,7 +73,7 @@ export default function SeoPage() {
 }`}</code>
       </pre>
 
-      <h3>Schema Components</h3>
+      <H3>Schema Components</H3>
       <table>
         <thead>
           <tr>
@@ -105,7 +107,7 @@ export default function SeoPage() {
         </tbody>
       </table>
 
-      <h2>Enabling Rich Snippets</h2>
+      <H2>Enabling Rich Snippets</H2>
       <p>The JSON-LD block is part of PerkStack&apos;s theme app extension. To enable it:</p>
       <ol>
         <li>
@@ -127,7 +129,7 @@ export default function SeoPage() {
         output. It only adds the invisible structured data script tag for search engines.
       </Callout>
 
-      <h2>Google Search Console Validation</h2>
+      <H2>Google Search Console Validation</H2>
       <p>After enabling the JSON-LD block, verify that Google can read your structured data:</p>
       <ol>
         <li>
@@ -153,7 +155,7 @@ export default function SeoPage() {
         valid immediately, but the actual search appearance depends on Google&apos;s crawl schedule.
       </Callout>
 
-      <h2>Requirements for Rich Snippets</h2>
+      <H2>Requirements for Rich Snippets</H2>
       <p>
         For Google to display star ratings in search results, the following conditions must be met:
       </p>
@@ -173,7 +175,7 @@ export default function SeoPage() {
         quality signals.
       </Callout>
 
-      <h2>Data Source</h2>
+      <H2>Data Source</H2>
       <p>
         The JSON-LD block fetches review data from the <code>/apps/perkstack/api/reviews</code>{" "}
         endpoint via the Shopify app proxy. Only <code>approved</code> reviews are included in the
@@ -185,13 +187,13 @@ export default function SeoPage() {
         review body.
       </p>
 
-      <h2>All Plans</h2>
+      <H2>All Plans</H2>
       <p>
         SEO rich snippets are available on all plans, including the Free plan. Every store benefits
         from structured review data in search results.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/overview">Reviews Overview</a>: review data model and statuses

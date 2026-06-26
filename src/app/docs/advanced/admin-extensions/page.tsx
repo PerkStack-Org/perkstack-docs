@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/advanced/admin-extensions", {
   title: "Admin Extensions",
   description:
     "Details on the admin block extensions: customer reviews and customer loyalty blocks that appear on customer detail pages in Shopify admin.",
-};
+});
 
 export default function AdminExtensionsPage() {
   return (
@@ -18,7 +20,7 @@ export default function AdminExtensionsPage() {
         without leaving the customer profile.
       </p>
 
-      <h2>Admin Block: Customer Reviews</h2>
+      <H2>Admin Block: Customer Reviews</H2>
       <p>
         The <code>admin-customer-reviews</code> extension appears on the customer detail page in the
         Shopify admin. It displays:
@@ -33,7 +35,7 @@ export default function AdminExtensionsPage() {
         added to your store.
       </p>
 
-      <h2>Admin Block: Customer Loyalty</h2>
+      <H2>Admin Block: Customer Loyalty</H2>
       <p>
         The <code>admin-customer-loyalty</code> extension also appears on the customer detail page.
         It shows:
@@ -52,9 +54,9 @@ export default function AdminExtensionsPage() {
         information requires the <PlanBadge plan="growth" /> plan or above with VIP tiers enabled.
       </Callout>
 
-      <h2>Technical Details</h2>
+      <H2>Technical Details</H2>
 
-      <h3>Authentication</h3>
+      <H3>Authentication</H3>
       <p>
         Admin extensions authenticate using the Shopify admin session. When the extension loads, it:
       </p>
@@ -64,14 +66,14 @@ export default function AdminExtensionsPage() {
         <li>The backend validates the token and retrieves the customer data</li>
       </ol>
 
-      <h3>Network Access</h3>
+      <H3>Network Access</H3>
       <p>
         Both extensions declare <code>network_access</code> in their configuration, allowing them to
         make HTTP requests to the PerkStack API. CORS headers are configured on the server to accept
         requests from the Shopify admin domain.
       </p>
 
-      <h3>Data Flow</h3>
+      <H3>Data Flow</H3>
       <table>
         <thead>
           <tr>
@@ -103,7 +105,7 @@ export default function AdminExtensionsPage() {
         </tbody>
       </table>
 
-      <h2>Visibility</h2>
+      <H2>Visibility</H2>
       <p>
         Admin blocks appear automatically on customer detail pages once PerkStack is installed.
         Merchants do not need to manually enable them. The blocks appear in the{" "}
@@ -116,7 +118,7 @@ export default function AdminExtensionsPage() {
         interacted with the loyalty program may not have a PerkStack record yet.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/customers/detail">Customer Detail</a>: the PerkStack customer detail page

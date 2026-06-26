@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/advanced/status-reference", {
   title: "Status Reference",
   description:
     "Complete reference for every status enum used across PerkStack covering plans, billing, earn actions, transactions, reviews, and more.",
-};
+});
 
 export default function StatusReferencePage() {
   return (
@@ -16,7 +18,7 @@ export default function StatusReferencePage() {
         and categories across the system. This page is a complete reference for every enum value.
       </p>
 
-      <h2>Plan</h2>
+      <H2>Plan</H2>
       <p>The subscription plan a shop is on.</p>
       <table>
         <thead>
@@ -81,7 +83,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Billing Status</h2>
+      <H2>Billing Status</H2>
       <p>The state of a shop&apos;s Shopify billing subscription.</p>
       <table>
         <thead>
@@ -118,7 +120,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Earn Action</h2>
+      <H2>Earn Action</H2>
       <p>The type of action that earns a customer points.</p>
       <table>
         <thead>
@@ -179,7 +181,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Transaction Type</h2>
+      <H2>Transaction Type</H2>
       <p>The type of points transaction.</p>
       <table>
         <thead>
@@ -222,7 +224,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Source Type</h2>
+      <H2>Source Type</H2>
       <p>The originating source of a points transaction.</p>
       <table>
         <thead>
@@ -295,7 +297,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Reward Type</h2>
+      <H2>Reward Type</H2>
       <p>The type of discount reward a customer can redeem.</p>
       <table>
         <thead>
@@ -326,7 +328,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Redemption Status</h2>
+      <H2>Redemption Status</H2>
       <table>
         <thead>
           <tr>
@@ -356,7 +358,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Discount Type &amp; Status</h2>
+      <H2>Discount Type &amp; Status</H2>
       <table>
         <thead>
           <tr>
@@ -384,7 +386,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Review Status</h2>
+      <H2>Review Status</H2>
       <table>
         <thead>
           <tr>
@@ -420,7 +422,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Review Source</h2>
+      <H2>Review Source</H2>
       <table>
         <thead>
           <tr>
@@ -450,7 +452,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Photo Status</h2>
+      <H2>Photo Status</H2>
       <table>
         <thead>
           <tr>
@@ -486,7 +488,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Request Status</h2>
+      <H2>Request Status</H2>
       <p>Status of a review request email.</p>
       <table>
         <thead>
@@ -535,7 +537,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Import Status</h2>
+      <H2>Import Status</H2>
       <table>
         <thead>
           <tr>
@@ -571,7 +573,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Referral Status</h2>
+      <H2>Referral Status</H2>
       <table>
         <thead>
           <tr>
@@ -607,7 +609,7 @@ export default function StatusReferencePage() {
         </tbody>
       </table>
 
-      <h2>Job Status &amp; Actor Type</h2>
+      <H2>Job Status &amp; Actor Type</H2>
       <table>
         <thead>
           <tr>
@@ -641,7 +643,7 @@ export default function StatusReferencePage() {
         strings.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/advanced/webhooks">Webhooks</a>: where many of these statuses are set or

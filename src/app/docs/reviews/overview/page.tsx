@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/overview", {
   title: "Reviews Overview",
   description:
     "Understand how product reviews work in PerkStack, including the data model, statuses, helpful votes, and featured reviews.",
-};
+});
 
 export default function ReviewsOverviewPage() {
   return (
@@ -23,7 +25,7 @@ export default function ReviewsOverviewPage() {
         earns points based on your configured earn rules (text review and photo review amounts).
       </Callout>
 
-      <h2>Review Data Model</h2>
+      <H2>Review Data Model</H2>
       <p>Each review record contains the following fields:</p>
 
       <table>
@@ -114,7 +116,7 @@ export default function ReviewsOverviewPage() {
         </tbody>
       </table>
 
-      <h2>One Review Per Customer Per Product</h2>
+      <H2>One Review Per Customer Per Product</H2>
       <p>
         PerkStack enforces a unique constraint on <code>shopId</code> + <code>customerId</code> +{" "}
         <code>shopifyProductId</code>. This means each customer can only leave one review per
@@ -127,7 +129,7 @@ export default function ReviewsOverviewPage() {
         contains a duplicate customer–product pair, the duplicate row is skipped during import.
       </Callout>
 
-      <h2>Review Statuses</h2>
+      <H2>Review Statuses</H2>
       <p>
         Every review passes through a status lifecycle. The initial status depends on your
         moderation settings. Reviews can start as <code>pending</code> (manual approval) or be
@@ -174,7 +176,7 @@ export default function ReviewsOverviewPage() {
         </tbody>
       </table>
 
-      <h2>Helpful Votes</h2>
+      <H2>Helpful Votes</H2>
       <p>
         Customers can mark reviews as helpful. Each customer (or unique IP address for anonymous
         visitors) can only vote once per review. The <code>helpfulCount</code> is incremented on
@@ -185,7 +187,7 @@ export default function ReviewsOverviewPage() {
         relevance on the product page.
       </p>
 
-      <h2>Featured Reviews</h2>
+      <H2>Featured Reviews</H2>
       <p>
         Merchants can mark any approved review as <strong>featured</strong>. Featured reviews are
         served through the <code>/api/featured-reviews</code> endpoint and can be displayed in
@@ -199,7 +201,7 @@ export default function ReviewsOverviewPage() {
         Shopify theme editor.
       </Callout>
 
-      <h2>Review Sources</h2>
+      <H2>Review Sources</H2>
       <p>
         The <code>source</code> field tracks where each review originated:
       </p>
@@ -228,7 +230,7 @@ export default function ReviewsOverviewPage() {
         native reviews on the storefront.
       </p>
 
-      <h2>Points Integration</h2>
+      <H2>Points Integration</H2>
       <p>
         When a review is approved, PerkStack automatically enqueues a points award for the reviewer:
       </p>
@@ -259,7 +261,7 @@ export default function ReviewsOverviewPage() {
         review amount (not both text and photo).
       </Callout>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <ul>
         <li>
           <a href="/docs/reviews/moderation">Review Moderation</a>: approve, reject, and manage

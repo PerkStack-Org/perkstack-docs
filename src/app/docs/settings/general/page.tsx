@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/general", {
   title: "General Settings",
   description:
     "Configure your loyalty program's core settings including points naming, icons, expiry rules, branding, and logo.",
-};
+});
 
 export default function GeneralSettingsPage() {
   return (
@@ -17,7 +19,7 @@ export default function GeneralSettingsPage() {
         configure the core behaviour and branding of your loyalty program.
       </p>
 
-      <h2>Points Naming</h2>
+      <H2>Points Naming</H2>
       <p>
         Customise the name of your loyalty currency to match your brand. PerkStack uses two fields:
       </p>
@@ -55,7 +57,7 @@ export default function GeneralSettingsPage() {
         Pearls, or simply Points.
       </Callout>
 
-      <h2>Custom Points Icon</h2>
+      <H2>Custom Points Icon</H2>
       <p>
         Upload a custom icon that appears alongside point values in the storefront widget and
         emails. The icon should be:
@@ -66,7 +68,7 @@ export default function GeneralSettingsPage() {
         <li>Uploaded via the icon URL field. Paste a direct URL to your hosted image</li>
       </ul>
 
-      <h2>Points Expiry</h2>
+      <H2>Points Expiry</H2>
       <p>Control whether points expire and how customers are notified before expiry.</p>
       <table>
         <thead>
@@ -106,7 +108,7 @@ export default function GeneralSettingsPage() {
         this change to your customers before enabling.
       </Callout>
 
-      <h2>Logo</h2>
+      <H2>Logo</H2>
       <p>
         Set a logo URL that appears in the storefront loyalty widget and in transactional emails.
         This should be your store&apos;s logo or a custom loyalty program logo.
@@ -117,7 +119,7 @@ export default function GeneralSettingsPage() {
         <li>Paste a direct URL to the hosted image</li>
       </ul>
 
-      <h2>PerkStack Branding</h2>
+      <H2>PerkStack Branding</H2>
       <p>
         By default, the storefront widget shows a &ldquo;Powered by PerkStack&rdquo; badge. You can
         remove this branding on the <PlanBadge plan="growth" /> plan or higher.
@@ -157,7 +159,7 @@ export default function GeneralSettingsPage() {
         </tbody>
       </table>
 
-      <h2>Saving Changes</h2>
+      <H2>Saving Changes</H2>
       <p>
         All settings on this page use the Shopify Contextual Save Bar. When you modify any field,
         the save bar appears at the top of the page. Click <strong>Save</strong> to persist your
@@ -169,7 +171,7 @@ export default function GeneralSettingsPage() {
         all future emails. Previously sent emails are not affected.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/settings/widget-customization">Widget Customization</a> for styling the

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/checkout-widget", {
   title: "Checkout Widget",
   description:
     "Let customers view their loyalty points, tier status, and redeem rewards directly in the Shopify checkout.",
-};
+});
 
 export default function CheckoutWidgetPage() {
   return (
@@ -27,7 +29,7 @@ export default function CheckoutWidgetPage() {
         available on the Free plan.
       </Callout>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The extension targets <code>purchase.checkout.block.render</code> and renders a card inside
         the Shopify checkout. It authenticates the customer using a session token, then fetches data
@@ -47,7 +49,7 @@ export default function CheckoutWidgetPage() {
         calls from within the checkout sandbox.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <p>
         Checkout UI extensions are managed differently from theme app extension blocks. The Checkout
         Widget is automatically available once PerkStack is installed and your store is on a
@@ -78,34 +80,34 @@ export default function CheckoutWidgetPage() {
         Themes.
       </Callout>
 
-      <h2>What the Widget Shows</h2>
+      <H2>What the Widget Shows</H2>
 
-      <h3>Points Balance</h3>
+      <H3>Points Balance</H3>
       <p>
         The customer&apos;s current available points balance, displayed prominently at the top of
         the widget card.
       </p>
 
-      <h3>Current Tier</h3>
+      <H3>Current Tier</H3>
       <p>
         If VIP tiers are enabled, the widget shows the customer&apos;s current tier name and
         progress toward the next tier.
       </p>
 
-      <h3>Available Rewards</h3>
+      <H3>Available Rewards</H3>
       <p>
         A list of rewards the customer can redeem with their current balance. Each reward shows the
         name, value, and points cost. Clicking <strong>Redeem</strong> applies the corresponding
         discount code to the checkout automatically.
       </p>
 
-      <h3>Logged-Out State</h3>
+      <H3>Logged-Out State</H3>
       <p>
         If the customer is not logged in at checkout, the widget displays a banner encouraging them
         to log in to view and use their loyalty points.
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <table>
         <thead>
           <tr>
@@ -177,7 +179,7 @@ export default function CheckoutWidgetPage() {
         </tbody>
       </table>
 
-      <h2>Reward Redemption Flow</h2>
+      <H2>Reward Redemption Flow</H2>
       <ol>
         <li>The customer sees their available rewards listed in the widget.</li>
         <li>
@@ -197,14 +199,14 @@ export default function CheckoutWidgetPage() {
         refunded to their balance.
       </Callout>
 
-      <h2>Plan Requirement</h2>
+      <H2>Plan Requirement</H2>
       <p>
         The checkout extension is gated behind the <code>checkoutExtension</code> feature flag,
         which is available on the <PlanBadge plan="essential" /> plan and above. On the{" "}
         <PlanBadge plan="free" /> plan, the extension does not render in the checkout.
       </p>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Widget not visible at checkout</strong>: confirm your store is on the{" "}

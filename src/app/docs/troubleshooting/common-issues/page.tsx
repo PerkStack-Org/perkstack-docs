@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/troubleshooting/common-issues", {
   title: "Common Issues",
   description:
     "Troubleshoot common PerkStack issues including widgets not showing, points not awarding, reviews missing, emails failing, and more.",
-};
+});
 
 export default function CommonIssuesPage() {
   return (
@@ -17,12 +19,12 @@ export default function CommonIssuesPage() {
         them. Each section includes symptoms, likely causes, and step-by-step solutions.
       </p>
 
-      <h2>Widget Not Showing on Storefront</h2>
+      <H2>Widget Not Showing on Storefront</H2>
       <p>
         <strong>Symptom:</strong> The loyalty launcher or other PerkStack blocks are not visible on
         your live storefront.
       </p>
-      <h3>Steps to Resolve</h3>
+      <H3>Steps to Resolve</H3>
       <ol>
         <li>
           Open your theme editor (<strong>Online Store → Themes → Customize</strong>)
@@ -46,11 +48,11 @@ export default function CommonIssuesPage() {
         blocks (reviews, star ratings) must be placed in the theme editor.
       </Callout>
 
-      <h2>Points Not Awarding</h2>
+      <H2>Points Not Awarding</H2>
       <p>
         <strong>Symptom:</strong> Customers are placing orders but not receiving loyalty points.
       </p>
-      <h3>Possible Causes</h3>
+      <H3>Possible Causes</H3>
       <table>
         <thead>
           <tr>
@@ -96,12 +98,12 @@ export default function CommonIssuesPage() {
         </tbody>
       </table>
 
-      <h2>Reviews Not Appearing on Storefront</h2>
+      <H2>Reviews Not Appearing on Storefront</H2>
       <p>
         <strong>Symptom:</strong> Reviews have been submitted and approved but are not visible on
         product pages.
       </p>
-      <h3>Steps to Resolve</h3>
+      <H3>Steps to Resolve</H3>
       <ol>
         <li>
           Confirm the review status is <code>approved</code> in <strong>PerkStack → Reviews</strong>
@@ -123,12 +125,12 @@ export default function CommonIssuesPage() {
         a few minutes for newly approved reviews to appear.
       </Callout>
 
-      <h2>Emails Not Sending</h2>
+      <H2>Emails Not Sending</H2>
       <p>
         <strong>Symptom:</strong> Review request emails or notification emails are not being
         delivered to customers.
       </p>
-      <h3>Possible Causes</h3>
+      <H3>Possible Causes</H3>
       <table>
         <thead>
           <tr>
@@ -165,11 +167,11 @@ export default function CommonIssuesPage() {
         </tbody>
       </table>
 
-      <h2>Checkout Widget Not Showing</h2>
+      <H2>Checkout Widget Not Showing</H2>
       <p>
         <strong>Symptom:</strong> The loyalty points display does not appear at checkout.
       </p>
-      <h3>Steps to Resolve</h3>
+      <H3>Steps to Resolve</H3>
       <ol>
         <li>
           Verify you are on the <PlanBadge plan="growth" /> plan or higher. The checkout extension
@@ -182,12 +184,12 @@ export default function CommonIssuesPage() {
         <li>Save and test a checkout</li>
       </ol>
 
-      <h2>Extension Not Loading</h2>
+      <H2>Extension Not Loading</H2>
       <p>
         <strong>Symptom:</strong> Admin blocks or storefront extensions show loading spinners or
         errors.
       </p>
-      <h3>Possible Causes</h3>
+      <H3>Possible Causes</H3>
       <ul>
         <li>
           <strong>Network issue</strong>: the extension cannot reach the PerkStack API. Check your
@@ -209,7 +211,7 @@ export default function CommonIssuesPage() {
         and a description of the problem. Include screenshots or screen recordings if possible.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/troubleshooting/faq">FAQ</a>: frequently asked questions

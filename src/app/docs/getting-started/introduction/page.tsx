@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/getting-started/introduction", {
   title: "Introduction",
   description:
     "Learn what PerkStack is, what it can do for your store, and how the platform is structured.",
-};
+});
 
 export default function IntroductionPage() {
   return (
@@ -25,7 +27,7 @@ export default function IntroductionPage() {
         your Shopify admin panel, so you never have to leave your store&apos;s dashboard.
       </Callout>
 
-      <h2>What You Get</h2>
+      <H2>What You Get</H2>
 
       <div className="feature-grid">
         <div className="feature-card">
@@ -58,7 +60,7 @@ export default function IntroductionPage() {
         </div>
       </div>
 
-      <h2>Platform Overview</h2>
+      <H2>Platform Overview</H2>
       <p>
         Under the hood, PerkStack is a monorepo with three packages and a set of Shopify extensions:
       </p>
@@ -101,7 +103,7 @@ export default function IntroductionPage() {
         </tbody>
       </table>
 
-      <h2>Shopify Extensions</h2>
+      <H2>Shopify Extensions</H2>
       <p>
         PerkStack ships with the following Shopify extensions that integrate directly into your
         store:
@@ -136,7 +138,7 @@ export default function IntroductionPage() {
         </li>
       </ul>
 
-      <h2>Plans &amp; Pricing</h2>
+      <H2>Plans &amp; Pricing</H2>
       <p>PerkStack offers four plans to fit stores of every size:</p>
 
       <table>
@@ -193,7 +195,7 @@ export default function IntroductionPage() {
         <a href="/docs/settings/billing">Billing &amp; Plans</a> for the full feature comparison.
       </Callout>
 
-      <h2>Next Steps</h2>
+      <H2>Next Steps</H2>
       <p>Ready to get started? Here&apos;s what to read next:</p>
       <ul>
         <li>

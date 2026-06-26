@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/moderation", {
   title: "Review Moderation",
   description:
     "Manage product reviews from your Shopify admin. Approve, reject, reply, feature, and use bulk actions.",
-};
+});
 
 export default function ReviewModerationPage() {
   return (
@@ -18,13 +20,13 @@ export default function ReviewModerationPage() {
         individual or bulk actions, and reply to customers publicly.
       </p>
 
-      <h2>Reviews List</h2>
+      <H2>Reviews List</H2>
       <p>
         The main reviews page displays a paginated table of all reviews for your store. Each row
         shows the product name, customer, rating, review excerpt, status badge, and submission date.
       </p>
 
-      <h3>Filters</h3>
+      <H3>Filters</H3>
       <p>Use the status tabs at the top of the page to filter reviews:</p>
       <table>
         <thead>
@@ -72,13 +74,13 @@ export default function ReviewModerationPage() {
         through large review sets.
       </p>
 
-      <h2>Review Actions</h2>
+      <H2>Review Actions</H2>
       <p>
         Each review supports the following actions, available from the actions menu on the review
         row or from the individual review detail page:
       </p>
 
-      <h3>Approve</h3>
+      <H3>Approve</H3>
       <p>Approving a review triggers the following sequence:</p>
       <ol>
         <li>
@@ -101,21 +103,21 @@ export default function ReviewModerationPage() {
         are not awarded a second time.
       </Callout>
 
-      <h3>Reject</h3>
+      <H3>Reject</H3>
       <p>
         Rejecting a review sets the status to <code>rejected</code> and records the{" "}
         <code>rejectedAt</code> timestamp. The review is hidden from the storefront. You can
         re-approve a rejected review at any time.
       </p>
 
-      <h3>Feature / Unfeature</h3>
+      <H3>Feature / Unfeature</H3>
       <p>
         Toggle the <code>featured</code> flag on any approved review. Featured reviews appear in the{" "}
         <code>/api/featured-reviews</code> endpoint and can be displayed in dedicated storefront
         blocks (e.g. homepage testimonials carousel).
       </p>
 
-      <h2>Admin Reply</h2>
+      <H2>Admin Reply</H2>
       <p>
         You can write a public reply to any review using the <code>adminResponse</code> field. This
         response is displayed below the customer&apos;s review on the storefront. Use admin replies
@@ -127,7 +129,7 @@ export default function ReviewModerationPage() {
         customer satisfaction. Keep replies professional, empathetic, and solution-oriented.
       </Callout>
 
-      <h2>Bulk Actions</h2>
+      <H2>Bulk Actions</H2>
       <p>
         Select multiple reviews using the checkboxes in the list view to perform bulk operations:
       </p>
@@ -144,7 +146,7 @@ export default function ReviewModerationPage() {
         triggers its own points award and Flow trigger (if applicable).
       </p>
 
-      <h2>Individual Review Detail</h2>
+      <H2>Individual Review Detail</H2>
       <p>
         Click any review in the list to open its detail page at <code>/app/reviews/:id</code>. The
         detail page shows:
@@ -161,7 +163,7 @@ export default function ReviewModerationPage() {
         <li>Action buttons: Approve, Reject, Feature/Unfeature</li>
       </ul>
 
-      <h2>Moderation Workflow Example</h2>
+      <H2>Moderation Workflow Example</H2>
       <p>A typical daily moderation workflow looks like this:</p>
       <ol>
         <li>
@@ -181,7 +183,7 @@ export default function ReviewModerationPage() {
         removed, consider reaching out to the customer directly through Shopify.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/overview">Reviews Overview</a>: data model and status lifecycle

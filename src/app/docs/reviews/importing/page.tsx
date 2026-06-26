@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/importing", {
   title: "Importing Reviews",
   description:
     "Migrate your existing reviews from Judge.me or Loox into PerkStack using CSV import.",
-};
+});
 
 export default function ImportingReviewsPage() {
   return (
@@ -17,7 +19,7 @@ export default function ImportingReviewsPage() {
         reviews appear on your storefront identically to native reviews.
       </p>
 
-      <h2>Supported Platforms</h2>
+      <H2>Supported Platforms</H2>
       <table>
         <thead>
           <tr>
@@ -49,7 +51,7 @@ export default function ImportingReviewsPage() {
         Export your reviews from the old app before uninstalling it.
       </Callout>
 
-      <h2>Import Process</h2>
+      <H2>Import Process</H2>
       <p>
         Navigate to <strong>PerkStack → Reviews → Import</strong> (accessible from the Reviews page)
         to start an import:
@@ -73,7 +75,7 @@ export default function ImportingReviewsPage() {
         </li>
       </ol>
 
-      <h2>Import Status Lifecycle</h2>
+      <H2>Import Status Lifecycle</H2>
       <table>
         <thead>
           <tr>
@@ -109,7 +111,7 @@ export default function ImportingReviewsPage() {
         </tbody>
       </table>
 
-      <h2>Import Tracking</h2>
+      <H2>Import Tracking</H2>
       <p>
         Every import is recorded in the <code>reviewImports</code> table with detailed progress
         metrics:
@@ -155,13 +157,13 @@ export default function ImportingReviewsPage() {
         are processed.
       </p>
 
-      <h2>Import History</h2>
+      <H2>Import History</H2>
       <p>
         The import page includes a history table showing all past imports with their date, platform,
         row counts, and final status. Use this to verify previous imports or diagnose issues.
       </p>
 
-      <h2>Handling Duplicates</h2>
+      <H2>Handling Duplicates</H2>
       <p>
         PerkStack enforces a unique constraint on <code>shopId</code> + <code>customerId</code> +{" "}
         <code>shopifyProductId</code>. If an imported CSV contains a review for a customer–product
@@ -175,7 +177,7 @@ export default function ImportingReviewsPage() {
         existing data.
       </Callout>
 
-      <h2>What Gets Imported</h2>
+      <H2>What Gets Imported</H2>
       <p>
         The import process maps CSV fields to PerkStack review records. The following data is
         preserved:
@@ -195,7 +197,7 @@ export default function ImportingReviewsPage() {
         servers and cannot be migrated automatically.
       </Callout>
 
-      <h2>Best Practices</h2>
+      <H2>Best Practices</H2>
       <ul>
         <li>
           Export your reviews from the old platform <strong>before</strong> uninstalling it
@@ -211,7 +213,7 @@ export default function ImportingReviewsPage() {
         </li>
       </ul>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/overview">Reviews Overview</a>: data model and sources

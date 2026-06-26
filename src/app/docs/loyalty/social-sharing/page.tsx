@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/social-sharing", {
   title: "Social Sharing",
   description:
     "Reward customers with loyalty points for sharing your products on social media, including platforms, limits, and how sharing is tracked.",
-};
+});
 
 export default function SocialSharingPage() {
   return (
@@ -17,7 +19,7 @@ export default function SocialSharingPage() {
         potential brand ambassador.
       </p>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <ol>
         <li>A customer clicks a social share button on a product page in your storefront</li>
         <li>
@@ -30,7 +32,7 @@ export default function SocialSharingPage() {
         </li>
       </ol>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
 
       <table>
         <thead>
@@ -54,7 +56,7 @@ export default function SocialSharingPage() {
         </tbody>
       </table>
 
-      <h2>One Share Per Product Per Platform</h2>
+      <H2>One Share Per Product Per Platform</H2>
       <p>
         PerkStack enforces a <strong>unique constraint</strong> on each combination of customer,
         product, and platform. This means a customer can earn points for sharing a product on each
@@ -67,7 +69,7 @@ export default function SocialSharingPage() {
         are two separate shares. But sharing Product A on Facebook twice only awards points once.
       </Callout>
 
-      <h2>Share Tracking</h2>
+      <H2>Share Tracking</H2>
       <p>
         All social shares are recorded in the <code>social_shares</code> table with the following
         data:
@@ -102,7 +104,7 @@ export default function SocialSharingPage() {
         </tbody>
       </table>
 
-      <h2>API Endpoint</h2>
+      <H2>API Endpoint</H2>
       <p>Social shares are submitted via the storefront API:</p>
 
       <table>
@@ -144,7 +146,7 @@ export default function SocialSharingPage() {
         points. This ensures points are only awarded when the customer actually initiates a share.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/earn-rules">Earn Rules</a>: manage the social share earn rule

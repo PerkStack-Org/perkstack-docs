@@ -4,39 +4,80 @@
 
 ## Getting Started
 
-- [Getting Started](https://docs.perk-stack.com/docs/getting-started/introduction): Install PerkStack, complete first time setup, and learn the core concepts.
-- [Welcome](https://docs.perk-stack.com/docs/welcome): Orientation and overview of what PerkStack does.
-- [Dashboard](https://docs.perk-stack.com/docs/dashboard): The PerkStack admin home and how to read it.
+- [First-Time Configuration](https://docs.perk-stack.com/docs/getting-started/first-time-config): Walk through PerkStack's onboarding wizard and understand the default settings for loyalty and reviews.
+- [How It Works](https://docs.perk-stack.com/docs/getting-started/how-it-works): Understand PerkStack's architecture, data flow, and how loyalty and reviews work end-to-end.
+- [Installation](https://docs.perk-stack.com/docs/getting-started/installation): Install PerkStack from the Shopify App Store and complete the initial setup process.
+- [Introduction](https://docs.perk-stack.com/docs/getting-started/introduction): Learn what PerkStack is, what it can do for your store, and how the platform is structured.
+- [Shopify Setup](https://docs.perk-stack.com/docs/getting-started/shopify-setup): Configure theme extensions, app proxy, and webhooks to complete your PerkStack integration.
 
-## Loyalty
+## Dashboard
 
-- [Loyalty](https://docs.perk-stack.com/docs/loyalty/points-system): Points programs, earn rules, rewards, tiers, and birthday rewards.
+- [Dashboard Analytics](https://docs.perk-stack.com/docs/dashboard/analytics): Explore loyalty and review analytics including points trends, top spenders, top products, review approval rates, and chart visualizations.
+- [Extension Status](https://docs.perk-stack.com/docs/dashboard/extension-status): Understand how PerkStack detects and displays the status of each Shopify extension on the dashboard.
+- [Dashboard Overview](https://docs.perk-stack.com/docs/dashboard/overview): Understand the PerkStack dashboard: key metrics, extension status cards, theme block detection, and quick links.
 
-## Reviews
+## Loyalty Program
 
-- [Reviews](https://docs.perk-stack.com/docs/reviews): Collecting, moderating, and displaying product reviews.
+- [Birthday Rewards](https://docs.perk-stack.com/docs/loyalty/birthday-rewards): Reward customers with loyalty points on their birthday, including setup, date collection, and how the automated birthday scan works.
+- [Earn Rules](https://docs.perk-stack.com/docs/loyalty/earn-rules): Configure how customers earn loyalty points in PerkStack, including purchases, reviews, signups, birthdays, social shares, and referrals.
+- [Loyalty Overview](https://docs.perk-stack.com/docs/loyalty/overview): Learn how PerkStack's loyalty program works, including earn rules, rewards catalog, referrals, and how to enable or disable loyalty for your store.
+- [Points System](https://docs.perk-stack.com/docs/loyalty/points-system): Understand PerkStack's ledger-based points system, including transaction types, balances, idempotency, expiry, and how points flow through the system.
+- [Referrals](https://docs.perk-stack.com/docs/loyalty/referrals): Grow your store with PerkStack's referral program, featuring unique referral codes, dual-sided rewards, and referral tracking.
+- [Rewards Catalog](https://docs.perk-stack.com/docs/loyalty/rewards): Set up the rewards customers can redeem loyalty points for, including fixed and percentage discounts, free shipping, free products, BOGO, spend-X-get-product, gift catalogs, tier-gated rewards, redemption limits, per-tier overrides, manual grants, and the Reward Sold Out Flow trigger.
+- [Social Sharing](https://docs.perk-stack.com/docs/loyalty/social-sharing): Reward customers with loyalty points for sharing your products on social media, including platforms, limits, and how sharing is tracked.
+- [VIP Tiers](https://docs.perk-stack.com/docs/loyalty/vip-tiers): Set up VIP tiers in PerkStack to reward your best customers with points multipliers and exclusive rewards.
 
-## Storefront and Customization
+## Product Reviews
 
-- [Widgets](https://docs.perk-stack.com/docs/widgets/loyalty-launcher): Storefront widgets including the loyalty launcher, checkout widget, and review stars.
-- [Customizing](https://docs.perk-stack.com/docs/customizing): Theme and appearance options for storefront elements.
+- [Importing Reviews](https://docs.perk-stack.com/docs/reviews/importing): Migrate your existing reviews from Judge.me or Loox into PerkStack using CSV import.
+- [Review Moderation](https://docs.perk-stack.com/docs/reviews/moderation): Manage product reviews from your Shopify admin. Approve, reject, reply, feature, and use bulk actions.
+- [Reviews Overview](https://docs.perk-stack.com/docs/reviews/overview): Understand how product reviews work in PerkStack, including the data model, statuses, helpful votes, and featured reviews.
+- [Photo Reviews](https://docs.perk-stack.com/docs/reviews/photo-reviews): Enable photo uploads in product reviews, including configuration, upload flow, processing pipeline, and plan requirements.
+- [Review Request Emails](https://docs.perk-stack.com/docs/reviews/review-requests): Configure automated review request emails sent after order fulfillment, including timing, templates, reminders, and tracking.
+- [SEO & Rich Snippets](https://docs.perk-stack.com/docs/reviews/seo): Add structured review data to your product pages for Google rich snippets, including star ratings in search results.
+- [Shopify Flow Integration](https://docs.perk-stack.com/docs/reviews/shopify-flow): Use PerkStack's Shopify Flow trigger to build automations when reviews are approved. Available on the Growth plan or above.
 
-## Customers and Analytics
+## Storefront Widgets
 
-- [Customers](https://docs.perk-stack.com/docs/customers): Managing customer loyalty profiles and activity.
-- [Analytics](https://docs.perk-stack.com/docs/analytics): Reporting on loyalty and review performance.
+- [Checkout Widget](https://docs.perk-stack.com/docs/widgets/checkout-widget): Let customers view their loyalty points, tier status, and redeem rewards directly in the Shopify checkout.
+- [Collection Stars](https://docs.perk-stack.com/docs/widgets/collection-stars): Show star ratings on product cards in collection and search result grids with the PerkStack Collection Stars widget.
+- [Customer Account Extension](https://docs.perk-stack.com/docs/widgets/customer-account): Give customers a full loyalty hub inside their Shopify account portal with points, transactions, tiers, rewards, and referrals.
+- [Loyalty Launcher](https://docs.perk-stack.com/docs/widgets/loyalty-launcher): Configure the PerkStack loyalty launcher, the floating button and panel that shows points, rewards, referrals, and earn rules on every page.
+- [Loyalty Page](https://docs.perk-stack.com/docs/widgets/loyalty-page): Add a full-page loyalty program display to your storefront showing earn rules, rewards, tiers, and referral information.
+- [Widgets Overview](https://docs.perk-stack.com/docs/widgets/overview): An overview of all PerkStack storefront widgets, including theme app extension blocks, checkout UI, and customer account extensions.
+- [Review Carousel](https://docs.perk-stack.com/docs/widgets/review-carousel): Display a horizontal carousel of photo reviews on any page of your storefront with the PerkStack Review Carousel.
+- [Review Display](https://docs.perk-stack.com/docs/widgets/review-display): Display approved product reviews on your storefront with ratings, photos, verified badges, and helpful votes.
+- [Review Form](https://docs.perk-stack.com/docs/widgets/review-form): Let customers submit product reviews with ratings, text, and photo uploads directly on your product pages.
+- [Star Badge](https://docs.perk-stack.com/docs/widgets/star-badge): Show average star ratings and review counts inline on product pages with the PerkStack Star Badge widget.
 
-## Settings and Integrations
+## Customers
 
-- [Settings](https://docs.perk-stack.com/docs/settings): App configuration and program settings.
-- [Integrations](https://docs.perk-stack.com/docs/integrations): Connecting PerkStack with other tools and platforms.
-- [Advanced](https://docs.perk-stack.com/docs/advanced): Advanced configuration for power users.
+- [Customer Detail](https://docs.perk-stack.com/docs/customers/detail): View a customer's full profile including points balance, transaction history, reviews, tier information, manual point adjustments, and one-off granted rewards.
+- [Freeze & Unfreeze Customers](https://docs.perk-stack.com/docs/customers/freeze): Suspend and restore a customer's ability to earn and redeem loyalty points using the freeze/unfreeze feature.
+- [Customer Management](https://docs.perk-stack.com/docs/customers/management): Search, browse, and manage loyalty customers. View points balances, tiers, and frozen status from the customer list.
+- [Tier Overrides](https://docs.perk-stack.com/docs/customers/tier-overrides): Manually assign or clear a customer's VIP tier. Learn how tier overrides work and when to use them.
 
-## Operations and Billing
+## Settings
 
-- [Operations](https://docs.perk-stack.com/docs/operations): Day to day running of your program.
-- [Billing](https://docs.perk-stack.com/docs/billing): Plans, pricing, and subscription management.
-- [Troubleshooting](https://docs.perk-stack.com/docs/troubleshooting/faq): Common issues and frequently asked questions.
+- [Billing & Plans](https://docs.perk-stack.com/docs/settings/billing): PerkStack pricing — Free, Essential ($29/mo), Growth ($99/mo), and Studio ($299/mo). Feature comparison, billing statuses, and how to upgrade, downgrade, or cancel.
+- [Email Settings](https://docs.perk-stack.com/docs/settings/email): Configure your email sender name, reply-to address, and understand the email delivery infrastructure.
+- [General Settings](https://docs.perk-stack.com/docs/settings/general): Configure your loyalty program's core settings including points naming, icons, expiry rules, branding, and logo.
+- [Review Settings](https://docs.perk-stack.com/docs/settings/review-settings): Configure review moderation rules, auto-approve thresholds, blacklisted words, review request emails, and display options.
+- [Trigger Button](https://docs.perk-stack.com/docs/settings/trigger-button): Customise the floating rewards trigger button including text, colours, shape, icon, and border radius with live preview.
+- [Widget Customization](https://docs.perk-stack.com/docs/settings/widget-customization): Customise the loyalty launcher widget including header image, overlay opacity, fullscreen mode, and live preview.
+
+## Advanced
+
+- [Admin Extensions](https://docs.perk-stack.com/docs/advanced/admin-extensions): Details on the admin block extensions: customer reviews and customer loyalty blocks that appear on customer detail pages in Shopify admin.
+- [Architecture](https://docs.perk-stack.com/docs/advanced/architecture): Understand PerkStack's monorepo structure, technology stack, infrastructure, and how the packages and extensions fit together.
+- [Status Reference](https://docs.perk-stack.com/docs/advanced/status-reference): Complete reference for every status enum used across PerkStack covering plans, billing, earn actions, transactions, reviews, and more.
+- [Web Pixel](https://docs.perk-stack.com/docs/advanced/web-pixel): How the PerkStack app pixel tracks storefront events, processes checkout data, and feeds analytics.
+- [Webhooks](https://docs.perk-stack.com/docs/advanced/webhooks): Complete reference for all Shopify webhooks PerkStack handles, covering orders, customers, app lifecycle, and GDPR compliance.
+
+## Troubleshooting
+
+- [Common Issues](https://docs.perk-stack.com/docs/troubleshooting/common-issues): Troubleshoot common PerkStack issues including widgets not showing, points not awarding, reviews missing, emails failing, and more.
+- [Frequently Asked Questions](https://docs.perk-stack.com/docs/troubleshooting/faq): Answers to common questions about PerkStack covering customer accounts, data portability, review imports, tier calculations, and more.
 
 ## More
 

@@ -38,9 +38,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   collectPages(APP_DIR, entries);
 
   return entries
-    .map(({ route, lastModified }) => ({
-      url: route ? `${BASE_URL}/${route}` : BASE_URL,
-      lastModified,
-    }))
+    .filter(({ route }) => route !== "") // drop the redirect-only root "/"
+    .map(({ route, lastModified }) => {
+      // Section landing pages (depth 2, e.g. docs/getting-started/introduction)
+      // get the highest priority; anything deeper is weighted slightly lower.
+      const depth = route.split("/").length;
+      return {
+        url: `${BASE_URL}/${route}`,
+        lastModified,
+        changeFrequency: "weekly" as const,
+        priority: depth > 3 ? 0.6 : 0.8,
+      };
+    })
     .sort((a, b) => a.url.localeCompare(b.url));
 }

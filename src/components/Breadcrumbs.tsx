@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getBreadcrumbs } from "@/lib/docs-helpers";
+import { SITE_URL } from "@/lib/seo";
 import { ChevronRight } from "lucide-react";
 
 export default function Breadcrumbs() {
@@ -11,8 +12,26 @@ export default function Breadcrumbs() {
 
   if (crumbs.length <= 1) return null;
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((crumb, i) => {
+      const url = crumb.href ?? (i === crumbs.length - 1 ? pathname : undefined);
+      return {
+        "@type": "ListItem",
+        position: i + 1,
+        name: crumb.label,
+        ...(url ? { item: `${SITE_URL}${url}` } : {}),
+      };
+    }),
+  };
+
   return (
     <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1 mb-6 text-[13px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {crumbs.map((crumb, i) => {
         const isLast = i === crumbs.length - 1;
         return (

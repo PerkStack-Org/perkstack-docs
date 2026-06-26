@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/review-requests", {
   title: "Review Request Emails",
   description:
     "Configure automated review request emails sent after order fulfillment, including timing, templates, reminders, and tracking.",
-};
+});
 
 export default function ReviewRequestsPage() {
   return (
@@ -18,7 +20,7 @@ export default function ReviewRequestsPage() {
         count and enriching your product pages with authentic feedback.
       </p>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <ol>
         <li>
           Shopify fires the <code>orders/fulfilled</code> webhook when an order is fulfilled
@@ -42,7 +44,7 @@ export default function ReviewRequestsPage() {
         the customer receives one email covering those products, not three separate emails.
       </Callout>
 
-      <h2>Timing Configuration</h2>
+      <H2>Timing Configuration</H2>
       <p>Control when review requests are sent with these settings:</p>
 
       <table>
@@ -79,7 +81,7 @@ export default function ReviewRequestsPage() {
         asked for a review. Adjust this based on your typical shipping times and product type.
       </Callout>
 
-      <h2>Request Status Lifecycle</h2>
+      <H2>Request Status Lifecycle</H2>
       <p>
         Each review request progresses through a series of statuses as the customer interacts with
         the email:
@@ -144,7 +146,7 @@ export default function ReviewRequestsPage() {
         </tbody>
       </table>
 
-      <h2>Tracking</h2>
+      <H2>Tracking</H2>
       <p>PerkStack tracks email engagement through two mechanisms:</p>
       <ul>
         <li>
@@ -159,7 +161,7 @@ export default function ReviewRequestsPage() {
         </li>
       </ul>
 
-      <h2>Reminders</h2>
+      <H2>Reminders</H2>
       <p>
         If reminders are enabled, PerkStack sends a follow-up email to customers who received the
         initial request but have not yet submitted a review. The reminder is sent after the
@@ -171,13 +173,13 @@ export default function ReviewRequestsPage() {
         the initial request was cancelled.
       </p>
 
-      <h2>Email Customisation</h2>
+      <H2>Email Customisation</H2>
       <p>
         Customise the subject line and body of your review request emails using template variables.
         Edit these templates in <strong>PerkStack → Settings → Review Emails</strong>.
       </p>
 
-      <h3>Available Template Variables</h3>
+      <H3>Available Template Variables</H3>
       <table>
         <thead>
           <tr>
@@ -221,7 +223,7 @@ export default function ReviewRequestsPage() {
         <code>{"Share your thoughts on the {{product_title}} and earn {{points_incentive}}!"}</code>
       </pre>
 
-      <h2>Rate Limits</h2>
+      <H2>Rate Limits</H2>
 
       <table>
         <thead>
@@ -266,14 +268,14 @@ export default function ReviewRequestsPage() {
         the 1st of the next month.
       </Callout>
 
-      <h2>Unique Constraint</h2>
+      <H2>Unique Constraint</H2>
       <p>
         PerkStack enforces one review request per order per product. If a fulfillment webhook fires
         multiple times for the same order (e.g. partial fulfillments), only one request is created
         per product. This prevents customers from receiving duplicate emails.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/overview">Reviews Overview</a>: data model and review lifecycle

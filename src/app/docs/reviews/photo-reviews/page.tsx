@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/reviews/photo-reviews", {
   title: "Photo Reviews",
   description:
     "Enable photo uploads in product reviews, including configuration, upload flow, processing pipeline, and plan requirements.",
-};
+});
 
 export default function PhotoReviewsPage() {
   return (
@@ -23,7 +25,7 @@ export default function PhotoReviewsPage() {
         <PlanBadge plan="free" /> plan, the photo upload option is not available to customers.
       </Callout>
 
-      <h2>Upload Flow</h2>
+      <H2>Upload Flow</H2>
       <p>When a customer submits a review with photos, the following sequence occurs:</p>
       <ol>
         <li>
@@ -41,7 +43,7 @@ export default function PhotoReviewsPage() {
         <li>A background worker picks up the photo for processing</li>
       </ol>
 
-      <h2>Photo Processing Pipeline</h2>
+      <H2>Photo Processing Pipeline</H2>
       <p>
         After upload, each photo goes through an automated processing pipeline powered by Sharp:
       </p>
@@ -86,7 +88,7 @@ export default function PhotoReviewsPage() {
         </tbody>
       </table>
 
-      <h3>Generated Sizes</h3>
+      <H3>Generated Sizes</H3>
       <p>The processing worker generates two thumbnail variants alongside the original:</p>
 
       <table>
@@ -116,7 +118,7 @@ export default function PhotoReviewsPage() {
         </tbody>
       </table>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>
         Configure photo review settings in <strong>PerkStack → Settings → Reviews</strong>:
       </p>
@@ -156,7 +158,7 @@ export default function PhotoReviewsPage() {
         is critical for your product category (e.g. apparel, home décor).
       </Callout>
 
-      <h2>Points for Photo Reviews</h2>
+      <H2>Points for Photo Reviews</H2>
       <p>
         Photo reviews earn more loyalty points than text-only reviews to incentivise visual
         feedback:
@@ -186,7 +188,7 @@ export default function PhotoReviewsPage() {
         and photo amounts combined. Point values are configurable in your loyalty earn rules.
       </Callout>
 
-      <h2>Plan Requirements</h2>
+      <H2>Plan Requirements</H2>
 
       <table>
         <thead>
@@ -229,7 +231,7 @@ export default function PhotoReviewsPage() {
         all new reviews.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/overview">Reviews Overview</a>: data model and review lifecycle

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/points-system", {
   title: "Points System",
   description:
     "Understand PerkStack's ledger-based points system, including transaction types, balances, idempotency, expiry, and how points flow through the system.",
-};
+});
 
 export default function PointsSystemPage() {
   return (
@@ -17,14 +19,14 @@ export default function PointsSystemPage() {
         balance tracking across your entire loyalty program.
       </p>
 
-      <h2>The Points Ledger</h2>
+      <H2>The Points Ledger</H2>
       <p>
         All point movements are stored in the <code>point_transactions</code> table. Each
         transaction records what happened, why it happened, and the resulting balance. The ledger is
         append-only, meaning transactions are never modified or deleted.
       </p>
 
-      <h2>Transaction Types</h2>
+      <H2>Transaction Types</H2>
       <p>
         Every transaction has a <code>type</code> that describes the nature of the point movement:
       </p>
@@ -76,7 +78,7 @@ export default function PointsSystemPage() {
         </tbody>
       </table>
 
-      <h2>Source Types</h2>
+      <H2>Source Types</H2>
       <p>
         Each transaction also has a <code>source</code> that identifies what triggered it:
       </p>
@@ -152,7 +154,7 @@ export default function PointsSystemPage() {
         </tbody>
       </table>
 
-      <h2>Balance Tracking</h2>
+      <H2>Balance Tracking</H2>
       <p>
         Every transaction record includes a <code>balanceAfter</code> field that stores the
         customer&apos;s running point balance after that transaction. This makes it possible to
@@ -165,7 +167,7 @@ export default function PointsSystemPage() {
         recent transaction.
       </Callout>
 
-      <h2>Idempotency</h2>
+      <H2>Idempotency</H2>
       <p>
         Each transaction carries an <strong>idempotency key</strong> that prevents duplicate awards.
         If the same action is processed twice (e.g. due to a webhook retry or network issue), the
@@ -176,7 +178,7 @@ export default function PointsSystemPage() {
         network conditions.
       </p>
 
-      <h2>Points Expiry</h2>
+      <H2>Points Expiry</H2>
       <p>
         You can optionally configure points to expire after a set number of months. This encourages
         customers to use their points and keeps engagement high.
@@ -211,7 +213,7 @@ export default function PointsSystemPage() {
         </tbody>
       </table>
 
-      <h3>Expiry Process</h3>
+      <H3>Expiry Process</H3>
       <p>Points expiry is handled by an automated background worker:</p>
       <ol>
         <li>
@@ -235,7 +237,7 @@ export default function PointsSystemPage() {
         points for a customer, use a manual adjustment from the admin.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works

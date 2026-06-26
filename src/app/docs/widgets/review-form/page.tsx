@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 import ReviewFormPreview from "@/components/widget-previews/ReviewFormPreview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/review-form", {
   title: "Review Form",
   description:
     "Let customers submit product reviews with ratings, text, and photo uploads directly on your product pages.",
-};
+});
 
 export default function ReviewFormPage() {
   return (
@@ -23,7 +25,7 @@ export default function ReviewFormPage() {
 
       <ReviewFormPreview />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is rendered by <code>review-form.liquid</code> and uses a <code>section</code>{" "}
         target. When a customer submits a review, the form sends a <code>POST</code> request to:
@@ -37,7 +39,7 @@ export default function ReviewFormPage() {
         pending state for manual moderation.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
@@ -59,7 +61,7 @@ export default function ReviewFormPage() {
         write a review before scrolling through existing ones.
       </Callout>
 
-      <h2>Form Fields</h2>
+      <H2>Form Fields</H2>
       <table>
         <thead>
           <tr>
@@ -95,7 +97,7 @@ export default function ReviewFormPage() {
         </tbody>
       </table>
 
-      <h2>Validation</h2>
+      <H2>Validation</H2>
       <p>
         The form validates inputs on the client side before submission and displays contextual error
         messages inline next to the relevant field:
@@ -118,7 +120,7 @@ export default function ReviewFormPage() {
         before they can submit a review. Anonymous reviews are not supported.
       </Callout>
 
-      <h2>Submission Flow</h2>
+      <H2>Submission Flow</H2>
       <ol>
         <li>
           Customer fills in the form and clicks <strong>Submit Review</strong>.
@@ -135,7 +137,7 @@ export default function ReviewFormPage() {
         </li>
       </ol>
 
-      <h2>Internationalisation</h2>
+      <H2>Internationalisation</H2>
       <p>
         All form labels, placeholder text, validation messages, and success/error messages use
         translations defined in <code>locales/en.default.json</code>. If your store operates in
@@ -143,7 +145,7 @@ export default function ReviewFormPage() {
         automatically.
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>
         Review form behaviour is configured in the PerkStack admin under{" "}
         <strong>Reviews &gt; Settings</strong>:
@@ -165,7 +167,7 @@ export default function ReviewFormPage() {
         </li>
       </ul>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Form not appearing</strong>: make sure the section is added to your product page

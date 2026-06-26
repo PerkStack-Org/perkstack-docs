@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/advanced/webhooks", {
   title: "Webhooks",
   description:
     "Complete reference for all Shopify webhooks PerkStack handles, covering orders, customers, app lifecycle, and GDPR compliance.",
-};
+});
 
 export default function WebhooksPage() {
   return (
@@ -17,7 +19,7 @@ export default function WebhooksPage() {
         background worker.
       </p>
 
-      <h2>Order Webhooks</h2>
+      <H2>Order Webhooks</H2>
       <table>
         <thead>
           <tr>
@@ -75,7 +77,7 @@ export default function WebhooksPage() {
         are only given for orders where payment has been successfully captured.
       </Callout>
 
-      <h2>Customer Webhooks</h2>
+      <H2>Customer Webhooks</H2>
       <table>
         <thead>
           <tr>
@@ -108,7 +110,7 @@ export default function WebhooksPage() {
         </tbody>
       </table>
 
-      <h2>App Lifecycle Webhooks</h2>
+      <H2>App Lifecycle Webhooks</H2>
       <table>
         <thead>
           <tr>
@@ -149,7 +151,7 @@ export default function WebhooksPage() {
         <code>shop/redact</code> webhook.
       </Callout>
 
-      <h2>GDPR Webhooks</h2>
+      <H2>GDPR Webhooks</H2>
       <p>
         Shopify requires all apps to handle three mandatory GDPR webhooks for privacy compliance:
       </p>
@@ -195,7 +197,7 @@ export default function WebhooksPage() {
         </tbody>
       </table>
 
-      <h2>Webhook Processing Flow</h2>
+      <H2>Webhook Processing Flow</H2>
       <ol>
         <li>Shopify sends a POST request to the web app&apos;s webhook endpoint</li>
         <li>The web app verifies the HMAC signature to ensure authenticity</li>
@@ -212,7 +214,7 @@ export default function WebhooksPage() {
         Heavy processing is offloaded to the background worker queue.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/advanced/architecture">Architecture</a>: how the web app and worker

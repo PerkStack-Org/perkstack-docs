@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/settings/review-settings", {
   title: "Review Settings",
   description:
     "Configure review moderation rules, auto-approve thresholds, blacklisted words, review request emails, and display options.",
-};
+});
 
 export default function ReviewSettingsPage() {
   return (
@@ -17,7 +19,7 @@ export default function ReviewSettingsPage() {
         reviews are collected, moderated, and displayed on your storefront.
       </p>
 
-      <h2>Auto-Approve Threshold</h2>
+      <H2>Auto-Approve Threshold</H2>
       <p>
         Reviews that meet or exceed the auto-approve threshold are automatically approved without
         manual moderation. Reviews below the threshold remain in <code>pending</code> status for you
@@ -51,7 +53,7 @@ export default function ReviewSettingsPage() {
         5-star reviews are auto-approved and everything else requires manual action.
       </Callout>
 
-      <h2>Blacklisted Words</h2>
+      <H2>Blacklisted Words</H2>
       <p>
         Add comma-separated words or phrases that should trigger manual moderation regardless of the
         star rating. If a review contains any blacklisted word, it is held in <code>pending</code>{" "}
@@ -67,13 +69,13 @@ export default function ReviewSettingsPage() {
         &ldquo;Scam&rdquo;, &ldquo;SCAM&rdquo;, and &ldquo;scam&rdquo;.
       </Callout>
 
-      <h2>Review Request Emails</h2>
+      <H2>Review Request Emails</H2>
       <p>
         PerkStack can automatically email customers after an order is fulfilled to request a product
         review. This section controls the timing and content of those emails.
       </p>
 
-      <h3>Timing Settings</h3>
+      <H3>Timing Settings</H3>
       <table>
         <thead>
           <tr>
@@ -114,7 +116,7 @@ export default function ReviewSettingsPage() {
         </tbody>
       </table>
 
-      <h3>Email Content</h3>
+      <H3>Email Content</H3>
       <p>
         Customise the subject line and body of review request emails. Both fields support template
         variables:
@@ -154,7 +156,7 @@ export default function ReviewSettingsPage() {
         {"{{points_incentive}}"} points!&rdquo;
       </Callout>
 
-      <h2>Display Settings</h2>
+      <H2>Display Settings</H2>
       <table>
         <thead>
           <tr>
@@ -193,13 +195,13 @@ export default function ReviewSettingsPage() {
         only text reviews are available.
       </Callout>
 
-      <h2>Saving Changes</h2>
+      <H2>Saving Changes</H2>
       <p>
         All review settings use the Shopify Contextual Save Bar. Modify any field and the save bar
         appears. Click <strong>Save</strong> to apply or <strong>Discard</strong> to revert.
       </p>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/reviews/moderation">Review Moderation</a> to approve, reject, and manage

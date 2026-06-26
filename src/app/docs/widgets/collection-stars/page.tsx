@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/collection-stars", {
   title: "Collection Stars",
   description:
     "Show star ratings on product cards in collection and search result grids with the PerkStack Collection Stars widget.",
-};
+});
 
 export default function CollectionStarsPage() {
   return (
@@ -20,7 +22,7 @@ export default function CollectionStarsPage() {
 
       <PlanBadge plan="free" />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is rendered by <code>review-collection-stars.liquid</code> and uses a{" "}
         <code>body</code> target, so it appears on every page automatically once added to the theme.
@@ -42,7 +44,7 @@ export default function CollectionStarsPage() {
         many products are shown. This keeps collection pages fast.
       </Callout>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
@@ -65,7 +67,7 @@ export default function CollectionStarsPage() {
         any other template that renders product cards.
       </Callout>
 
-      <h2>Theme Compatibility</h2>
+      <H2>Theme Compatibility</H2>
       <p>
         The Collection Stars script looks for standard Shopify product card markup to inject the
         rating badges. It works out of the box with most Online Store 2.0 themes, including Dawn. If
@@ -85,7 +87,7 @@ export default function CollectionStarsPage() {
         </li>
       </ul>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <table>
         <thead>
           <tr>
@@ -118,7 +120,7 @@ export default function CollectionStarsPage() {
         </tbody>
       </table>
 
-      <h2>Performance</h2>
+      <H2>Performance</H2>
       <p>The widget is designed to have minimal impact on page performance:</p>
       <ul>
         <li>A single batch API request fetches all ratings in one call.</li>
@@ -129,7 +131,7 @@ export default function CollectionStarsPage() {
         </li>
       </ul>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Stars not appearing on cards</strong>: your theme may use non-standard product

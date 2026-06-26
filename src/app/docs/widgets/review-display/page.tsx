@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 import ReviewDisplayPreview from "@/components/widget-previews/ReviewDisplayPreview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/review-display", {
   title: "Review Display",
   description:
     "Display approved product reviews on your storefront with ratings, photos, verified badges, and helpful votes.",
-};
+});
 
 export default function ReviewDisplayPage() {
   return (
@@ -24,7 +26,7 @@ export default function ReviewDisplayPage() {
 
       <ReviewDisplayPreview />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The widget is powered by <code>review-display.liquid</code> and uses a <code>section</code>{" "}
         target, so it must be added to each template where you want reviews to appear (typically the
@@ -39,7 +41,7 @@ export default function ReviewDisplayPage() {
         photos, and metadata.
       </p>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
@@ -65,7 +67,7 @@ export default function ReviewDisplayPage() {
         details first and reviews second, which follows established e-commerce patterns.
       </Callout>
 
-      <h2>What Each Review Shows</h2>
+      <H2>What Each Review Shows</H2>
       <table>
         <thead>
           <tr>
@@ -105,15 +107,15 @@ export default function ReviewDisplayPage() {
         </tbody>
       </table>
 
-      <h2>Features</h2>
-      <h3>Pagination</h3>
+      <H2>Features</H2>
+      <H3>Pagination</H3>
       <p>
         Reviews are paginated automatically. The widget loads a configurable number of reviews per
         page and displays navigation controls to browse through additional pages. This keeps the
         product page fast even for products with hundreds of reviews.
       </p>
 
-      <h3>Sorting</h3>
+      <H3>Sorting</H3>
       <p>Customers can sort reviews by:</p>
       <ul>
         <li>
@@ -130,14 +132,14 @@ export default function ReviewDisplayPage() {
         </li>
       </ul>
 
-      <h3>Photo Gallery</h3>
+      <H3>Photo Gallery</H3>
       <p>
         When a review includes photos, they are displayed as thumbnails below the review text.
         Clicking a thumbnail opens a lightbox gallery. All images are served from Cloudflare R2 for
         fast global delivery.
       </p>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>The Review Display block exposes the following settings in the theme editor sidebar:</p>
       <ul>
         <li>
@@ -155,7 +157,7 @@ export default function ReviewDisplayPage() {
         </li>
       </ul>
 
-      <h2>Structured Data</h2>
+      <H2>Structured Data</H2>
       <p>
         The Review Display widget automatically outputs JSON-LD structured data for each
         product&apos;s reviews. This enables search engines to display{" "}
@@ -168,7 +170,7 @@ export default function ReviewDisplayPage() {
         Google re-crawls pages on its own schedule.
       </Callout>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>No reviews showing</strong>: confirm you have at least one approved review for the

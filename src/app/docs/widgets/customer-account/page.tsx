@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/customer-account", {
   title: "Customer Account Extension",
   description:
     "Give customers a full loyalty hub inside their Shopify account portal with points, transactions, tiers, rewards, and referrals.",
-};
+});
 
 export default function CustomerAccountPage() {
   return (
@@ -21,7 +23,7 @@ export default function CustomerAccountPage() {
 
       <PlanBadge plan="free" />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         This is a <strong>customer account extension</strong> that targets{" "}
         <code>customer-account.page.render</code>. It adds a new page to the customer account portal
@@ -41,7 +43,7 @@ export default function CustomerAccountPage() {
         required. Customers are automatically authenticated when they access their account.
       </Callout>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <p>
         The Customer Account extension is registered automatically when PerkStack is installed. It
         appears as a new page in the customer account navigation. No manual theme editor
@@ -60,16 +62,16 @@ export default function CustomerAccountPage() {
         <strong>Settings &gt; Widgets</strong>.
       </Callout>
 
-      <h2>Page Sections</h2>
+      <H2>Page Sections</H2>
 
-      <h3>Points Balance</h3>
+      <H3>Points Balance</H3>
       <p>
         A summary card showing the customer&apos;s current points balance and lifetime earned
         points. If the customer has enough points to redeem a reward, a call-to-action highlights
         this.
       </p>
 
-      <h3>Transaction History</h3>
+      <H3>Transaction History</H3>
       <p>
         A chronological list of all points transactions, both earned and spent. Each entry shows:
       </p>
@@ -80,27 +82,27 @@ export default function CustomerAccountPage() {
         <li>Running balance after the transaction</li>
       </ul>
 
-      <h3>VIP Tier</h3>
+      <H3>VIP Tier</H3>
       <p>
         If VIP tiers are enabled, this section shows the customer&apos;s current tier, tier
         benefits, and a progress bar indicating how close they are to the next tier.
       </p>
 
-      <h3>Available Rewards</h3>
+      <H3>Available Rewards</H3>
       <p>
         A grid of rewards the customer can redeem. Each card shows the reward name, points cost, and
         a redeem button. When redeemed, the customer receives a discount code they can apply at
         checkout.
       </p>
 
-      <h3>Referral Link</h3>
+      <H3>Referral Link</H3>
       <p>
         The customer&apos;s unique referral URL with a copy button and social sharing options. This
         section also shows how many successful referrals the customer has made and the points earned
         from referrals.
       </p>
 
-      <h2>API Endpoints</h2>
+      <H2>API Endpoints</H2>
       <p>The extension calls the same app proxy APIs used by the storefront widgets:</p>
       <table>
         <thead>
@@ -137,7 +139,7 @@ export default function CustomerAccountPage() {
         </tbody>
       </table>
 
-      <h2>Authentication</h2>
+      <H2>Authentication</H2>
       <p>
         The extension decodes the Shopify session JWT provided by the customer account portal. This
         JWT contains the customer ID and shop domain, which are used to authenticate API requests.
@@ -149,7 +151,7 @@ export default function CustomerAccountPage() {
         guest checkouts or unauthenticated visitors.
       </Callout>
 
-      <h2>Differences from the Loyalty Page Widget</h2>
+      <H2>Differences from the Loyalty Page Widget</H2>
       <table>
         <thead>
           <tr>
@@ -187,7 +189,7 @@ export default function CustomerAccountPage() {
         </tbody>
       </table>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Page not appearing in customer account</strong>: ensure PerkStack is installed and

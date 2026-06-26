@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/birthday-rewards", {
   title: "Birthday Rewards",
   description:
     "Reward customers with loyalty points on their birthday, including setup, date collection, and how the automated birthday scan works.",
-};
+});
 
 export default function BirthdayRewardsPage() {
   return (
@@ -26,7 +28,7 @@ export default function BirthdayRewardsPage() {
         must be enabled from <strong>PerkStack → Loyalty → Earn Rules</strong>.
       </Callout>
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <ol>
         <li>
           A customer sets their date of birth through the storefront via the{" "}
@@ -46,7 +48,7 @@ export default function BirthdayRewardsPage() {
         </li>
       </ol>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
 
       <table>
         <thead>
@@ -70,7 +72,7 @@ export default function BirthdayRewardsPage() {
         </tbody>
       </table>
 
-      <h2>Date of Birth Collection</h2>
+      <H2>Date of Birth Collection</H2>
       <p>
         Customers provide their date of birth through the <code>/api/birthday</code> API endpoint,
         typically surfaced via the loyalty widget on your storefront. Key behaviors:
@@ -92,7 +94,7 @@ export default function BirthdayRewardsPage() {
         communicates this to customers before they submit, so they enter the correct date.
       </Callout>
 
-      <h2>Birthday Scan Worker</h2>
+      <H2>Birthday Scan Worker</H2>
       <p>The automated birthday scan is handled by a background worker:</p>
 
       <table>
@@ -129,7 +131,7 @@ export default function BirthdayRewardsPage() {
         when the worker runs and the rule is active.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/earn-rules">Earn Rules</a>: manage the birthday earn rule alongside

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/customers/management", {
   title: "Customer Management",
   description:
     "Search, browse, and manage loyalty customers. View points balances, tiers, and frozen status from the customer list.",
-};
+});
 
 export default function CustomerManagementPage() {
   return (
@@ -19,7 +21,7 @@ export default function CustomerManagementPage() {
         customer&apos;s loyalty account.
       </p>
 
-      <h2>Searching Customers</h2>
+      <H2>Searching Customers</H2>
       <p>
         Use the search bar at the top of the page to find customers by <strong>name</strong> or{" "}
         <strong>email address</strong>. The search is case-insensitive and matches partial strings,
@@ -27,7 +29,7 @@ export default function CustomerManagementPage() {
         &ldquo;janetaylor@example.com&rdquo;.
       </p>
 
-      <h2>Customer Table</h2>
+      <H2>Customer Table</H2>
       <p>The customer list displays the following columns:</p>
       <table>
         <thead>
@@ -72,14 +74,14 @@ export default function CustomerManagementPage() {
         </tbody>
       </table>
 
-      <h2>Pagination</h2>
+      <H2>Pagination</H2>
       <p>
         Results are paginated with navigation controls at the bottom of the table. The default page
         size shows 25 customers per page. Use the previous/next buttons to navigate through your
         customer list.
       </p>
 
-      <h2>Quick Actions</h2>
+      <H2>Quick Actions</H2>
       <p>From the customer list, you can perform the following actions on any customer row:</p>
       <ul>
         <li>
@@ -97,7 +99,7 @@ export default function CustomerManagementPage() {
         account, or interact with the loyalty widget. You do not need to import customers manually.
       </Callout>
 
-      <h2>Understanding Customer Status</h2>
+      <H2>Understanding Customer Status</H2>
       <table>
         <thead>
           <tr>
@@ -132,7 +134,7 @@ export default function CustomerManagementPage() {
         submit reviews. It only prevents points from being earned or redeemed.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/customers/detail">Customer Detail</a>: full profile, transaction history,

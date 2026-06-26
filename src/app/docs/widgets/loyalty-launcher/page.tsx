@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 import LoyaltyLauncherPreview from "@/components/widget-previews/LoyaltyLauncherPreview";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/widgets/loyalty-launcher", {
   title: "Loyalty Launcher",
   description:
     "Configure the PerkStack loyalty launcher, the floating button and panel that shows points, rewards, referrals, and earn rules on every page.",
-};
+});
 
 export default function LoyaltyLauncherPage() {
   return (
@@ -24,7 +26,7 @@ export default function LoyaltyLauncherPage() {
 
       <LoyaltyLauncherPreview />
 
-      <h2>How It Works</h2>
+      <H2>How It Works</H2>
       <p>
         The launcher is a theme app extension block with a <code>body</code> target, which means it
         renders globally on every page once added to your theme. It is powered by the{" "}
@@ -57,7 +59,7 @@ export default function LoyaltyLauncherPage() {
         </li>
       </ul>
 
-      <h2>Placement</h2>
+      <H2>Placement</H2>
       <ol>
         <li>
           Go to <strong>Online Store &gt; Themes &gt; Customize</strong> in your Shopify admin.
@@ -80,13 +82,13 @@ export default function LoyaltyLauncherPage() {
         pages, product pages, and custom pages.
       </Callout>
 
-      <h2>Configuration</h2>
+      <H2>Configuration</H2>
       <p>
         Most launcher settings are managed from the PerkStack admin in Shopify under{" "}
         <strong>Settings &gt; Widgets</strong>. The following options are available:
       </p>
 
-      <h3>Position</h3>
+      <H3>Position</H3>
       <table>
         <thead>
           <tr>
@@ -110,7 +112,7 @@ export default function LoyaltyLauncherPage() {
         </tbody>
       </table>
 
-      <h3>Branding</h3>
+      <H3>Branding</H3>
       <ul>
         <li>
           <strong>Launcher image</strong>: upload a custom icon to replace the default PerkStack
@@ -126,7 +128,7 @@ export default function LoyaltyLauncherPage() {
         </li>
       </ul>
 
-      <h3>Guest Behaviour</h3>
+      <H3>Guest Behaviour</H3>
       <table>
         <thead>
           <tr>
@@ -152,7 +154,7 @@ export default function LoyaltyLauncherPage() {
         </tbody>
       </table>
 
-      <h2>Panel Content</h2>
+      <H2>Panel Content</H2>
       <p>When the panel is open, it displays the following sections in order:</p>
       <ol>
         <li>
@@ -177,7 +179,7 @@ export default function LoyaltyLauncherPage() {
         balance refreshes the next time they open the launcher, with no page reload needed.
       </Callout>
 
-      <h2>Troubleshooting</h2>
+      <H2>Troubleshooting</H2>
       <ul>
         <li>
           <strong>Launcher not appearing</strong>: verify that the block is added in the theme

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/loyalty/rewards", {
   title: "Rewards Catalog",
   description:
     "Set up the rewards customers can redeem loyalty points for, including fixed and percentage discounts, free shipping, free products, BOGO, spend-X-get-product, gift catalogs, tier-gated rewards, redemption limits, per-tier overrides, manual grants, and the Reward Sold Out Flow trigger.",
-};
+});
 
 export default function RewardsPage() {
   return (
@@ -17,7 +19,7 @@ export default function RewardsPage() {
         toggled on or off, edited, or removed.
       </p>
 
-      <h2>Reward Types</h2>
+      <H2>Reward Types</H2>
       <p>
         PerkStack supports seven reward types. The first three are classic discount-only rewards;
         the last four — added in the Advanced Reward Types release — let you give away specific
@@ -118,7 +120,7 @@ export default function RewardsPage() {
         </tbody>
       </table>
 
-      <h2>Reward Configuration</h2>
+      <H2>Reward Configuration</H2>
       <p>Each reward in your catalog has the following configurable fields:</p>
 
       <table>
@@ -196,7 +198,7 @@ export default function RewardsPage() {
         </tbody>
       </table>
 
-      <h2>Tier-Gated Rewards</h2>
+      <H2>Tier-Gated Rewards</H2>
       <p>
         You can restrict specific rewards to customers who have reached a minimum VIP tier. When a{" "}
         <code>minTierId</code> is set on a reward, only customers at that tier or above will see and
@@ -208,7 +210,7 @@ export default function RewardsPage() {
         higher-value rewards exclusively to your Gold tier members.
       </Callout>
 
-      <h2>Redemption Flow — Discount-Code Rewards</h2>
+      <H2>Redemption Flow — Discount-Code Rewards</H2>
       <p>
         For all reward types <em>except</em> <code>free_gift_catalog</code>, redemption produces a
         single-use discount code locked to the customer who redeemed it:
@@ -236,7 +238,7 @@ export default function RewardsPage() {
         <li>Once the code is created, the customer receives it and can apply it at checkout</li>
       </ol>
 
-      <h2>Redemption Flow — Choose Your Gift</h2>
+      <H2>Redemption Flow — Choose Your Gift</H2>
       <p>
         The <code>free_gift_catalog</code> type uses a different mechanic because the customer
         picks their gift at redemption time:
@@ -275,7 +277,7 @@ export default function RewardsPage() {
         targeting at checkout time.
       </Callout>
 
-      <h2>Boost Points Campaigns</h2>
+      <H2>Boost Points Campaigns</H2>
       <p>
         Run time-boxed multiplier campaigns (for example, &quot;2x points this weekend&quot;) from
         the same page. PerkStack records the multiplier and an end timestamp; the points-award
@@ -288,7 +290,7 @@ export default function RewardsPage() {
         removes the banner immediately.
       </p>
 
-      <h2>Stacking Policy</h2>
+      <H2>Stacking Policy</H2>
       <p>
         All PerkStack-issued discount codes are configured with{" "}
         <code>combinesWith: false</code> for product, order, and shipping discounts so loyalty
@@ -296,7 +298,7 @@ export default function RewardsPage() {
         custom stacking rules can be exposed in a future release.
       </p>
 
-      <h2>Redemption Limits</h2>
+      <H2>Redemption Limits</H2>
       <p>
         Each reward can carry three optional limits that work together to keep your campaigns
         safe and predictable. All three are available on Essential and higher.
@@ -340,7 +342,7 @@ export default function RewardsPage() {
         campaign early.
       </Callout>
 
-      <h2>Manual Grants</h2>
+      <H2>Manual Grants</H2>
       <p>
         Sometimes you want to give a specific customer a reward outside the normal catalog flow
         — a goodwill gesture after a support ticket, a launch-week thank-you, a one-off
@@ -361,7 +363,7 @@ export default function RewardsPage() {
         of a complaint converts an unhappy customer into a fan faster than any apology email.
       </Callout>
 
-      <h2>Shopify Flow Trigger — Reward Sold Out</h2>
+      <H2>Shopify Flow Trigger — Reward Sold Out</H2>
       <p>
         Whenever a reward&apos;s total redemption limit is hit for the first time, PerkStack
         fires the <code>reward-sold-out</code> Shopify Flow trigger. Use it to automate
@@ -375,7 +377,7 @@ export default function RewardsPage() {
         consumers of it.
       </p>
 
-      <h2>Managing Rewards</h2>
+      <H2>Managing Rewards</H2>
       <p>Each reward in the catalog supports the following operations:</p>
       <ul>
         <li>
@@ -397,7 +399,7 @@ export default function RewardsPage() {
         Those codes remain active in Shopify until they expire or are manually deleted.
       </Callout>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works

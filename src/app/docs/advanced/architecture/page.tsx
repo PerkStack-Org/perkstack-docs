@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { createDocMetadata } from "@/lib/seo";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createDocMetadata("/docs/advanced/architecture", {
   title: "Architecture",
   description:
     "Understand PerkStack's monorepo structure, technology stack, infrastructure, and how the packages and extensions fit together.",
-};
+});
 
 export default function ArchitecturePage() {
   return (
@@ -17,7 +19,7 @@ export default function ArchitecturePage() {
         extensions, all deployed as Docker containers to Railway.
       </p>
 
-      <h2>Monorepo Structure</h2>
+      <H2>Monorepo Structure</H2>
       <table>
         <thead>
           <tr>
@@ -70,9 +72,9 @@ export default function ArchitecturePage() {
         </tbody>
       </table>
 
-      <h2>Technology Stack</h2>
+      <H2>Technology Stack</H2>
 
-      <h3>Web Application</h3>
+      <H3>Web Application</H3>
       <ul>
         <li>
           <strong>Remix</strong> (with Vite): server-rendered React framework for the admin UI
@@ -85,7 +87,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h3>Database</h3>
+      <H3>Database</H3>
       <ul>
         <li>
           <strong>PostgreSQL</strong>: primary relational database
@@ -95,7 +97,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h3>Job Queue</h3>
+      <H3>Job Queue</H3>
       <ul>
         <li>
           <strong>BullMQ</strong>: Redis-backed job queue for reliable background processing
@@ -105,7 +107,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h3>Storage</h3>
+      <H3>Storage</H3>
       <ul>
         <li>
           <strong>Cloudflare R2</strong>: S3-compatible object storage for review photos, custom
@@ -113,7 +115,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h3>Email</h3>
+      <H3>Email</H3>
       <ul>
         <li>
           <strong>Resend</strong>: transactional email delivery for review requests, notifications,
@@ -121,7 +123,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h3>Image Processing</h3>
+      <H3>Image Processing</H3>
       <ul>
         <li>
           <strong>Sharp</strong>: server-side image resizing, format conversion, and thumbnail
@@ -129,7 +131,7 @@ export default function ArchitecturePage() {
         </li>
       </ul>
 
-      <h2>Infrastructure</h2>
+      <H2>Infrastructure</H2>
       <table>
         <thead>
           <tr>
@@ -176,7 +178,7 @@ export default function ArchitecturePage() {
         Turborepo handles build caching and dependency ordering.
       </Callout>
 
-      <h2>Data Flow</h2>
+      <H2>Data Flow</H2>
       <ol>
         <li>
           <strong>Shopify → Web App</strong>: Shopify sends webhook events (orders, customers, etc.)
@@ -200,7 +202,7 @@ export default function ArchitecturePage() {
         </li>
       </ol>
 
-      <h2>Shopify Extensions</h2>
+      <H2>Shopify Extensions</H2>
       <p>PerkStack includes seven Shopify extensions:</p>
       <table>
         <thead>
@@ -263,7 +265,7 @@ export default function ArchitecturePage() {
         </tbody>
       </table>
 
-      <h2>Related</h2>
+      <H2>Related</H2>
       <ul>
         <li>
           <a href="/docs/advanced/webhooks">Webhooks</a>: all webhook handlers and their processing
