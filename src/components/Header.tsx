@@ -79,7 +79,7 @@ export default function Header() {
               <ExternalLink size={11} />
             </a>
             <a
-              href="https://apps.shopify.com"
+              href="https://apps.shopify.com/perkstack"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 text-[13px] font-medium text-white bg-gradient-to-r from-ps-accent to-ps-accent-light rounded-lg hover:shadow-md hover:shadow-ps-accent/20 transition-all"

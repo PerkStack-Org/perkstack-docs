@@ -352,7 +352,7 @@ export default function SearchDialog({ open, onClose }: { open: boolean; onClose
         icon: <ExternalLink size={16} />,
         section: "action",
         onSelect: () => {
-          window.open("https://apps.shopify.com", "_blank");
+          window.open("https://apps.shopify.com/perkstack", "_blank");
           onClose();
         },
       },
