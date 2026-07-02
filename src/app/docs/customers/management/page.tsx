@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/customers/management", {
   title: "Customer Management",
   description:
-    "Search, browse, and manage loyalty customers. View points balances, tiers, and frozen status from the customer list.",
+    "Search, browse, and manage every member of your loyalty program from one list, with quick actions to adjust points, freeze accounts, and review history.",
 });
 
 export default function CustomerManagementPage() {
@@ -15,137 +15,147 @@ export default function CustomerManagementPage() {
     <div className="docs-prose">
       <h1>Customer Management</h1>
       <p>
-        The customer management page (<strong>PerkStack → Customers</strong>) gives you a
-        searchable, paginated list of every customer enrolled in your loyalty program. From here you
-        can review balances, check tier status, and take quick actions like freezing or unfreezing a
-        customer&apos;s loyalty account.
+        The Customers list is where you find and manage everyone in your loyalty program. Search for
+        a shopper, see their points and spend at a glance, and open quick actions without leaving the
+        page. Open it from the <strong>Customers</strong> tab in the PerkStack menu.
       </p>
 
-      <H2>Searching Customers</H2>
+      <Callout type="info">
+        Customers appear here automatically once they interact with your program &mdash; earning
+        points, redeeming a reward, or leaving a review. You never add them by hand. Until then the
+        list shows an empty state: &quot;No customers yet.&quot;
+      </Callout>
+
+      <H2>Finding a customer</H2>
       <p>
-        Use the search bar at the top of the page to find customers by <strong>name</strong> or{" "}
-        <strong>email address</strong>. The search is case-insensitive and matches partial strings,
-        so typing <code>jane</code> will find &ldquo;Jane Smith&rdquo; and
-        &ldquo;janetaylor@example.com&rdquo;.
+        Use the search box to filter the list by <strong>name</strong> or <strong>email</strong>.
+        The list shows <strong>20 customers per page</strong> with pagination and a running total
+        count, so you can page through your whole membership or jump straight to one shopper.
       </p>
 
-      <H2>Customer Table</H2>
-      <p>The customer list displays the following columns:</p>
+      <H2>What the list shows</H2>
+      <p>Each row summarizes one customer:</p>
       <table>
         <thead>
           <tr>
             <th>Column</th>
-            <th>Description</th>
+            <th>What it shows</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <strong>Name</strong>
+              <strong>Customer</strong>
             </td>
-            <td>Customer&apos;s full name (links to their detail page)</td>
+            <td>Name and email address</td>
           </tr>
           <tr>
             <td>
-              <strong>Email</strong>
+              <strong>Points balance</strong>
             </td>
-            <td>Customer&apos;s email address</td>
+            <td>Points the customer can redeem right now</td>
           </tr>
           <tr>
             <td>
               <strong>Tier</strong>
             </td>
             <td>
-              Current VIP tier (if tiers are enabled on the <PlanBadge plan="growth" /> plan or above)
+              The customer&apos;s VIP tier. This column only appears when{" "}
+              <a href="/docs/loyalty/vip-tiers">VIP tiers</a> are turned on (<PlanBadge plan="growth" />)
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Points Balance</strong>
+              <strong>Orders</strong>
             </td>
-            <td>Current available points (earned minus redeemed/expired)</td>
+            <td>Number of orders the customer has placed</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Total spent</strong>
+            </td>
+            <td>Lifetime amount the customer has spent with your store</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Joined</strong>
+            </td>
+            <td>How long ago the customer joined your program</td>
           </tr>
           <tr>
             <td>
               <strong>Status</strong>
             </td>
-            <td>Active or Frozen, indicating whether the customer can earn/redeem points</td>
+            <td>
+              <strong>Active</strong>, or a <strong>Frozen</strong> badge if the customer&apos;s
+              loyalty is paused (see <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>)
+            </td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Pagination</H2>
+      <H2>The Manage quick actions</H2>
       <p>
-        Results are paginated with navigation controls at the bottom of the table. The default page
-        size shows 25 customers per page. Use the previous/next buttons to navigate through your
-        customer list.
+        Every row has a <strong>Manage</strong> button that opens a pop-up with three tabs, so you
+        can handle most day-to-day requests without opening the full profile:
       </p>
-
-      <H2>Quick Actions</H2>
-      <p>From the customer list, you can perform the following actions on any customer row:</p>
+      <H3>Overview</H3>
       <ul>
+        <li>A snapshot of the customer&apos;s balance, tier, and status.</li>
         <li>
-          <strong>View Details</strong>: click the customer name to open their{" "}
-          <a href="/docs/customers/detail">detail page</a>
+          <strong>Freeze</strong> or <strong>unfreeze</strong> the customer&apos;s loyalty.
         </li>
         <li>
-          <strong>Freeze / Unfreeze</strong>: toggle the customer&apos;s loyalty status (see{" "}
-          <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>)
+          <strong>Change tier</strong> &mdash; pin them to a VIP tier or reset to automatic (VIP
+          tiers only).
+        </li>
+        <li>
+          <strong>Reset balance to 0</strong>, or <strong>expire</strong> their active points.
+        </li>
+      </ul>
+      <H3>Adjust points</H3>
+      <ul>
+        <li>
+          Choose a direction &mdash; <strong>Add</strong> or <strong>Subtract</strong> &mdash; and
+          enter an amount.
+        </li>
+        <li>
+          Add a <strong>reason</strong>. It is saved to the customer&apos;s points history so you (or
+          a teammate) can see why the balance changed later.
+        </li>
+      </ul>
+      <H3>History &amp; actions</H3>
+      <ul>
+        <li>Shows the customer&apos;s most recent points activity.</li>
+        <li>
+          Each entry has a <strong>Void</strong> action that reverses that single transaction.
+          Voided entries stay visible, struck through and badged, so the record is always complete.
         </li>
       </ul>
 
-      <Callout type="info">
-        Customers are automatically created in PerkStack when they place an order, create an
-        account, or interact with the loyalty widget. You do not need to import customers manually.
-      </Callout>
-
-      <H2>Understanding Customer Status</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Can Earn Points</th>
-            <th>Can Redeem Points</th>
-            <th>Reviews</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Active</strong>
-            </td>
-            <td>Yes</td>
-            <td>Yes</td>
-            <td>Can submit reviews</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Frozen</strong>
-            </td>
-            <td>No</td>
-            <td>No</td>
-            <td>Can still submit reviews</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Callout type="warning">
-        Freezing a customer&apos;s loyalty account does not affect their ability to place orders or
-        submit reviews. It only prevents points from being earned or redeemed.
+      <Callout type="tip">
+        For a fuller picture &mdash; tier progress, recent reviews, pending point grants, and the{" "}
+        <strong>Grant reward</strong> control &mdash; open the customer&apos;s{" "}
+        <a href="/docs/customers/detail">detail page</a> by clicking their name.
       </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/customers/detail">Customer Detail</a>: full profile, transaction history,
-          and manual adjustments
+          <a href="/docs/customers/detail">Customer Detail</a>: the full per-customer profile and
+          manual controls
         </li>
         <li>
-          <a href="/docs/customers/tier-overrides">Tier Overrides</a>: manually assign a VIP tier
+          <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>: pause a single customer&apos;s
+          loyalty
         </li>
         <li>
-          <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>: suspend a customer&apos;s
-          loyalty participation
+          <a href="/docs/customers/tier-overrides">Tier Overrides</a>: manually set a
+          customer&apos;s VIP tier
+        </li>
+        <li>
+          <a href="/docs/customers/admin-blocks">Customer Page Blocks</a>: manage loyalty from
+          Shopify&apos;s own customer page
         </li>
       </ul>
     </div>

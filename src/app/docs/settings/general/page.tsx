@@ -5,184 +5,153 @@ import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/settings/general", {
-  title: "General Settings",
+  title: "General",
   description:
-    "Configure your loyalty program's core settings including points naming, icons, expiry rules, branding, and logo.",
+    "Name your points, set an optional expiry, delay earned points to cover refunds, and add your store logo — the core settings for your loyalty program.",
 });
 
 export default function GeneralSettingsPage() {
   return (
     <div className="docs-prose">
-      <h1>General Settings</h1>
+      <h1>General</h1>
       <p>
-        The general settings page (<strong>PerkStack → Settings → General</strong>) lets you
-        configure the core behaviour and branding of your loyalty program.
+        General settings (<strong>PerkStack → Settings → General</strong>) control the basics of your
+        loyalty program: what you call your points, whether they expire, when they land, and the logo
+        shoppers see. Sensible defaults are already in place, so you only change what you need.
       </p>
 
-      <H2>Points Naming</H2>
+      <H2>Points name</H2>
       <p>
-        Customise the name of your loyalty currency to match your brand. PerkStack uses two fields:
+        Points are the currency of your program. By default they&apos;re called{" "}
+        <strong>Points</strong> (plural) and <strong>Point</strong> (singular) &mdash; as in
+        &ldquo;You have 500 Points&rdquo; and &ldquo;Earn 1 Point per dollar.&rdquo; On{" "}
+        <PlanBadge plan="growth" /> and above you can rename them to fit your brand (Stars, Coins,
+        Gems, Pearls) and add a custom points icon that appears next to point values in the widget and
+        emails.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Default</th>
-            <th>Example</th>
-            <th>Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Plural Name</strong>
-            </td>
-            <td>Points</td>
-            <td>Stars</td>
-            <td>&ldquo;You have 500 Stars&rdquo;</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Singular Name</strong>
-            </td>
-            <td>Point</td>
-            <td>Star</td>
-            <td>&ldquo;Earn 1 Star per dollar&rdquo;</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Callout type="tip">
-        Choose a name that fits your brand identity. Common choices include Stars, Coins, Gems,
-        Pearls, or simply Points.
-      </Callout>
-
-      <H2>Custom Points Icon</H2>
-      <p>
-        Upload a custom icon that appears alongside point values in the storefront widget and
-        emails. The icon should be:
-      </p>
-      <ul>
-        <li>A square image (recommended 64×64 px or larger)</li>
-        <li>PNG or SVG format with a transparent background</li>
-        <li>Uploaded via the icon URL field. Paste a direct URL to your hosted image</li>
-      </ul>
-
-      <H2>Points Expiry</H2>
-      <p>Control whether points expire and how customers are notified before expiry.</p>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
             <th>Default</th>
-            <th>Description</th>
+            <th>What it controls</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <strong>Expiry Period</strong>
+              <strong>Plural name</strong>
             </td>
-            <td>Never (null)</td>
-            <td>
-              Number of months after which unused points expire. Set to <code>null</code> or leave
-              blank to disable expiry entirely.
-            </td>
+            <td>Points</td>
+            <td>Shown wherever a balance or amount appears &mdash; &ldquo;You have 500 Stars.&rdquo;</td>
           </tr>
           <tr>
             <td>
-              <strong>Notification Days</strong>
+              <strong>Singular name</strong>
             </td>
-            <td>14</td>
+            <td>Point</td>
+            <td>Used for a value of one &mdash; &ldquo;Earn 1 Star per dollar.&rdquo;</td>
+          </tr>
+          <tr>
             <td>
-              How many days before expiry to send the customer an email notification. Only active
-              when expiry is enabled.
+              <strong>Points icon</strong>
             </td>
+            <td>None</td>
+            <td>A small square image shown beside point values. Paste a link to your hosted image.</td>
           </tr>
         </tbody>
       </table>
-
-      <Callout type="warning">
-        Enabling expiry affects all existing points retroactively. Points that are already older
-        than the expiry period will be expired on the next scheduled check. Consider communicating
-        this change to your customers before enabling.
+      <Callout type="info">
+        Renaming your points and adding a custom icon are available on <PlanBadge plan="growth" /> and
+        above. On lower plans your points stay named &ldquo;Points.&rdquo;
       </Callout>
 
-      <H2>Logo</H2>
+      <H2>Points expiry <PlanBadge plan="essential" /></H2>
       <p>
-        Set a logo URL that appears in the storefront loyalty widget and in transactional emails.
-        This should be your store&apos;s logo or a custom loyalty program logo.
-      </p>
-      <ul>
-        <li>Recommended size: 200×200 px or larger</li>
-        <li>PNG, SVG, or JPEG format</li>
-        <li>Paste a direct URL to the hosted image</li>
-      </ul>
-
-      <H2>PerkStack Branding</H2>
-      <p>
-        By default, the storefront widget shows a &ldquo;Powered by PerkStack&rdquo; badge. You can
-        remove this branding on the <PlanBadge plan="growth" /> plan or higher.
+        By default, points <strong>never expire</strong> &mdash; a customer keeps everything they earn.
+        On <PlanBadge plan="essential" /> and above you can set an expiry so dormant balances reset,
+        which encourages customers to come back and redeem before they lose points.
       </p>
       <table>
         <thead>
           <tr>
-            <th>Plan</th>
-            <th>Branding Behaviour</th>
+            <th>Setting</th>
+            <th>Default</th>
+            <th>What it does</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <PlanBadge plan="free" />
+              <strong>Expiry period</strong>
             </td>
-            <td>&ldquo;Powered by PerkStack&rdquo; always visible</td>
+            <td>Never</td>
+            <td>
+              The number of months of inactivity after which unused points expire. Leave it blank to
+              keep points forever.
+            </td>
           </tr>
           <tr>
             <td>
-              <PlanBadge plan="essential" />
+              <strong>Expiry reminder</strong>
             </td>
-            <td>Toggle to show or hide branding</td>
-          </tr>
-          <tr>
+            <td>30 days before</td>
             <td>
-              <PlanBadge plan="growth" />
+              How many days ahead of expiry PerkStack emails the customer a heads-up so they have time
+              to redeem. Only used when expiry is turned on.
             </td>
-            <td>Toggle to show or hide branding</td>
-          </tr>
-          <tr>
-            <td>
-              <PlanBadge plan="studio" />
-            </td>
-            <td>Toggle to show or hide branding (custom sender domain available)</td>
           </tr>
         </tbody>
       </table>
+      <Callout type="warning">
+        Turning on expiry applies to points customers already hold. Balances that are already older
+        than the expiry window will be removed on the next daily check. Let your customers know before
+        you switch it on.
+      </Callout>
 
-      <H2>Saving Changes</H2>
+      <H2>Points delay <PlanBadge plan="essential" /></H2>
       <p>
-        All settings on this page use the Shopify Contextual Save Bar. When you modify any field,
-        the save bar appears at the top of the page. Click <strong>Save</strong> to persist your
-        changes or <strong>Discard</strong> to revert.
+        Points delay (<PlanBadge plan="essential" /> and above) holds points earned on an order for a
+        set number of days before they become spendable. That waiting period covers your return
+        window, so points from an order that gets refunded never get spent first. It ships{" "}
+        <strong>turned off</strong>; the default delay is <strong>30 days</strong> (you can set 1&ndash;365).
+      </p>
+      <p>
+        While points are held, the customer sees them as <strong>pending</strong> in the loyalty
+        widget, with the date they&apos;ll become available. Once the delay passes, the points land
+        automatically and are ready to redeem.
       </p>
 
-      <Callout type="info">
-        Changes to points naming and icon take effect immediately across the storefront widget and
-        all future emails. Previously sent emails are not affected.
+      <H2>Store logo</H2>
+      <p>
+        Add your store logo so it appears at the top of the storefront loyalty widget and in the emails
+        PerkStack sends your customers. Paste a link to your hosted logo image; a square or wide logo
+        of at least 200&nbsp;px works well. There&apos;s no logo by default.
+      </p>
+
+      <Callout type="tip">
+        Plan-gated fields (renaming points, expiry, delay) only require the higher plan when you{" "}
+        <em>change</em> them. If you downgrade, your saved values are kept and you can still edit other
+        General settings freely &mdash; upgrading again brings the gated fields back.
       </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/settings/widget-customization">Widget Customization</a> for styling the
-          storefront launcher
+          <a href="/docs/loyalty/points-system">How Points Work</a>: how balances, pending points, and
+          expiry are tracked
         </li>
         <li>
-          <a href="/docs/settings/trigger-button">Trigger Button</a> to customise the floating
-          rewards button
+          <a href="/docs/settings/widget-customization">Widget Customization</a>: style the storefront
+          launcher and loyalty page
         </li>
         <li>
-          <a href="/docs/settings/billing">Billing &amp; Plans</a> to upgrade and remove branding
+          <a href="/docs/settings/email">Email &amp; Notifications</a>: sender name, branding, and email
+          usage
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: which plan unlocks renaming, expiry,
+          and delay
         </li>
       </ul>
     </div>

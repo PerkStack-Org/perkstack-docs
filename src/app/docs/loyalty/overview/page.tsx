@@ -2,143 +2,127 @@ import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
 import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
+import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/loyalty/overview", {
-  title: "Loyalty Overview",
+  title: "Overview",
   description:
-    "Learn how PerkStack's loyalty program works, including earn rules, rewards catalog, referrals, and how to enable or disable loyalty for your store.",
+    "How the PerkStack loyalty program fits together: ways to earn points, rewards to redeem, VIP tiers, referrals, and points campaigns.",
 });
 
 export default function LoyaltyOverviewPage() {
   return (
     <div className="docs-prose">
-      <h1>Loyalty Overview</h1>
+      <h1>Overview</h1>
       <p>
-        PerkStack&apos;s loyalty program lets you reward customers with points for purchases,
-        reviews, referrals, and more. Customers redeem points for discounts in your store, driving
-        repeat purchases and long-term engagement.
+        Your loyalty program gives shoppers a reason to come back: they earn points for actions you
+        choose, then spend those points on rewards you set. Around that core loop, PerkStack adds VIP
+        tiers, referrals, and time-boxed points campaigns to drive repeat revenue. This page shows
+        how the pieces fit together and links to the detail for each.
       </p>
 
-      <H2>Enabling and Disabling Loyalty</H2>
+      <H2>The loyalty loop</H2>
       <p>
-        Toggle the loyalty program on or off from the <strong>Loyalty</strong> page in your Shopify
-        admin under <strong>PerkStack → Loyalty</strong>. This updates the{" "}
-        <code>shops.loyaltyEnabled</code> setting for your store.
+        Everything revolves around a simple cycle: a shopper <strong>earns points</strong> for
+        buying, signing up, writing a review, and other actions &mdash; then{" "}
+        <strong>redeems points</strong> for a discount or perk at checkout. The more reasons a
+        shopper has to earn, and the more appealing your rewards, the more often they return.
       </p>
 
-      <Callout type="warning">
-        When loyalty is disabled, customers cannot earn or redeem points. All loyalty activity is
-        paused, and no points are awarded for purchases, reviews, or any other action. Existing
-        point balances are preserved and become active again when you re-enable loyalty.
-      </Callout>
-
-      <H2>Loyalty Dashboard</H2>
+      <H2>Ways to earn</H2>
       <p>
-        The loyalty page is organized into three tabs, each managing a different aspect of your
-        program:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Tab</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Earn Rules</strong>
-            </td>
-            <td>
-              Configure how customers earn points through purchases, reviews, signups, birthdays,
-              social shares, and referrals
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Rewards Catalog</strong>
-            </td>
-            <td>
-              Define the rewards customers can redeem points for, including fixed discounts,
-              percentage discounts, and free shipping
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Referrals</strong>
-            </td>
-            <td>
-              Manage the referral program, view referral activity, and configure referrer and
-              referee point amounts
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>View Modes</H2>
-      <p>
-        Both the Earn Rules and Rewards Catalog tabs support two view modes that you can toggle
-        between:
+        Earn rules are the actions that credit points to a customer. PerkStack ships with seven:
+        purchases, account signup, text reviews, photo reviews, birthdays, social shares, and
+        referrals. You decide which are on and how many points each awards, in{" "}
+        <strong>PerkStack &rarr; Loyalty &rarr; Earn Rules</strong>.
       </p>
       <ul>
         <li>
-          <strong>Card view</strong>: visual grid layout showing each rule or reward as a card with
-          key details at a glance
-        </li>
-        <li>
-          <strong>List view</strong>: compact table layout for quickly scanning and managing many
-          items
+          <a href="/docs/loyalty/earn-rules">Ways to Earn</a> &mdash; the full list, default point
+          values, and how to configure each rule.
         </li>
       </ul>
 
-      <H2>How It All Fits Together</H2>
+      <H2>Rewards to redeem</H2>
       <p>
-        The loyalty system is built around a simple loop: customers perform actions (purchase,
-        review, share, refer) to earn points, then spend those points on rewards from your catalog.
-        Here&apos;s the high-level flow:
+        The rewards catalog is what shoppers spend points on &mdash; percentage discounts, fixed
+        amounts, free shipping, free products, and more. Redeeming a reward generates a discount code
+        that applies at checkout.
       </p>
-      <ol>
-        <li>
-          A customer completes an action that matches one of your active <strong>earn rules</strong>
-        </li>
-        <li>
-          PerkStack awards the configured number of points, recorded as a transaction in the points
-          ledger
-        </li>
-        <li>The customer&apos;s point balance updates in real time on your storefront</li>
-        <li>
-          When the customer has enough points, they can redeem a <strong>reward</strong> from your
-          catalog
-        </li>
-        <li>PerkStack creates a Shopify discount code and delivers it to the customer</li>
-      </ol>
-
-      <Callout type="tip">
-        Combine loyalty with reviews for maximum impact. Customers earn points for leaving reviews,
-        which generates social proof and drives more sales.
-      </Callout>
-
-      <H2>Next Steps</H2>
       <ul>
         <li>
-          <a href="/docs/loyalty/earn-rules">Earn Rules</a>: configure how customers earn points
+          <a href="/docs/loyalty/rewards">Rewards Catalog</a> &mdash; the reward types, point costs,
+          and redemption limits.
         </li>
         <li>
-          <a href="/docs/loyalty/rewards">Rewards Catalog</a>: set up the rewards customers can
-          redeem
+          <a href="/docs/loyalty/points-system">How Points Work</a> &mdash; balances, activity
+          history, points expiry, and points delay.
+        </li>
+      </ul>
+
+      <H2>Grow with tiers, referrals, and campaigns</H2>
+      <p>Once the basics are running, three features drive more repeat purchases:</p>
+      <ul>
+        <li>
+          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a> <PlanBadge plan="growth" /> &mdash; reward
+          your best customers with a points multiplier as they climb.
         </li>
         <li>
-          <a href="/docs/loyalty/points-system">Points System</a>: understand the ledger-based
-          points architecture
+          <a href="/docs/loyalty/referrals">Referrals</a> <PlanBadge plan="growth" /> &mdash;
+          customers share a link, and both sides get rewarded when a friend buys.
         </li>
         <li>
-          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>: reward your best customers with tiered
-          benefits
+          <a href="/docs/loyalty/campaigns">Points Campaigns &amp; Boosts</a> &mdash; run a limited
+          window where every earn is worth 2x or more.
+        </li>
+      </ul>
+      <p>
+        These stack: a VIP tier multiplier and an active campaign boost combine, so a top-tier
+        shopper buying during a boost earns even more.
+      </p>
+
+      <H2>What each plan includes</H2>
+      <p>
+        The loyalty engine works on every plan, but the more advanced pieces unlock as you grow:
+      </p>
+      <ul>
+        <li>
+          <PlanBadge plan="free" /> &mdash; earn points on purchases, signup, and text reviews;
+          offer percentage-off rewards.
         </li>
         <li>
-          <a href="/docs/loyalty/referrals">Referrals</a>: grow your store through
-          customer-to-customer referrals
+          <PlanBadge plan="essential" /> &mdash; adds photo review, birthday, and social-share
+          earning; more reward types; redemption limits; points expiry and points delay.
+        </li>
+        <li>
+          <PlanBadge plan="growth" /> &mdash; adds VIP tiers, referrals, a custom points name, and
+          advanced reward types.
+        </li>
+        <li>
+          <PlanBadge plan="studio" /> &mdash; adds the &ldquo;choose your gift&rdquo; reward.
+        </li>
+      </ul>
+
+      <Callout type="tip">
+        New to PerkStack? Turn on a couple of earn rules and publish one or two rewards first. You
+        can layer in tiers, referrals, and campaigns once the core loop is live.
+      </Callout>
+
+      <H2>Related</H2>
+      <ul>
+        <li>
+          <a href="/docs/loyalty/earn-rules">Ways to Earn</a>: the seven earning actions and their
+          defaults.
+        </li>
+        <li>
+          <a href="/docs/loyalty/rewards">Rewards Catalog</a>: what customers can redeem points for.
+        </li>
+        <li>
+          <a href="/docs/loyalty/points-system">How Points Work</a>: balances, history, expiry, and
+          delay.
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: compare what each plan unlocks.
         </li>
       </ul>
     </div>

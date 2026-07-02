@@ -1,59 +1,37 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2, H3 } from "@/components/Heading";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/checkout-widget", {
-  title: "Checkout Widget",
+  title: "Checkout Rewards",
   description:
-    "Let customers view their loyalty points, tier status, and redeem rewards directly in the Shopify checkout.",
+    "Let signed-in shoppers see their points balance and redeem an affordable reward right inside the Shopify checkout, with the discount applied to their order automatically.",
 });
 
-export default function CheckoutWidgetPage() {
+export default function CheckoutRewardsPage() {
   return (
     <div className="docs-prose">
-      <h1>Checkout Widget</h1>
+      <h1>
+        Checkout Rewards <PlanBadge plan="essential" />
+      </h1>
       <p>
-        The Checkout Widget brings your loyalty program into the Shopify checkout flow. Customers
-        can see their points balance, current tier, and available rewards, then redeem a reward
-        right at checkout without leaving the page. This is a{" "}
-        <strong>Shopify checkout UI extension</strong>, separate from the theme app extension
-        blocks.
+        Checkout Rewards puts your loyalty program in front of shoppers at the moment they buy.
+        Signed-in customers see their points balance, tier, and a short list of rewards they can
+        afford — and redeeming one applies the discount to the order right there in checkout. It
+        turns points into a reason to complete the purchase.
       </p>
 
-      <PlanBadge plan="growth" />
-
-      <Callout type="warning">
-        The Checkout Widget requires the <PlanBadge plan="growth" /> plan or higher. It is not
-        available on the Free plan.
+      <Callout type="info">
+        Checkout Rewards is available on the <PlanBadge plan="essential" /> plan and above. It
+        isn&apos;t available on the <PlanBadge plan="free" /> plan.
       </Callout>
 
-      <H2>How It Works</H2>
+      <H2>How to add it</H2>
       <p>
-        The extension targets <code>purchase.checkout.block.render</code> and renders a card inside
-        the Shopify checkout. It authenticates the customer using a session token, then fetches data
-        from two endpoints:
-      </p>
-      <ul>
-        <li>
-          <code>/apps/perkstack/api/points</code> fetches the customer&apos;s current points balance
-          and tier information
-        </li>
-        <li>
-          <code>/api/rewards</code> returns available rewards the customer can redeem
-        </li>
-      </ul>
-      <p>
-        The extension has <code>network_access = true</code> enabled, which allows it to make API
-        calls from within the checkout sandbox.
-      </p>
-
-      <H2>Placement</H2>
-      <p>
-        Checkout UI extensions are managed differently from theme app extension blocks. The Checkout
-        Widget is automatically available once PerkStack is installed and your store is on a
-        qualifying plan.
+        You add Checkout Rewards in Shopify&apos;s own checkout editor, where it appears as the{" "}
+        <strong>PerkStack Checkout</strong> block.
       </p>
       <ol>
         <li>
@@ -63,168 +41,75 @@ export default function CheckoutWidgetPage() {
           Click <strong>Customize</strong> to open the checkout editor.
         </li>
         <li>
-          Click <strong>Add block</strong> and search for <strong>PerkStack Loyalty</strong>.
+          Click <strong>Add app block</strong> and choose <strong>PerkStack Checkout</strong>.
         </li>
         <li>
-          Position the block where you want it (e.g. in the order summary sidebar or below the
-          payment section).
-        </li>
-        <li>
-          Configure the settings in the sidebar and click <strong>Save</strong>.
+          Drag it to where you want it — the order summary sidebar is a natural spot — then click{" "}
+          <strong>Save</strong>.
         </li>
       </ol>
 
       <Callout type="info">
-        The checkout editor is separate from the theme editor. You access it through{" "}
-        <strong>Settings &gt; Checkout &gt; Customize</strong>, not through Online Store &gt;
-        Themes.
+        The checkout editor is separate from the theme editor. You reach it from{" "}
+        <strong>Settings &gt; Checkout &gt; Customize</strong>, not from Online Store &gt; Themes.
       </Callout>
 
-      <H2>What the Widget Shows</H2>
-
-      <H3>Points Balance</H3>
-      <p>
-        The customer&apos;s current available points balance, displayed prominently at the top of
-        the widget card.
-      </p>
-
-      <H3>Current Tier</H3>
-      <p>
-        If VIP tiers are enabled, the widget shows the customer&apos;s current tier name and
-        progress toward the next tier.
-      </p>
-
-      <H3>Available Rewards</H3>
-      <p>
-        A list of rewards the customer can redeem with their current balance. Each reward shows the
-        name, value, and points cost. Clicking <strong>Redeem</strong> applies the corresponding
-        discount code to the checkout automatically.
-      </p>
-
-      <H3>Logged-Out State</H3>
-      <p>
-        If the customer is not logged in at checkout, the widget displays a banner encouraging them
-        to log in to view and use their loyalty points.
-      </p>
-
-      <H2>Configuration</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Setting</th>
-            <th>Key</th>
-            <th>Description</th>
-            <th>Default</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Title</td>
-            <td>
-              <code>checkoutWidgetTitle</code>
-            </td>
-            <td>Heading displayed on the widget card</td>
-            <td>&quot;Your Rewards&quot;</td>
-          </tr>
-          <tr>
-            <td>Theme mode</td>
-            <td>
-              <code>themeMode</code>
-            </td>
-            <td>
-              Appearance mode: <code>auto</code> (matches checkout), <code>light</code>, or{" "}
-              <code>dark</code>
-            </td>
-            <td>
-              <code>auto</code>
-            </td>
-          </tr>
-          <tr>
-            <td>Card style</td>
-            <td>
-              <code>cardStyle</code>
-            </td>
-            <td>
-              Visual style of the widget card: <code>elevated</code> (shadow) or <code>flat</code>{" "}
-              (no shadow)
-            </td>
-            <td>
-              <code>elevated</code>
-            </td>
-          </tr>
-          <tr>
-            <td>Show tier</td>
-            <td>
-              <code>showTier</code>
-            </td>
-            <td>Display the customer&apos;s current VIP tier</td>
-            <td>Enabled</td>
-          </tr>
-          <tr>
-            <td>Show progress</td>
-            <td>
-              <code>showProgress</code>
-            </td>
-            <td>Display a progress bar toward the next tier</td>
-            <td>Enabled</td>
-          </tr>
-          <tr>
-            <td>Show rewards</td>
-            <td>
-              <code>showRewards</code>
-            </td>
-            <td>Display redeemable rewards in the widget</td>
-            <td>Enabled</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Reward Redemption Flow</H2>
-      <ol>
-        <li>The customer sees their available rewards listed in the widget.</li>
+      <H2>What shoppers see</H2>
+      <p>A signed-in customer sees a rewards card in the checkout showing:</p>
+      <ul>
+        <li>Their available points balance, with a note about any points still pending</li>
+        <li>Their current tier and points-earning multiplier, plus progress toward the next tier</li>
         <li>
-          They click <strong>Redeem</strong> on the reward they want.
+          Up to <strong>three</strong> rewards they can afford right now, each with a{" "}
+          <strong>Redeem</strong> button
         </li>
-        <li>
-          PerkStack generates a unique discount code for the reward and applies it to the checkout.
-        </li>
-        <li>
-          The discount appears in the checkout order summary and the points are deducted from the
-          customer&apos;s balance.
-        </li>
-      </ol>
-
-      <Callout type="tip">
-        If the customer removes the discount code or abandons checkout, the points are automatically
-        refunded to their balance.
-      </Callout>
-
-      <H2>Plan Requirement</H2>
+      </ul>
       <p>
-        The checkout extension is gated behind the <code>checkoutExtension</code> feature flag,
-        which is available on the <PlanBadge plan="essential" /> plan and above. On the{" "}
-        <PlanBadge plan="free" /> plan, the extension does not render in the checkout.
+        When they redeem, the discount is applied to the order automatically — no code to copy or
+        paste. If a shopper already redeemed a reward on the loyalty launcher or loyalty page before
+        reaching checkout, that discount carries over here on its own. Guests are shown a short
+        prompt to create an account so they can redeem.
       </p>
 
-      <H2>Troubleshooting</H2>
+      <H2>Appearance</H2>
+      <p>
+        Checkout Rewards appears automatically with sensible defaults once it&apos;s added — there
+        are no per-field styling controls to set up. Its accent color follows your loyalty accent
+        color, so it stays consistent with the rest of your PerkStack widgets.
+      </p>
+
+      <H2>Requirements</H2>
       <ul>
         <li>
-          <strong>Widget not visible at checkout</strong>: confirm your store is on the{" "}
-          <PlanBadge plan="essential" /> plan or higher. Also verify the block is added in the
-          checkout editor (<strong>Settings &gt; Checkout &gt; Customize</strong>).
+          <strong>The customer must be signed in.</strong> Guests checking out without an account
+          see the sign-up prompt instead of their balance.
         </li>
         <li>
-          <strong>Customer sees &quot;Log in&quot; banner</strong>: the customer is checking out as
-          a guest. They must be logged in for the widget to show their points.
+          <strong>Your loyalty program must have rewards defined.</strong> There&apos;s nothing to
+          redeem until you&apos;ve set up at least one reward customers can afford.
         </li>
         <li>
-          <strong>Discount code not applying</strong>: ensure the reward is configured correctly in
-          PerkStack admin and that the customer has enough points.
+          <strong>Your store must be on <PlanBadge plan="essential" /> or above.</strong>
+        </li>
+      </ul>
+
+      <H2>Related</H2>
+      <ul>
+        <li>
+          <a href="/docs/loyalty/rewards">Rewards</a>: create the rewards shoppers can redeem at
+          checkout
         </li>
         <li>
-          <strong>Widget looks different from the rest of checkout</strong>: adjust the{" "}
-          <code>themeMode</code> and <code>cardStyle</code> settings to match your checkout
-          branding.
+          <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>: the floating rewards panel a
+          redeemed code can carry over from
+        </li>
+        <li>
+          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>: the tiers and multipliers shown in the
+          checkout card
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: which plan unlocks Checkout
+          Rewards
         </li>
       </ul>
     </div>

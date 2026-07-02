@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2, H3 } from "@/components/Heading";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
-import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/reviews/review-requests", {
   title: "Review Request Emails",
   description:
-    "Configure automated review request emails sent after order fulfillment, including timing, templates, reminders, and tracking.",
+    "Automatically email customers to review what they bought after an order ships, with an optional reminder. Control the timing and wording.",
 });
 
 export default function ReviewRequestsPage() {
@@ -15,277 +14,142 @@ export default function ReviewRequestsPage() {
     <div className="docs-prose">
       <h1>Review Request Emails</h1>
       <p>
-        PerkStack automatically sends review request emails to customers after their orders are
-        fulfilled. These emails encourage customers to share their experience, boosting your review
-        count and enriching your product pages with authentic feedback.
+        Most reviews come from customers you ask. After an order is fulfilled, PerkStack
+        automatically emails the customer to review what they bought, and nudges them once more if
+        they forget. It runs on its own, so your review count keeps growing without you lifting a
+        finger. You control the timing, the wording, and whether to remind at all.
       </p>
 
-      <H2>How It Works</H2>
-      <ol>
+      <H2>How it works</H2>
+      <p>
+        When an order is fulfilled, PerkStack schedules a review request for each distinct product
+        in that order. By default:
+      </p>
+      <ul>
         <li>
-          Shopify fires the <code>orders/fulfilled</code> webhook when an order is fulfilled
+          The first request is sent <strong>7 days after fulfillment</strong>, giving the customer
+          time to receive and try the product.
         </li>
         <li>
-          PerkStack creates a <code>review_requests</code> record with status <code>scheduled</code>{" "}
-          and a <code>scheduledFor</code> timestamp based on your configured delay
+          A single <strong>reminder</strong> follows <strong>3 days later</strong> — but only if the
+          customer hasn&apos;t reviewed yet. The moment they leave a review, the reminder is
+          cancelled.
         </li>
-        <li>
-          A background worker picks up scheduled requests at the appropriate time and sends the
-          email via Resend
-        </li>
-        <li>
-          The email contains the product title, product image, and a &quot;Write a Review&quot;
-          call-to-action that links to your storefront review form
-        </li>
-      </ol>
+      </ul>
+      <p>
+        Requests are one per product, so a three-item order can generate up to three requests. Only
+        ever one reminder is sent, and a customer who reviews before it fires won&apos;t receive it.
+      </p>
 
       <Callout type="info">
-        One review request is created per order per product. If an order contains three products,
-        the customer receives one email covering those products, not three separate emails.
+        Review request emails count toward your plan&apos;s monthly email cap (paid plans). If you
+        reach the cap for the month, new requests pause until the cap resets — your storefront and
+        review collection keep working normally.
       </Callout>
 
-      <H2>Timing Configuration</H2>
-      <p>Control when review requests are sent with these settings:</p>
+      <H2>Turn requests on and set the timing</H2>
+      <p>
+        Review requests are on by default. To review or change them, go to{" "}
+        <strong>PerkStack → Settings → Reviews</strong> and find the{" "}
+        <strong>Review Request Emails</strong> section:
+      </p>
 
       <table>
         <thead>
           <tr>
             <th>Setting</th>
+            <th>What it does</th>
             <th>Default</th>
-            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <code>reviewRequestDelayDays</code>
-            </td>
-            <td>7 days</td>
-            <td>Number of days after fulfillment before the first review request is sent</td>
+            <td>Enable review request emails</td>
+            <td>Turns automated requests on or off</td>
+            <td>On</td>
           </tr>
           <tr>
-            <td>
-              <code>reviewRequestReminderDelayDays</code>
-            </td>
+            <td>Request delay</td>
+            <td>Days after fulfillment before the first request is sent</td>
+            <td>7 days</td>
+          </tr>
+          <tr>
+            <td>Send one reminder</td>
+            <td>Sends a single follow-up if no review has been submitted</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Reminder delay</td>
+            <td>Days after the first request before the reminder is sent</td>
             <td>3 days</td>
-            <td>
-              Number of days after the first request before a reminder is sent (if enabled and the
-              customer has not yet submitted a review)
-            </td>
           </tr>
         </tbody>
       </table>
 
       <Callout type="tip">
-        A delay of 7–14 days gives customers enough time to receive and try the product before being
-        asked for a review. Adjust this based on your typical shipping times and product type.
+        A delay of 7 to 14 days works well for most stores — long enough for delivery and a first
+        impression. Slow-shipping or considered-purchase products may want a longer delay.
       </Callout>
 
-      <H2>Request Status Lifecycle</H2>
+      <H2>Customize the email copy</H2>
       <p>
-        Each review request progresses through a series of statuses as the customer interacts with
-        the email:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Trigger</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>scheduled</code>
-            </td>
-            <td>Order fulfilled</td>
-            <td>Request created and waiting for the scheduled send time</td>
-          </tr>
-          <tr>
-            <td>
-              <code>sent</code>
-            </td>
-            <td>Worker sends email</td>
-            <td>Email successfully delivered via Resend</td>
-          </tr>
-          <tr>
-            <td>
-              <code>opened</code>
-            </td>
-            <td>Open tracking pixel loaded</td>
-            <td>
-              Customer opened the email (sets <code>openedAt</code>)
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>clicked</code>
-            </td>
-            <td>CTA link clicked</td>
-            <td>
-              Customer clicked the review link (sets <code>clickedAt</code>, redirects to
-              storefront)
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>reviewed</code>
-            </td>
-            <td>Review submitted</td>
-            <td>Customer completed and submitted a review</td>
-          </tr>
-          <tr>
-            <td>
-              <code>cancelled</code>
-            </td>
-            <td>Manual or system action</td>
-            <td>Request was cancelled before sending (e.g. order refunded)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Tracking</H2>
-      <p>PerkStack tracks email engagement through two mechanisms:</p>
-      <ul>
-        <li>
-          <strong>Open tracking</strong>: a 1×1 transparent pixel served at{" "}
-          <code>/api/review-request.open</code>. When the email client loads this image, PerkStack
-          records the <code>openedAt</code> timestamp.
-        </li>
-        <li>
-          <strong>Click tracking</strong>: the &quot;Write a Review&quot; CTA points to{" "}
-          <code>/api/review-request.click</code>, which records the <code>clickedAt</code> timestamp
-          and then redirects the customer to the actual review form on your storefront.
-        </li>
-      </ul>
-
-      <H2>Reminders</H2>
-      <p>
-        If reminders are enabled, PerkStack sends a follow-up email to customers who received the
-        initial request but have not yet submitted a review. The reminder is sent after the
-        configured <code>reviewRequestReminderDelayDays</code> (default: 3 days after the first
-        request).
+        The subject line and body of both the request and the reminder are edited under{" "}
+        <strong>PerkStack → Settings → Email</strong>. Leave a field blank to use PerkStack&apos;s
+        default wording, or write your own to match your brand voice.
       </p>
       <p>
-        Reminders are not sent if the customer has already submitted a review for that product or if
-        the initial request was cancelled.
+        You can drop in variables that fill themselves in for each customer and product:
       </p>
-
-      <H2>Email Customisation</H2>
-      <p>
-        Customise the subject line and body of your review request emails using template variables.
-        Edit these templates in <strong>PerkStack → Settings → Review Emails</strong>.
-      </p>
-
-      <H3>Available Template Variables</H3>
       <table>
         <thead>
           <tr>
             <th>Variable</th>
-            <th>Description</th>
-            <th>Example Output</th>
+            <th>Fills in</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <code>{"{{product_title}}"}</code>
-            </td>
-            <td>Name of the purchased product</td>
-            <td>Classic Leather Tote</td>
-          </tr>
           <tr>
             <td>
               <code>{"{{customer_name}}"}</code>
             </td>
-            <td>Customer&apos;s first name</td>
-            <td>Sarah</td>
+            <td>The customer&apos;s name</td>
           </tr>
           <tr>
             <td>
-              <code>{"{{points_incentive}}"}</code>
+              <code>{"{{product_title}}"}</code>
             </td>
-            <td>Points the customer will earn for reviewing</td>
-            <td>100 points</td>
+            <td>The name of the product they bought</td>
+          </tr>
+          <tr>
+            <td>
+              <code>{"{{shop_name}}"}</code>
+            </td>
+            <td>Your store name</td>
           </tr>
         </tbody>
       </table>
-
-      <p>Example subject line:</p>
-      <pre>
-        <code>{"How are you liking your {{product_title}}, {{customer_name}}?"}</code>
-      </pre>
-
-      <p>Example body snippet:</p>
-      <pre>
-        <code>{"Share your thoughts on the {{product_title}} and earn {{points_incentive}}!"}</code>
-      </pre>
-
-      <H2>Rate Limits</H2>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Plan</th>
-            <th>Monthly Email Limit</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-            <td>~150 emails / month (bounded by the 100-order cap)</td>
-          </tr>
-          <tr>
-            <td>
-              <PlanBadge plan="essential" />
-            </td>
-            <td>5,000 emails / month</td>
-          </tr>
-          <tr>
-            <td>
-              <PlanBadge plan="growth" />
-            </td>
-            <td>25,000 emails / month</td>
-          </tr>
-          <tr>
-            <td>
-              <PlanBadge plan="studio" />
-            </td>
-            <td>50,000 emails / month</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Callout type="warning">
-        Email caps are a unified counter covering all outbound mail (review requests, reminders,
-        points earned, redemption confirmations, birthday, expiry warnings). Once the cap is hit
-        for the current calendar month, new sends are paused — submission and on-storefront display
-        still work, so customers never see a broken experience. Upgrade to lift the cap or wait for
-        the 1st of the next month.
-      </Callout>
-
-      <H2>Unique Constraint</H2>
       <p>
-        PerkStack enforces one review request per order per product. If a fulfillment webhook fires
-        multiple times for the same order (e.g. partial fulfillments), only one request is created
-        per product. This prevents customers from receiving duplicate emails.
+        For example, a subject line of{" "}
+        <code>{"How was your {{product_title}}, {{customer_name}}?"}</code> greets each customer by
+        name with the exact product they ordered. The Email settings page also lets you set your
+        sender name and reply-to address and shows a live preview.
       </p>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/reviews/overview">Reviews Overview</a>: data model and review lifecycle
+          <a href="/docs/reviews/overview">Overview</a>: how review collection works end to end
         </li>
         <li>
-          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: encourage photo submissions in
-          review requests
+          <a href="/docs/settings/email">Email &amp; Notifications</a>: edit subject lines, body
+          copy, and sender details
         </li>
         <li>
-          <a href="/docs/reviews/moderation">Review Moderation</a>: manage reviews as they come in
+          <a href="/docs/settings/review-settings">Review Settings</a>: enable requests and set the
+          timing
+        </li>
+        <li>
+          <a href="/docs/reviews/moderation">Moderation</a>: manage reviews as they come in
         </li>
       </ul>
     </div>

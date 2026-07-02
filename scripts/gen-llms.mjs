@@ -16,10 +16,10 @@ const SECTIONS = [
   ["dashboard", "Dashboard"],
   ["loyalty", "Loyalty Program"],
   ["reviews", "Product Reviews"],
+  ["integrations", "Integrations"],
   ["widgets", "Storefront Widgets"],
   ["customers", "Customers"],
   ["settings", "Settings"],
-  ["advanced", "Advanced"],
   ["troubleshooting", "Troubleshooting"],
 ];
 
@@ -54,7 +54,16 @@ let body = "# PerkStack Documentation\n\n";
 body +=
   "> Complete documentation for PerkStack, the loyalty points and product reviews platform for Shopify merchants. These docs cover setup, loyalty programs, reviews, storefront widgets, integrations, billing, and troubleshooting.\n";
 
-for (const [folder, label] of SECTIONS) {
+// Any section folder present on disk but not in the ordered map above is
+// appended (alphabetically) so a newly added section can never silently vanish
+// from llms.txt. Deleted sections simply produce no items and are skipped.
+const known = new Set(SECTIONS.map(([folder]) => folder));
+const extras = [...new Set(pages.map((p) => p.section))]
+  .filter((folder) => folder && !known.has(folder))
+  .sort()
+  .map((folder) => [folder, folder.replace(/(^|-)(\w)/g, (_, sep, c) => (sep ? " " : "") + c.toUpperCase())]);
+
+for (const [folder, label] of [...SECTIONS, ...extras]) {
   const items = pages.filter((p) => p.section === folder).sort((a, b) => a.route.localeCompare(b.route));
   if (items.length === 0) continue;
   body += `\n## ${label}\n\n`;

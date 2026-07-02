@@ -1,297 +1,156 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/overview", {
-  title: "Widgets Overview",
+  title: "Overview",
   description:
-    "An overview of all PerkStack storefront widgets, including theme app extension blocks, checkout UI, and customer account extensions.",
+    "The storefront widgets and blocks that bring your PerkStack loyalty program and reviews to your Shopify store, checkout, and customer account.",
 });
 
 export default function WidgetsOverviewPage() {
   return (
     <div className="docs-prose">
-      <h1>Widgets Overview</h1>
+      <h1>Overview</h1>
       <p>
-        PerkStack provides a suite of storefront widgets that integrate directly into your Shopify
-        theme, checkout, and customer account portal. Every widget is built as a Shopify extension,
-        requiring no manual code edits.
+        PerkStack shows up on your storefront through a set of blocks you add in Shopify&apos;s own
+        editors. Each one puts a piece of your loyalty program or reviews in front of shoppers &mdash;
+        a floating rewards button, an on-page reviews section, points at checkout, and more. This
+        page maps out every surface and where it lives.
       </p>
 
-      <H2>Architecture</H2>
-      <p>
-        All storefront widgets are delivered as <strong>theme app extension blocks</strong>,
-        compatible with Online Store 2.0 themes. They belong to the{" "}
-        <code>extensions/theme-app</code> extension (handle: <code>perkstack-theme</code>) and are
-        added to your store through the theme editor at{" "}
-        <strong>Online Store &gt; Themes &gt; Customize</strong>.
-      </p>
-      <p>
-        In addition to theme blocks, PerkStack includes a <strong>checkout UI extension</strong> for
-        the Shopify checkout and a <strong>customer account extension</strong> for the customer
-        account portal.
-      </p>
-
-      <Callout type="info">
-        Theme app extension blocks are automatically removed when you uninstall PerkStack, so there
-        is nothing to clean up manually.
-      </Callout>
-
-      <H2>Available Widgets</H2>
-      <p>
-        PerkStack ships 8 theme app extension blocks, plus a checkout extension and a customer
-        account extension, making 10 widgets in total:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Widget</th>
-            <th>Type</th>
-            <th>Target</th>
-            <th>Plan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>body</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/review-display">Review Display</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>section</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/review-form">Review Form</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>section</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/star-badge">Star Badge</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>section</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/collection-stars">Collection Stars</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>body</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/review-carousel">Review Carousel</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>section</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/loyalty-page">Loyalty Page</a>
-            </td>
-            <td>Theme block</td>
-            <td>
-              <code>section</code>
-            </td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/checkout-widget">Checkout Widget</a>
-            </td>
-            <td>Checkout UI extension</td>
-            <td>Checkout</td>
-            <td>
-              <PlanBadge plan="growth" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/docs/widgets/customer-account">Customer Account</a>
-            </td>
-            <td>Customer account extension</td>
-            <td>Account portal</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>How to Add Widgets</H2>
-      <ol>
-        <li>
-          In your Shopify admin, go to <strong>Online Store &gt; Themes</strong>.
-        </li>
-        <li>
-          Click <strong>Customize</strong> on your active theme.
-        </li>
-        <li>
-          Navigate to the page where you want to place the widget (e.g. product page, homepage, or a
-          dedicated page).
-        </li>
-        <li>
-          Click <strong>Add block</strong> or <strong>Add section</strong>, then search for the
-          PerkStack block you want to add.
-        </li>
-        <li>
-          Configure the block settings in the sidebar and click <strong>Save</strong>.
-        </li>
-      </ol>
-
-      <Callout type="tip">
-        Blocks with a <code>body</code> target (Loyalty Launcher, Collection Stars) appear on every
-        page automatically. Blocks with a <code>section</code> target must be added to each template
-        where you want them to appear.
-      </Callout>
-
-      <H2>Configuration Delivery</H2>
-      <p>
-        All widgets fetch their configuration from the <code>/api/storefront-config</code> endpoint
-        at runtime. This single endpoint delivers shared settings such as:
-      </p>
+      <H2>The three places PerkStack appears</H2>
+      <p>Your PerkStack blocks live in three different Shopify editors:</p>
       <ul>
         <li>
-          <strong>Launcher image</strong>: custom icon for the loyalty launcher button
+          <strong>Your storefront theme</strong> &mdash; added in the theme editor (
+          <strong>Online Store &rarr; Themes &rarr; Customize</strong>). This is where most blocks
+          live: the loyalty launcher, the reviews blocks, and the storefront loyalty page.
         </li>
         <li>
-          <strong>Overlay settings</strong>: panel overlay behaviour and styling
+          <strong>Checkout</strong> &mdash; added in the checkout editor (
+          <strong>Settings &rarr; Checkout &rarr; Customize</strong>).
         </li>
         <li>
-          <strong>Accent colour</strong>: primary brand colour used across all widgets
-        </li>
-        <li>
-          <strong>Trigger styling</strong>: position, size, and animation of launcher elements
+          <strong>Customer account</strong> &mdash; added in the customer account editor (
+          <strong>Settings &rarr; Customer accounts &rarr; Customize</strong>).
         </li>
       </ul>
-      <p>
-        Changes you make to these settings in the PerkStack admin are reflected on your storefront
-        immediately, with no theme editor changes needed.
-      </p>
 
-      <H2>Translations</H2>
+      <H3>Two kinds of theme block</H3>
       <p>
-        All widget text labels and messages are defined in the <code>locales/en.default.json</code>{" "}
-        file inside the theme app extension. Shopify uses this file to power the translation system,
-        so your widgets automatically respect the store&apos;s language settings.
-      </p>
-
-      <H2>Block Targets Explained</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Target</th>
-            <th>Behaviour</th>
-            <th>Placement</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>body</code>
-            </td>
-            <td>Renders on every page of the storefront</td>
-            <td>Added once in the theme editor; appears globally</td>
-          </tr>
-          <tr>
-            <td>
-              <code>section</code>
-            </td>
-            <td>Renders only on pages where it is explicitly added</td>
-            <td>Must be added to each template (product, collection, home, etc.)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>head</code>
-            </td>
-            <td>
-              Injects assets into the <code>&lt;head&gt;</code> of the page
-            </td>
-            <td>Used internally for loading scripts and styles</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Next Steps</H2>
-      <p>
-        Explore each widget in detail to learn about its specific configuration options, placement
-        instructions, and API endpoints:
+        In the theme editor, PerkStack blocks are added in one of two ways, and the difference
+        matters for where they end up:
       </p>
       <ul>
         <li>
-          <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>: floating loyalty panel on
-          every page
+          <strong>App embeds</strong> float across your whole store. You turn them on in{" "}
+          <strong>App embeds</strong> at the bottom of the theme editor&apos;s left sidebar &mdash;
+          you don&apos;t place them by hand. The <strong>Loyalty Launcher</strong> and{" "}
+          <strong>Review Collection Stars</strong> work this way.
         </li>
         <li>
-          <a href="/docs/widgets/review-display">Review Display</a>: full review list on product
-          pages
+          <strong>Section blocks</strong> are placed exactly where you want them. You use{" "}
+          <strong>Add block</strong> inside a section (usually the product template) to drop them in
+          &mdash; for example the <strong>Review Display</strong> and <strong>Review Form</strong>.
+        </li>
+      </ul>
+
+      <Callout type="info">
+        Two surfaces both show a full loyalty dashboard, and it&apos;s easy to mix them up. The{" "}
+        <strong>Loyalty Page</strong> is a theme block you place on a storefront page (usually a
+        &quot;Rewards&quot; page). <strong>Loyalty Studio</strong> is a separate block that lives
+        inside Shopify&apos;s customer account area. You can use either, or both.
+      </Callout>
+
+      <H2>Where the styling comes from</H2>
+      <p>
+        For the loyalty blocks, the theme editor only controls the essentials &mdash; placement, a
+        button label, and light / dark / auto to match your store. The deeper look (heading and
+        subheading copy, panel colors, fonts, card style, button shape, hero image, and logo) is set
+        once in the app under <strong>Settings &rarr; Widget Customization</strong>, and it applies
+        everywhere the loyalty blocks appear.
+      </p>
+      <p>
+        Full brand matching &mdash; custom colors, fonts, and a hero image &mdash; is available on the{" "}
+        <PlanBadge plan="growth" /> plan and above. Every plan can set an accent color and choose
+        light, dark, or auto.
+      </p>
+
+      <H2>Loyalty widgets</H2>
+      <ul>
+        <li>
+          <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>: a floating rewards button
+          that opens a panel with balance, tier progress, ways to earn, and rewards.
         </li>
         <li>
-          <a href="/docs/widgets/review-form">Review Form</a>: customer review submission form
+          <a href="/docs/widgets/loyalty-page">Loyalty Page</a>: a full rewards dashboard you embed
+          on a dedicated storefront page.
         </li>
         <li>
-          <a href="/docs/widgets/star-badge">Star Badge</a>: inline rating summary
+          <a href="/docs/widgets/checkout-widget">Checkout Rewards</a>: points balance, tier, and
+          redeemable rewards inside the Shopify checkout. <PlanBadge plan="essential" /> and above.
         </li>
         <li>
-          <a href="/docs/widgets/collection-stars">Collection Stars</a>: ratings on collection grids
+          <a href="/docs/widgets/customer-account">Loyalty Studio</a>: the members&apos; loyalty
+          dashboard inside the Shopify customer account area.
+        </li>
+      </ul>
+
+      <H2>Review widgets</H2>
+      <ul>
+        <li>
+          <a href="/docs/widgets/review-display">Review Display</a>: the main on-product reviews
+          block &mdash; rating summary, review list or grid, photos, and verified badges.
         </li>
         <li>
-          <a href="/docs/widgets/review-carousel">Review Carousel</a>: horizontal photo review
-          carousel
+          <a href="/docs/widgets/review-form">Review Form</a>: the &quot;Write a review&quot; form
+          with rating, photos, and an optional points incentive.
         </li>
         <li>
-          <a href="/docs/widgets/loyalty-page">Loyalty Page</a>: full-page loyalty program display
+          <a href="/docs/widgets/star-badge">Review Star Badge</a>: a compact star rating and count
+          for a single product, usually near the title.
         </li>
         <li>
-          <a href="/docs/widgets/checkout-widget">Checkout Widget</a>: redeem rewards at checkout
+          <a href="/docs/widgets/collection-stars">Review Collection Stars</a>: star ratings on
+          product cards across collection and listing pages.
         </li>
         <li>
-          <a href="/docs/widgets/customer-account">Customer Account</a>: loyalty hub in the customer
-          portal
+          <a href="/docs/widgets/review-carousel">Review Carousel</a>: a rotating carousel of your
+          best reviews, great for the homepage.
+        </li>
+        <li>
+          <strong>Review SEO</strong>: an invisible block that adds review rich-snippet data to a
+          product page so Google can show star ratings in search results. Add it on product pages
+          that show reviews; it has no visible display and no settings.
+        </li>
+      </ul>
+
+      <Callout type="tip">
+        On product pages, add the <strong>Review Display</strong> and <strong>Review Form</strong>{" "}
+        together so shoppers can read reviews and write their own in the same place. Add{" "}
+        <strong>Review SEO</strong> alongside them to earn star ratings in Google.
+      </Callout>
+
+      <H2>Related</H2>
+      <ul>
+        <li>
+          <a href="/docs/dashboard/extension-status">Theme Setup &amp; Status</a>: confirm your
+          blocks are installed and active.
+        </li>
+        <li>
+          <a href="/docs/settings/widget-customization">Widget Customization</a>: set the brand look
+          for your loyalty blocks in one place.
+        </li>
+        <li>
+          <a href="/docs/settings/review-settings">Review Settings</a>: global appearance for your
+          review blocks.
+        </li>
+        <li>
+          <a href="/docs/reviews/overview">Reviews Overview</a>: how review collection and display
+          work end to end.
         </li>
       </ul>
     </div>

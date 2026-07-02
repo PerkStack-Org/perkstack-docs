@@ -4,284 +4,113 @@ import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 
 export const metadata: Metadata = createDocMetadata("/docs/reviews/overview", {
-  title: "Reviews Overview",
+  title: "Overview",
   description:
-    "Understand how product reviews work in PerkStack, including the data model, statuses, helpful votes, and featured reviews.",
+    "Collect product reviews on your Shopify store: how the review form works, submission rules, auto-approval, and how reviews earn loyalty points.",
 });
 
 export default function ReviewsOverviewPage() {
   return (
     <div className="docs-prose">
-      <h1>Reviews Overview</h1>
+      <h1>Overview</h1>
       <p>
-        PerkStack&apos;s product reviews system lets your customers leave ratings and written
-        feedback on products they&apos;ve purchased. Reviews integrate tightly with the loyalty
-        program, so customers earn points for submitting text and photo reviews, incentivising
-        genuine feedback that drives conversions.
+        PerkStack collects star-rated product reviews right on your product pages, then turns them
+        into social proof and repeat business. Shoppers rate what they bought, other shoppers trust
+        those ratings, and reviewers earn loyalty points that bring them back to buy again.
       </p>
 
-      <Callout type="tip">
-        Reviews and loyalty work together: when a review is approved, the customer automatically
-        earns points based on your configured earn rules (text review and photo review amounts).
-      </Callout>
-
-      <H2>Review Data Model</H2>
-      <p>Each review record contains the following fields:</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>rating</code>
-            </td>
-            <td>Integer (1–5)</td>
-            <td>Star rating selected by the customer</td>
-          </tr>
-          <tr>
-            <td>
-              <code>title</code>
-            </td>
-            <td>String (optional)</td>
-            <td>Short headline for the review</td>
-          </tr>
-          <tr>
-            <td>
-              <code>body</code>
-            </td>
-            <td>String (required)</td>
-            <td>Full review text</td>
-          </tr>
-          <tr>
-            <td>
-              <code>status</code>
-            </td>
-            <td>Enum</td>
-            <td>
-              One of <code>pending</code>, <code>approved</code>, <code>rejected</code>, or{" "}
-              <code>spam</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>verifiedPurchase</code>
-            </td>
-            <td>Boolean</td>
-            <td>Whether the reviewer actually purchased the product</td>
-          </tr>
-          <tr>
-            <td>
-              <code>featured</code>
-            </td>
-            <td>Boolean</td>
-            <td>Merchant-flagged reviews displayed prominently on the storefront</td>
-          </tr>
-          <tr>
-            <td>
-              <code>adminResponse</code>
-            </td>
-            <td>String (optional)</td>
-            <td>Public reply from the merchant</td>
-          </tr>
-          <tr>
-            <td>
-              <code>helpfulCount</code>
-            </td>
-            <td>Integer</td>
-            <td>Number of times other customers marked this review as helpful</td>
-          </tr>
-          <tr>
-            <td>
-              <code>source</code>
-            </td>
-            <td>Enum</td>
-            <td>
-              Origin of the review: <code>native</code>, <code>import_judgeme</code>, or{" "}
-              <code>import_loox</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>ipAddress</code>
-            </td>
-            <td>String</td>
-            <td>IP address of the reviewer, used for spam detection and vote deduplication</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>One Review Per Customer Per Product</H2>
+      <H2>How customers leave a review</H2>
       <p>
-        PerkStack enforces a unique constraint on <code>shopId</code> + <code>customerId</code> +{" "}
-        <code>shopifyProductId</code>. This means each customer can only leave one review per
-        product per store. If a customer attempts to submit a second review for the same product,
-        the submission is rejected with a descriptive error message.
-      </p>
-
-      <Callout type="info">
-        This constraint applies to both native reviews and imported reviews. If an imported CSV
-        contains a duplicate customer–product pair, the duplicate row is skipped during import.
-      </Callout>
-
-      <H2>Review Statuses</H2>
-      <p>
-        Every review passes through a status lifecycle. The initial status depends on your
-        moderation settings. Reviews can start as <code>pending</code> (manual approval) or be
-        auto-approved.
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Visible on Storefront</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>pending</code>
-            </td>
-            <td>No</td>
-            <td>Awaiting merchant review, which is the default for new submissions</td>
-          </tr>
-          <tr>
-            <td>
-              <code>approved</code>
-            </td>
-            <td>Yes</td>
-            <td>Published on the storefront; triggers points award and optional Flow trigger</td>
-          </tr>
-          <tr>
-            <td>
-              <code>rejected</code>
-            </td>
-            <td>No</td>
-            <td>Declined by the merchant and not shown to customers</td>
-          </tr>
-          <tr>
-            <td>
-              <code>spam</code>
-            </td>
-            <td>No</td>
-            <td>Flagged as spam, hidden from all views except the Spam filter in admin</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Helpful Votes</H2>
-      <p>
-        Customers can mark reviews as helpful. Each customer (or unique IP address for anonymous
-        visitors) can only vote once per review. The <code>helpfulCount</code> is incremented on
-        each unique vote and displayed alongside the review on the storefront.
-      </p>
-      <p>
-        Helpful votes help surface the most useful reviews and can be used for sorting reviews by
-        relevance on the product page.
-      </p>
-
-      <H2>Featured Reviews</H2>
-      <p>
-        Merchants can mark any approved review as <strong>featured</strong>. Featured reviews are
-        served through the <code>/api/featured-reviews</code> endpoint and can be displayed in
-        prominent positions on the storefront, such as in a carousel on the homepage or a dedicated
-        testimonials section.
-      </p>
-
-      <Callout type="tip">
-        Use featured reviews to highlight your best customer feedback. Featured reviews are
-        available to theme app extension blocks and can be positioned anywhere in your theme via the
-        Shopify theme editor.
-      </Callout>
-
-      <H2>Review Sources</H2>
-      <p>
-        The <code>source</code> field tracks where each review originated:
+        Reviews are written through the review form you add to your product pages. On it, a customer
+        provides:
       </p>
       <ul>
         <li>
-          <strong>
-            <code>native</code>
-          </strong>
-          : submitted directly through PerkStack&apos;s review form on your storefront
+          A <strong>star rating</strong> from 1 to 5
         </li>
         <li>
-          <strong>
-            <code>import_judgeme</code>
-          </strong>
-          : imported from a Judge.me CSV export
+          A short <strong>title</strong> (optional, unless you choose to require it)
         </li>
         <li>
-          <strong>
-            <code>import_loox</code>
-          </strong>
-          : imported from a Loox CSV export
+          The <strong>review text</strong> itself
+        </li>
+        <li>
+          One or more <strong>photos</strong> (optional, on paid plans)
         </li>
       </ul>
       <p>
-        Imported reviews retain their original ratings, text, and dates. They appear identically to
-        native reviews on the storefront.
+        When they submit, the review either publishes right away or waits for your approval,
+        depending on your moderation settings.
       </p>
 
-      <H2>Points Integration</H2>
-      <p>
-        When a review is approved, PerkStack automatically enqueues a points award for the reviewer:
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Review Type</th>
-            <th>Default Points</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Text review</td>
-            <td>100 points</td>
-            <td>Awarded for any approved review with a body</td>
-          </tr>
-          <tr>
-            <td>Photo review</td>
-            <td>200 points</td>
-            <td>Awarded when an approved review includes at least one photo</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <Callout type="info">
-        Point amounts are configurable in your loyalty settings. Photo reviews always earn the photo
-        review amount (not both text and photo).
-      </Callout>
-
-      <H2>Next Steps</H2>
+      <H2>Submission rules</H2>
+      <p>A few rules keep reviews genuine and keep spam out. In plain terms:</p>
       <ul>
         <li>
-          <a href="/docs/reviews/moderation">Review Moderation</a>: approve, reject, and manage
-          reviews from your admin
+          <strong>Customers must be signed in.</strong> Reviews are tied to a real customer account,
+          which is also how PerkStack knows whether the reviewer actually bought the product.
         </li>
+        <li>
+          <strong>One review per product, per customer.</strong> A shopper can review a product
+          once. If they try again, they&apos;re told they&apos;ve already reviewed it.
+        </li>
+        <li>
+          <strong>A minimum review length.</strong> The review text has to be at least a handful of
+          characters (10 by default) so one-word entries don&apos;t slip through. You can raise this
+          minimum on the review form.
+        </li>
+      </ul>
+      <p>
+        Customers can also delete their own review if they change their mind, which you can turn off
+        in the review display settings.
+      </p>
+
+      <H2>Auto-approval</H2>
+      <p>
+        You don&apos;t have to approve every review by hand. A review publishes instantly when it
+        meets your <strong>auto-approve threshold</strong> (4 stars by default) and contains no
+        blacklisted words. That means clean 4- and 5-star reviews go live the moment they&apos;re
+        submitted, while lower ratings or flagged reviews wait in your moderation queue for a quick
+        look.
+      </p>
+
+      <Callout type="tip">
+        Only approved reviews are ever shown on your storefront, so nothing appears publicly before
+        you&apos;ve had the chance to see it.
+      </Callout>
+
+      <H2>Reviews and loyalty points</H2>
+      <p>
+        This is the flywheel that makes reviews compound. When a review is approved, the reviewer
+        earns loyalty points. Those points pull the customer back to your store to redeem them,
+        where they buy again, become eligible to review again, and leave more social proof for the
+        next shopper. Text reviews earn points on every plan; awarding a bonus for photo reviews is
+        available on paid plans.
+      </p>
+      <p>
+        Point amounts come from your loyalty earn rules, not from review settings, so you decide how
+        generous the reward is.
+      </p>
+
+      <H2>Related</H2>
+      <ul>
         <li>
           <a href="/docs/reviews/review-requests">Review Request Emails</a>: automatically ask
-          customers for reviews after purchase
+          customers to review what they bought
         </li>
         <li>
-          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: enable and configure photo
-          uploads
+          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: let customers add photos for
+          stronger social proof
         </li>
         <li>
-          <a href="/docs/reviews/importing">Importing Reviews</a>: migrate reviews from Judge.me or
-          Loox
+          <a href="/docs/reviews/moderation">Moderation</a>: approve, reply to, and feature reviews
         </li>
         <li>
-          <a href="/docs/reviews/seo">SEO &amp; Rich Snippets</a>: add structured data for Google
-          star ratings
+          <a href="/docs/reviews/seo">SEO &amp; Rich Snippets</a>: show star ratings in Google
+          search results
+        </li>
+        <li>
+          <a href="/docs/loyalty/earn-rules">Ways to Earn</a>: set the points a review is worth
         </li>
       </ul>
     </div>

@@ -5,176 +5,185 @@ import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/troubleshooting/faq", {
-  title: "Frequently Asked Questions",
+  title: "FAQ",
   description:
-    "Answers to common questions about PerkStack covering customer accounts, data portability, review imports, tier calculations, and more.",
+    "Answers to the questions merchants ask most about PerkStack — plans and pricing, trials, order caps, downgrades, branding, and how points and reviews behave.",
 });
 
 export default function FAQPage() {
   return (
     <div className="docs-prose">
-      <h1>Frequently Asked Questions</h1>
-
-      <H2>Customer Accounts &amp; Points</H2>
-
-      <H3>Can customers earn points without a Shopify account?</H3>
+      <h1>FAQ</h1>
       <p>
-        No. Points are tied to Shopify customer accounts. Guests who check out without creating an
-        account do not earn points. If a guest creates an account later using the same email,
-        previously placed orders are not retroactively awarded points.
+        Quick answers to the questions merchants ask most. For step-by-step fixes, see{" "}
+        <a href="/docs/troubleshooting/common-issues">Common Issues</a>.
       </p>
 
-      <Callout type="tip">
-        Encourage account creation by highlighting the points incentive in your storefront widget
-        and at checkout. The checkout extension can display how many points the customer would earn
-        for their current order.
-      </Callout>
+      <H2>Plans &amp; pricing</H2>
 
-      <H3>Do points transfer between stores?</H3>
+      <H3>What plans does PerkStack offer, and how much do they cost?</H3>
+      <p>There are four plans, billed monthly:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Price / month</th>
+            <th>Free trial</th>
+            <th>Monthly order cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <PlanBadge plan="free" />
+            </td>
+            <td>$0</td>
+            <td>&mdash;</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="essential" />
+            </td>
+            <td>$29</td>
+            <td>14 days</td>
+            <td>500</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="growth" />
+            </td>
+            <td>$99</td>
+            <td>21 days</td>
+            <td>2,500</td>
+          </tr>
+          <tr>
+            <td>
+              <PlanBadge plan="studio" />
+            </td>
+            <td>$299</td>
+            <td>30 days</td>
+            <td>10,000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <H3>Is there annual billing?</H3>
       <p>
-        No. Points are per-shop. Each Shopify store that installs PerkStack has its own independent
-        loyalty program. Customers who shop at multiple stores using PerkStack have separate
-        balances at each.
+        No. Every plan is billed monthly through Shopify. Charges appear on your regular Shopify
+        invoice, and you approve them on Shopify&apos;s own billing page &mdash; you never enter card
+        details inside PerkStack.
       </p>
 
-      <H3>How are VIP tiers calculated?</H3>
+      <H3>Can I try a paid plan first?</H3>
       <p>
-        Tiers are based on <strong>lifetime earned points</strong>, not the customer&apos;s current
-        balance. This means that redeeming points for rewards or having points expire does not lower
-        a customer&apos;s tier. Only the total points ever earned count toward tier qualification.
+        Yes. Essential includes a 14-day trial, Growth a 21-day trial, and Studio a 30-day trial. You
+        get that plan&apos;s full features and caps during the trial, and you&apos;re not charged if
+        you cancel or downgrade before it ends.
       </p>
+
+      <H3>What happens if I hit my monthly order cap?</H3>
       <p>
-        When a customer&apos;s lifetime earned points cross a tier threshold, they are automatically
-        promoted to the new tier. Tier demotions are not automatic; once a customer reaches a tier,
-        they stay there unless an admin clears a tier override.
+        On <PlanBadge plan="free" /> and <PlanBadge plan="essential" />, point-earning simply pauses
+        once you reach the cap and resumes at the start of the next month. On{" "}
+        <PlanBadge plan="growth" /> and <PlanBadge plan="studio" />, orders keep earning past the cap
+        and the extra is billed as usage on your Shopify invoice (capped so it can&apos;t run away).
       </p>
 
       <Callout type="info">
-        VIP tiers require the <PlanBadge plan="growth" /> plan or above. See{" "}
-        <a href="/docs/customers/tier-overrides">Tier Overrides</a> for manual tier management.
+        Reaching the cap only pauses new point-earning and outbound emails. Your storefront widget,
+        redeeming already-earned points, and collecting and displaying reviews all keep working.
       </Callout>
+
+      <H3>If I downgrade, do my customers lose their points?</H3>
+      <p>
+        No. Earned points always stay valid. Downgrading only changes your caps and which features
+        are active going forward &mdash; your settings and customer balances are kept, and premium
+        features reactivate if you upgrade again.
+      </p>
+
+      <H3>How do I remove the &quot;Powered by PerkStack&quot; branding?</H3>
+      <p>
+        Removing the branding is available on <PlanBadge plan="essential" /> and above. Turn it off in{" "}
+        <a href="/docs/settings/email">Email &amp; Notifications</a>. On the Free plan the mark always
+        shows.
+      </p>
+
+      <H3>Which features need a higher plan?</H3>
+      <ul>
+        <li>
+          <strong>Photo reviews, points expiry, points delay, and branding removal</strong> &mdash;{" "}
+          <PlanBadge plan="essential" /> and above.
+        </li>
+        <li>
+          <strong>VIP tiers, referrals, custom points currency, Shopify Flow, and Agent Access</strong>{" "}
+          &mdash; <PlanBadge plan="growth" /> and above.
+        </li>
+        <li>
+          <strong>CSV review import, Custom CSS, and custom email sender domain</strong> &mdash;{" "}
+          <PlanBadge plan="studio" /> only.
+        </li>
+      </ul>
+
+      <H3>Can I import my existing reviews?</H3>
+      <p>
+        Yes, by uploading a CSV export from Judge.me or Loox. CSV import is a{" "}
+        <PlanBadge plan="studio" /> feature. See <a href="/docs/reviews/importing">Importing</a> for
+        the steps.
+      </p>
+
+      <H2>Points &amp; loyalty</H2>
+
+      <H3>Do points expire?</H3>
+      <p>
+        Only if you turn expiry on. By default points never expire. Points expiry is available on{" "}
+        <PlanBadge plan="essential" /> and above, where you set an expiry period and how far ahead to
+        warn customers &mdash; and PerkStack notifies them before any points are removed, so they have
+        a chance to earn or redeem and reset the clock.
+      </p>
+
+      <H3>How are VIP tiers decided?</H3>
+      <p>
+        By a customer&apos;s <strong>lifetime earned points</strong>, not their current balance.
+        Redeeming rewards or having points expire never lowers a customer&apos;s tier. You can also{" "}
+        <a href="/docs/customers/tier-overrides">manually pin</a> a customer to a tier. VIP tiers need{" "}
+        <PlanBadge plan="growth" /> and above.
+      </p>
+
+      <H3>Can a customer change their birthday after entering it?</H3>
+      <p>
+        No. Once a shopper saves their birthday it&apos;s locked, which prevents anyone from editing
+        the date to collect birthday points more than once. If a customer entered the wrong date,
+        they&apos;ll need to reach out to you.
+      </p>
 
       <H2>Reviews</H2>
 
-      <H3>Can I import reviews from another app?</H3>
-      <p>Yes. PerkStack supports CSV imports from:</p>
-      <ul>
-        <li>
-          <strong>Judge.me</strong>: export your reviews as CSV from Judge.me, then import in
-          PerkStack
-        </li>
-        <li>
-          <strong>Loox</strong>: export your reviews as CSV from Loox, then import in PerkStack
-        </li>
-      </ul>
+      <H3>Do imported reviews need approval?</H3>
       <p>
-        Imported reviews retain their original ratings, text, and photos. They are marked with the
-        appropriate import source (<code>import_judgeme</code> or <code>import_loox</code>) so you
-        can distinguish them from native PerkStack reviews.
+        No. Reviews brought in through a CSV import come in already approved, so they display right
+        away without going through the moderation queue.
       </p>
 
-      <H3>Can I customize email templates?</H3>
+      <H3>Do new reviews publish automatically?</H3>
       <p>
-        Yes. You can customize the subject line and body of review request emails using template
-        variables (<code>{"{{product_title}}"}</code>, <code>{"{{customer_name}}"}</code>,{" "}
-        <code>{"{{points_incentive}}"}</code>). See{" "}
-        <a href="/docs/settings/review-settings">Review Settings</a> for details.
-      </p>
-
-      <H2>Data &amp; Privacy</H2>
-
-      <H3>What happens when I uninstall PerkStack?</H3>
-      <p>When you uninstall PerkStack:</p>
-      <ul>
-        <li>
-          <strong>Theme extensions are removed automatically</strong>. Shopify handles this for
-          theme app extensions, so no code remains on your storefront
-        </li>
-        <li>
-          <strong>Data is retained</strong>: your settings, customers, reviews, and transaction
-          history are preserved in the database for 48 hours
-        </li>
-        <li>
-          <strong>Reinstallation restores data</strong>: if you reinstall within 48 hours, all your
-          data is still there
-        </li>
-        <li>
-          <strong>GDPR redaction</strong>: after 48 hours, Shopify sends a <code>shop/redact</code>{" "}
-          webhook and all shop data is permanently deleted
-        </li>
-      </ul>
-
-      <Callout type="warning">
-        Uninstalling and reinstalling does not affect your billing. You will need to resubscribe to
-        a paid plan if you were on one previously.
-      </Callout>
-
-      <H2>API &amp; Integrations</H2>
-
-      <H3>Is there an API?</H3>
-      <p>
-        Yes. All storefront functionality is available via the app proxy API. The app proxy routes
-        requests through <code>/apps/perkstack/api/...</code> and handles authentication
-        automatically. This includes:
-      </p>
-      <ul>
-        <li>Fetching customer points balance and tier</li>
-        <li>Listing available rewards</li>
-        <li>Submitting reviews</li>
-        <li>Fetching product reviews and ratings</li>
-        <li>Redeeming rewards</li>
-        <li>Referral link generation</li>
-      </ul>
-
-      <H3>Does PerkStack integrate with Shopify Flow?</H3>
-      <p>
-        Yes, on the <PlanBadge plan="growth" /> plan or above. PerkStack provides a Flow trigger
-        that fires whenever a new review is submitted. This lets you build automations like:
-      </p>
-      <ul>
-        <li>Send a Slack notification when a negative review is submitted</li>
-        <li>Tag the customer in Shopify when they leave a 5-star review</li>
-        <li>Add the customer to a marketing segment based on review activity</li>
-      </ul>
-
-      <H2>Billing</H2>
-
-      <H3>Can I try a paid plan before committing?</H3>
-      <p>
-        Yes. <PlanBadge plan="essential" /> includes a 14-day free trial,{" "}
-        <PlanBadge plan="growth" /> a 21-day trial, and <PlanBadge plan="studio" /> a 30-day trial.
-        You get full access to all plan features during the trial. If you downgrade or cancel
-        before the trial ends, you are not charged.
-      </p>
-
-      <H3>How does billing work?</H3>
-      <p>
-        PerkStack uses Shopify&apos;s built-in billing API. Charges appear on your Shopify invoice
-        alongside your other app charges. Shopify handles all payment processing - PerkStack never
-        sees your credit card details.
-      </p>
-
-      <H3>What happens if my payment fails?</H3>
-      <p>
-        Your billing status changes to <code>frozen</code>. A banner appears in PerkStack prompting
-        you to update your payment method in Shopify. Paid features remain available for a grace
-        period, after which they are restricted until payment is resolved. See{" "}
-        <a href="/docs/settings/billing">Billing &amp; Plans</a> for details.
+        Clean reviews at or above your auto-approve rating (4 stars by default) publish
+        automatically. Lower-rated reviews, or any that contain a blacklisted word, wait in the
+        moderation queue for your approval. You can adjust the threshold in{" "}
+        <a href="/docs/settings/review-settings">Review Settings</a>.
       </p>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/troubleshooting/common-issues">Common Issues</a>: step-by-step
-          troubleshooting guides
+          <a href="/docs/troubleshooting/common-issues">Common Issues</a>: step-by-step fixes
         </li>
         <li>
-          <a href="/docs/getting-started/introduction">Introduction</a>: overview of PerkStack
-          features and plans
+          <a href="/docs/troubleshooting/status-reference">Status Reference</a>: what each status
+          means
         </li>
         <li>
-          <a href="/docs/advanced/status-reference">Status Reference</a>: all status enums used
-          across PerkStack
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: full feature comparison
         </li>
       </ul>
     </div>

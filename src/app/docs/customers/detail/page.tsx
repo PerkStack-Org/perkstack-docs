@@ -7,7 +7,7 @@ import PlanBadge from "@/components/PlanBadge";
 export const metadata: Metadata = createDocMetadata("/docs/customers/detail", {
   title: "Customer Detail",
   description:
-    "View a customer's full profile including points balance, transaction history, reviews, tier information, manual point adjustments, and one-off granted rewards.",
+    "See a customer's full loyalty profile — balance, spend, tier progress, recent activity, reviews, and pending points — and use manual controls to adjust points or grant a reward.",
 });
 
 export default function CustomerDetailPage() {
@@ -15,222 +15,137 @@ export default function CustomerDetailPage() {
     <div className="docs-prose">
       <h1>Customer Detail</h1>
       <p>
-        The customer detail page (<strong>PerkStack → Customers → [Customer]</strong>) shows
-        everything PerkStack knows about a specific customer, pulling data from both the local
-        database and the Shopify Admin GraphQL API.
+        The customer detail page is the complete loyalty profile for one shopper. It brings their
+        points, spend, tier progress, activity, and reviews together in one place, and gives you the
+        manual controls to adjust points or grant a reward. Open it by clicking a customer&apos;s
+        name in the <a href="/docs/customers/management">Customers list</a>.
       </p>
-
-      <H2>Customer Profile</H2>
       <p>
-        The top section displays the customer&apos;s profile information fetched via the Shopify{" "}
-        <code>CUSTOMER_QUERY</code> GraphQL query:
-      </p>
-      <ul>
-        <li>Full name and email address</li>
-        <li>Shopify customer ID (with link to the Shopify admin customer page)</li>
-        <li>Account creation date</li>
-        <li>Total orders count and lifetime spend</li>
-        <li>Marketing opt-in status</li>
-        <li>Tags applied in Shopify</li>
-      </ul>
-
-      <H2>Points Balance</H2>
-      <p>A summary card shows the customer&apos;s current points status:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Current Balance</strong>
-            </td>
-            <td>Points available to redeem right now</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Lifetime Earned</strong>
-            </td>
-            <td>Total points earned since the customer joined (used for tier calculation)</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Lifetime Redeemed</strong>
-            </td>
-            <td>Total points redeemed for rewards</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Points Expired</strong>
-            </td>
-            <td>Total points lost to expiry (if expiry is enabled)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Transaction History</H2>
-      <p>
-        A chronological table lists every points transaction for the customer. Each row includes:
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Column</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Date</strong>
-            </td>
-            <td>When the transaction occurred</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Type</strong>
-            </td>
-            <td>
-              One of: <code>earn</code>, <code>redeem</code>, <code>expire</code>,{" "}
-              <code>adjust</code>, <code>void</code>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Points</strong>
-            </td>
-            <td>Amount of points (positive for earn/adjust, negative for redeem/expire/void)</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Source</strong>
-            </td>
-            <td>What triggered the transaction (purchase, review, referral, manual, etc.)</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Description</strong>
-            </td>
-            <td>Additional context such as order number or reward name</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Reviews</H2>
-      <p>
-        The reviews section lists all reviews submitted by this customer, along with their status
-        (pending, approved, rejected, spam), rating, and submission date. Click any review to jump
-        to the review detail/moderation page.
+        Opening the page refreshes the customer&apos;s Shopify order count and total spend, so the
+        numbers you see are always current.
       </p>
 
-      <H2>Tier Information</H2>
-      <p>
-        If VIP tiers are enabled (<PlanBadge plan="growth" /> plan or above required), the detail page shows:
-      </p>
+      <H2>What the profile shows</H2>
       <ul>
         <li>
-          <strong>Current Tier</strong>: the tier the customer qualifies for based on lifetime
-          earned points
+          <strong>Points balance</strong> &mdash; points the customer can redeem right now.
         </li>
         <li>
-          <strong>Next Tier</strong>: the next tier and how many more points are needed to reach it
+          <strong>Orders</strong> and <strong>total spent</strong> &mdash; their purchase history
+          with your store.
         </li>
         <li>
-          <strong>Tier Override</strong>: whether an admin has manually set this customer&apos;s
-          tier (see <a href="/docs/customers/tier-overrides">Tier Overrides</a>)
+          <strong>Tier progress</strong> &mdash; their current VIP tier and a progress bar toward
+          the next one (shown when <a href="/docs/loyalty/vip-tiers">VIP tiers</a> are on).
+        </li>
+        <li>
+          <strong>Recent activity</strong> &mdash; the latest points transactions: what changed,
+          when, and why.
+        </li>
+        <li>
+          <strong>Recent reviews</strong> &mdash; reviews this customer has left, with their status.
+        </li>
+        <li>
+          <strong>Pending points</strong> &mdash; points that are on hold and haven&apos;t landed
+          yet, along with the order they came from and when they&apos;ll arrive.
         </li>
       </ul>
 
       <Callout type="info">
-        Tiers are calculated from <strong>lifetime earned points</strong>, not from the
-        customer&apos;s current balance. Redeeming or expiring points does not lower a
-        customer&apos;s tier.
+        Pending points come from <a href="/docs/loyalty/points-system">points delay</a>, which holds
+        purchase points for a set period (for example, to match your return window) before they
+        count toward a customer&apos;s balance. They appear here so you can see what&apos;s on the
+        way.
       </Callout>
 
-      <H2>Manual Point Adjustments</H2>
-      <p>
-        You can manually add or subtract points from a customer&apos;s balance using the adjustment
-        form on the detail page:
-      </p>
+      <H2>Adjusting points</H2>
+      <p>Use the adjustment control to add or subtract points by hand:</p>
       <ol>
-        <li>Enter a positive number to add points or a negative number to subtract</li>
         <li>
-          Provide a reason for the adjustment (required; this appears in the transaction history)
+          Choose a direction &mdash; <strong>Add</strong> or <strong>Subtract</strong>.
         </li>
+        <li>Enter the number of points.</li>
         <li>
-          Click <strong>Submit Adjustment</strong>
+          Enter a <strong>reason</strong>. It is saved to the customer&apos;s activity history, so
+          anyone reviewing the account later can see why the balance changed.
         </li>
+        <li>Submit. The balance updates immediately and the adjustment appears in recent activity.</li>
       </ol>
-      <p>
-        Manual adjustments create a transaction with type <code>adjust</code> and source{" "}
-        <code>manual</code>. They are visible in the transaction history and affect the
-        customer&apos;s current balance.
-      </p>
+
+      <Callout type="tip">
+        Manual adjustments made here can start a <a href="/docs/integrations/shopify-flow">Shopify
+        Flow</a> automation (<PlanBadge plan="growth" />), so you can, for example, notify your team
+        or tag the customer whenever their points are changed by hand.
+      </Callout>
 
       <Callout type="warning">
-        Manual adjustments to add points <strong>do</strong> increase lifetime earned points and may
-        affect tier placement. Use them carefully.
+        Adding points increases the customer&apos;s <strong>lifetime earned</strong> total, which can
+        move them up a VIP tier. Keep that in mind when correcting balances.
       </Callout>
 
       <H2>
-        Grant Reward <PlanBadge plan="essential" />
+        Granting a reward <PlanBadge plan="essential" />
       </H2>
       <p>
-        The <strong>Grant reward</strong> button on the customer detail page lets you issue a
-        one-off catalog reward to this customer without going through the normal points
-        spend. Use it for support recoveries, surprise-and-delight, or anniversary gifts.
+        <strong>Grant reward</strong> hands a customer a reward directly, without them spending
+        points. It&apos;s ideal for service recoveries, surprise-and-delight, or an anniversary gift.
       </p>
       <ol>
         <li>
-          Click <strong>Grant reward</strong>. A modal opens.
+          Click <strong>Grant reward</strong>.
+        </li>
+        <li>Pick a reward from your active catalog. Its normal points cost is shown next to it.</li>
+        <li>
+          Optionally set a <strong>cost override</strong>. Leave it blank to charge the reward&apos;s
+          normal cost, or enter <code>0</code> to grant it free.
         </li>
         <li>
-          Pick a reward from your active catalog. The merchant-set points cost is shown next to
-          each option.
+          Enter a <strong>reason</strong> of at least 10 characters, so the grant is easy to account
+          for later.
         </li>
-        <li>
-          Optionally override the points cost. Leave it blank to charge the customer the
-          reward&apos;s normal cost. Enter <code>0</code> to grant it for free.
-        </li>
-        <li>
-          Provide a reason (required, minimum 10 characters). The reason is recorded in the
-          audit log so you can trace who granted what to whom later.
-        </li>
-        <li>
-          Click <strong>Grant reward</strong>. PerkStack creates a pending redemption tagged
-          with your actor identity, then enqueues the same discount-creation worker the
-          customer-initiated flow uses. The customer receives the discount code within seconds.
-        </li>
+        <li>Confirm. The customer receives their discount code within seconds.</li>
       </ol>
 
-      <Callout type="info">
-        Granted redemptions <strong>bypass</strong> the reward&apos;s total and per-customer
-        limits, and they do <strong>not</strong> increment the sold-out counter or fire the
-        Reward Sold Out Flow trigger. Manual grants are exceptions to the campaign, not
-        consumers of it.
+      <Callout type="warning">
+        If the customer already has a reward waiting to be used, granting another is blocked. Ask
+        them to use or void the pending reward first, so they don&apos;t pile up unused discount
+        codes.
       </Callout>
 
-      <Callout type="warning">
-        If the customer already has a pending redemption (an unused discount code they
-        previously created themselves), grant fails with a clear error message. Ask them to
-        use or discard their existing code before granting another, so they cannot accumulate
-        unused discount codes.
-      </Callout>
+      <H2>Other manual controls</H2>
+      <ul>
+        <li>
+          <strong>Reset balance</strong> &mdash; zero out the customer&apos;s points in one step.
+        </li>
+        <li>
+          <strong>Void a transaction</strong> &mdash; reverse a single entry in the activity history
+          (for example, points from a fraudulent order). The original entry stays visible, marked as
+          voided, so the record is always complete.
+        </li>
+        <li>
+          <strong>Freeze / unfreeze</strong> &mdash; pause or resume the customer&apos;s ability to
+          earn and redeem. See <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>.
+        </li>
+        <li>
+          <strong>Change tier</strong> &mdash; pin the customer to a VIP tier or reset to automatic.
+          See <a href="/docs/customers/tier-overrides">Tier Overrides</a>.
+        </li>
+      </ul>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/customers/management">Customer Management</a>: searchable customer list
+          <a href="/docs/customers/management">Customer Management</a>: the searchable customer list
         </li>
         <li>
           <a href="/docs/customers/tier-overrides">Tier Overrides</a>: manually set a
           customer&apos;s tier
         </li>
         <li>
-          <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>: suspend loyalty participation
+          <a href="/docs/customers/freeze">Freeze &amp; Unfreeze</a>: pause loyalty for one customer
+        </li>
+        <li>
+          <a href="/docs/loyalty/rewards">Rewards</a>: the catalog of rewards you can grant
         </li>
       </ul>
     </div>

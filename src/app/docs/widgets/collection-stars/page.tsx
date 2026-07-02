@@ -2,148 +2,124 @@ import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
 import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
-import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/collection-stars", {
-  title: "Collection Stars",
+  title: "Review Collection Stars",
   description:
-    "Show star ratings on product cards in collection and search result grids with the PerkStack Collection Stars widget.",
+    "Add star ratings to product cards on your collection and listing pages so shoppers can compare products by rating before they click through.",
 });
 
 export default function CollectionStarsPage() {
   return (
     <div className="docs-prose">
-      <h1>Collection Stars</h1>
+      <h1>Review Collection Stars</h1>
       <p>
-        The Collection Stars widget injects star ratings and review counts into product cards across
-        your collection pages, search results, and any other product grid. This lets shoppers
-        compare products by rating at a glance, before clicking through to a product page.
+        Review Collection Stars adds a compact star rating to every product card on your collection
+        and listing pages. Shoppers can compare products by rating at a glance while they browse,
+        which surfaces your best-reviewed items and helps them decide faster.
       </p>
 
-      <PlanBadge plan="free" />
-
-      <H2>How It Works</H2>
+      <H2>How to add it</H2>
       <p>
-        The widget is rendered by <code>review-collection-stars.liquid</code> and uses a{" "}
-        <code>body</code> target, so it appears on every page automatically once added to the theme.
-        It loads <code>perkstack-collection-stars.js</code>, which:
+        This is an app embed that finds product cards automatically, so you turn it on once and it
+        applies across your grids — no manual placement needed.
       </p>
       <ol>
-        <li>Scans the page for product cards and collects all visible product IDs.</li>
         <li>
-          Makes a single batch API call to fetch ratings for all products at once:
-          <pre>
-            <code>/apps/perkstack/api/review-ratings?product_ids=123,456,789</code>
-          </pre>
-        </li>
-        <li>Injects a star rating badge into each product card in the DOM.</li>
-      </ol>
-
-      <Callout type="info">
-        The batch API approach means only one network request is made per page, regardless of how
-        many products are shown. This keeps collection pages fast.
-      </Callout>
-
-      <H2>Placement</H2>
-      <ol>
-        <li>
-          Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
+          In your Shopify admin, go to <strong>Online Store &gt; Themes</strong> and click{" "}
+          <strong>Customize</strong>.
         </li>
         <li>
-          In the theme editor sidebar, click <strong>Add block</strong> under the global
-          (body-level) section.
+          In the theme editor, open <strong>App embeds</strong> from the bottom of the left sidebar.
         </li>
         <li>
-          Search for <strong>PerkStack Collection Stars</strong> and add it.
+          Turn on <strong>Review Collection Stars</strong>.
         </li>
-        <li>
-          Click <strong>Save</strong>.
-        </li>
+        <li>Click <strong>Save</strong>.</li>
       </ol>
 
       <Callout type="tip">
-        Because this is a <code>body</code>-level block, you only add it once and it works
-        everywhere: collection pages, search results, featured product grids on the homepage, and
-        any other template that renders product cards.
+        Because it&apos;s an app embed, you enable it just once and it works everywhere product cards
+        appear — collection pages, search results, and featured product grids on the homepage.
       </Callout>
 
-      <H2>Theme Compatibility</H2>
+      <H2>What shoppers see</H2>
       <p>
-        The Collection Stars script looks for standard Shopify product card markup to inject the
-        rating badges. It works out of the box with most Online Store 2.0 themes, including Dawn. If
-        your theme uses non-standard product card markup, the script may need a CSS selector
-        override.
+        A small row of stars and, optionally, a review count added to each product card in the grid.
+        By default, products without reviews still show empty stars and a &quot;No reviews&quot;
+        label so the grid stays visually consistent.
       </p>
-      <p>Supported card structures:</p>
-      <ul>
-        <li>
-          Cards with a <code>data-product-id</code> attribute
-        </li>
-        <li>
-          Cards using Shopify&apos;s standard <code>product-card</code> component
-        </li>
-        <li>
-          Cards inside elements with the <code>.card</code> or <code>.product-card</code> CSS class
-        </li>
-      </ul>
 
-      <H2>Configuration</H2>
+      <H2>Settings</H2>
+      <p>Expand the app embed in the theme editor to adjust these:</p>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
-            <th>Description</th>
+            <th>What it does</th>
             <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Star colour</td>
-            <td>Fill colour for the rating stars</td>
-            <td>Accent colour from PerkStack settings</td>
+            <td>Filled star color</td>
+            <td>Color of the filled portion of each star.</td>
+            <td>
+              <code>#f59e0b</code> (amber)
+            </td>
           </tr>
           <tr>
-            <td>Show count</td>
-            <td>Display the review count alongside the stars</td>
-            <td>Enabled</td>
+            <td>Empty star color</td>
+            <td>Color of the unfilled portion of each star.</td>
+            <td>
+              <code>#d1d5db</code> (light gray)
+            </td>
           </tr>
           <tr>
-            <td>Hide if no reviews</td>
-            <td>If enabled, products with zero reviews do not show a rating badge</td>
-            <td>Enabled</td>
+            <td>Count text color</td>
+            <td>Color of the review-count text next to the stars.</td>
+            <td>
+              <code>#666666</code> (gray)
+            </td>
           </tr>
           <tr>
             <td>Star size</td>
-            <td>Size of the star icons (small, medium, large)</td>
-            <td>Small</td>
+            <td>Size of the stars, from 10 to 24 pixels.</td>
+            <td>14 px</td>
+          </tr>
+          <tr>
+            <td>Show review count</td>
+            <td>Shows the number of reviews next to the stars.</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show on products with no reviews</td>
+            <td>
+              Renders empty stars and a &quot;No reviews&quot; label on un-reviewed products so every
+              card looks consistent. Turn this off to hide the rating entirely on those products.
+            </td>
+            <td>On</td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Performance</H2>
-      <p>The widget is designed to have minimal impact on page performance:</p>
-      <ul>
-        <li>A single batch API request fetches all ratings in one call.</li>
-        <li>The script runs after the page has finished loading (deferred execution).</li>
-        <li>
-          Ratings are cached in the browser session to avoid redundant requests when navigating
-          between pages.
-        </li>
-      </ul>
-
-      <H2>Troubleshooting</H2>
+      <H2>Related</H2>
       <ul>
         <li>
-          <strong>Stars not appearing on cards</strong>: your theme may use non-standard product
-          card markup. Check the browser console for errors from the Collection Stars script.
+          <a href="/docs/widgets/star-badge">Review Star Badge</a>: the single-product rating badge
+          for product pages
         </li>
         <li>
-          <strong>Wrong ratings</strong>: ensure the product IDs in the DOM match the products in
-          your PerkStack dashboard. Rating data comes from approved reviews only.
+          <a href="/docs/widgets/review-display">Review Display</a>: the full reviews block for
+          product pages
         </li>
         <li>
-          <strong>Stars appear on the wrong element</strong>: this can happen if the theme uses
-          nested cards. Contact support for a CSS selector adjustment.
+          <a href="/docs/widgets/review-carousel">Review Carousel</a>: rotate your best reviews on
+          the homepage
+        </li>
+        <li>
+          <a href="/docs/widgets/overview">Widgets Overview</a>: every storefront block and where it
+          goes
         </li>
       </ul>
     </div>

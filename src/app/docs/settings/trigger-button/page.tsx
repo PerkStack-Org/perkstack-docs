@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2, H3 } from "@/components/Heading";
+import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
+import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/settings/trigger-button", {
   title: "Trigger Button",
   description:
-    "Customise the floating rewards trigger button including text, colours, shape, icon, and border radius with live preview.",
+    "Style the floating rewards button shoppers tap to open your loyalty launcher — its text, colors, icon, shape, and corner rounding, with a live preview.",
 });
 
 export default function TriggerButtonPage() {
@@ -14,171 +15,125 @@ export default function TriggerButtonPage() {
     <div className="docs-prose">
       <h1>Trigger Button</h1>
       <p>
-        The trigger button is the floating button that appears on your storefront, typically in the
-        bottom-right corner. Customers click it to open the loyalty launcher panel. The trigger
-        button customization page (<strong>PerkStack → Settings → Trigger Customize</strong>) lets
-        you style this button to match your brand.
+        The trigger button is the floating button on your storefront that shoppers tap to open the
+        loyalty launcher. Design it to match your brand from{" "}
+        <strong>Apps → PerkStack → Trigger customize</strong>, with a live preview that updates as you
+        change each setting.
       </p>
 
-      <H2>Customization Options</H2>
+      <H2>Options</H2>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
+            <th>Options</th>
             <th>Default</th>
-            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <strong>Trigger Text</strong>
+              <strong>Button text</strong>
             </td>
+            <td>The label on the button</td>
             <td>Rewards</td>
-            <td>The label displayed on the button</td>
           </tr>
           <tr>
             <td>
-              <strong>Background Colour</strong>
+              <strong>Background color</strong>
             </td>
-            <td>
-              <code>rgba(0,0,0,0.75)</code>
-            </td>
-            <td>
-              Button background that supports any CSS colour value including rgba for transparency
-            </td>
+            <td>Any color, including semi-transparent</td>
+            <td>Translucent black</td>
           </tr>
           <tr>
             <td>
-              <strong>Text Colour</strong>
+              <strong>Text color</strong>
             </td>
-            <td>
-              <code>#ffffff</code>
-            </td>
-            <td>Colour of the button label text</td>
+            <td>Color of the label</td>
+            <td>White</td>
           </tr>
           <tr>
             <td>
-              <strong>Icon Colour</strong>
+              <strong>Icon color</strong>
             </td>
-            <td>
-              <code>#ffffff</code>
-            </td>
-            <td>Colour of the icon displayed next to the label</td>
+            <td>Color of the icon next to the label</td>
+            <td>White</td>
           </tr>
           <tr>
             <td>
-              <strong>Custom Icon URL</strong>
+              <strong>Icon</strong>
             </td>
-            <td>Built-in gift icon</td>
-            <td>URL to a custom SVG or PNG icon (replaces the default icon)</td>
+            <td>Built-in rewards icon, or your own custom icon</td>
+            <td>Built-in icon</td>
           </tr>
           <tr>
             <td>
               <strong>Shape</strong>
             </td>
-            <td>
-              <code>icon-label</code>
-            </td>
-            <td>
-              Button layout where <code>icon-label</code> shows both icon and text
-            </td>
+            <td>Icon and label, Icon only, Label only</td>
+            <td>Icon and label</td>
           </tr>
           <tr>
             <td>
-              <strong>Border Radius</strong>
+              <strong>Corner radius</strong>
             </td>
-            <td>40 px</td>
-            <td>Controls how rounded the button corners are (0 = square, 40+ = pill shape)</td>
+            <td>0 (square) to 40 (pill), in pixels</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Match theme</strong>
+            </td>
+            <td>Follow your storefront colors instead of the colors above</td>
+            <td>Off</td>
           </tr>
         </tbody>
       </table>
-
-      <H2>Styling Guide</H2>
-
-      <H3>Choosing Colours</H3>
-      <p>
-        Pick colours that stand out against your storefront background while staying on-brand. The
-        trigger button should be noticeable but not distracting. Test on both desktop and mobile
-        viewports.
-      </p>
-
-      <Callout type="tip">
-        Use your store&apos;s accent colour for the button background and white for the text. This
-        creates a consistent look that draws attention without clashing with your theme.
-      </Callout>
-
-      <H3>Custom Icons</H3>
-      <p>If you upload a custom icon:</p>
-      <ul>
-        <li>Use an SVG for the sharpest rendering at any size</li>
-        <li>Keep the icon simple, as it renders at roughly 20×20 px</li>
-        <li>Use a single colour that matches or contrasts with the button background</li>
-        <li>
-          The <strong>Icon Colour</strong> setting will not tint custom PNG icons; it only affects
-          SVG icons that use <code>currentColor</code>
-        </li>
-      </ul>
-
-      <H3>Border Radius</H3>
-      <table>
-        <thead>
-          <tr>
-            <th>Value</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>0</code>
-            </td>
-            <td>Sharp square corners</td>
-          </tr>
-          <tr>
-            <td>
-              <code>8</code>
-            </td>
-            <td>Subtly rounded corners</td>
-          </tr>
-          <tr>
-            <td>
-              <code>20</code>
-            </td>
-            <td>Noticeably rounded</td>
-          </tr>
-          <tr>
-            <td>
-              <code>40+</code>
-            </td>
-            <td>Pill / capsule shape (default)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Live Preview</H2>
-      <p>
-        The page includes a live preview that updates as you change settings. The preview shows the
-        trigger button as it will appear on your storefront, rendered against a neutral background.
-      </p>
 
       <Callout type="info">
-        The trigger button position (bottom-right) is fixed and cannot be changed from this settings
-        page. Position is determined by the theme app extension block settings in your theme editor.
+        <strong>Label only</strong> (which hides the small PerkStack mark) and using a{" "}
+        <strong>custom icon</strong> are available on <PlanBadge plan="growth" /> and above. On lower
+        plans, use the <strong>Icon and label</strong> or <strong>Icon only</strong> shapes with the
+        built-in icon.
+      </Callout>
+
+      <H2>Tips</H2>
+      <ul>
+        <li>
+          Pick a background that stands out against your storefront but stays on-brand &mdash; the
+          button should be easy to spot without clashing.
+        </li>
+        <li>
+          A high corner radius (near 40) gives a pill shape; drop it toward 0 for square corners.
+        </li>
+        <li>
+          Turn on <strong>Match theme</strong> if you&apos;d rather the button automatically follow your
+          store&apos;s colors.
+        </li>
+        <li>Check the preview on both desktop and mobile widths before saving.</li>
+      </ul>
+
+      <Callout type="tip">
+        The gated options (Label only, custom icon) only require the higher plan when you change them.
+        A downgrade keeps your saved button design intact.
       </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/settings/widget-customization">Widget Customization</a> for styling the
-          launcher panel itself
+          <a href="/docs/settings/widget-customization">Widget Customization</a>: design the launcher
+          panel the button opens
         </li>
         <li>
-          <a href="/docs/settings/general">General Settings</a> for points naming and branding
+          <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>: how the floating launcher works
+          and where it&apos;s placed
         </li>
         <li>
-          <a href="/docs/widgets/overview">Widgets Overview</a> covering all storefront extension
-          blocks
+          <a href="/docs/settings/general">General</a>: points naming and your store logo
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: which plan unlocks Label only and
+          custom icons
         </li>
       </ul>
     </div>

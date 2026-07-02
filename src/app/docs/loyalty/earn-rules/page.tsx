@@ -1,38 +1,33 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/loyalty/earn-rules", {
-  title: "Earn Rules",
+  title: "Ways to Earn",
   description:
-    "Configure how customers earn loyalty points in PerkStack, including purchases, reviews, signups, birthdays, social shares, and referrals.",
+    "The seven actions that award loyalty points in PerkStack, their default point values, which plan unlocks each, and how to configure them.",
 });
 
 export default function EarnRulesPage() {
   return (
     <div className="docs-prose">
-      <h1>Earn Rules</h1>
+      <h1>Ways to Earn</h1>
       <p>
-        Earn rules define the actions that award points to your customers. Each rule can be toggled
-        active or inactive, edited through a modal, and deleted when no longer needed. Manage your
-        earn rules from <strong>PerkStack → Loyalty → Earn Rules</strong>.
+        Earn rules are the actions that award points to your customers. PerkStack ships with seven,
+        each with a sensible default you can change. Turn rules on or off and set their point values
+        in <strong>PerkStack &rarr; Loyalty &rarr; Earn Rules</strong>.
       </p>
 
-      <H2>Available Earn Rules</H2>
-      <p>
-        PerkStack supports the following earn rule types. Each rule has a default configuration that
-        you can customize:
-      </p>
-
+      <H2>The seven ways to earn</H2>
       <table>
         <thead>
           <tr>
-            <th>Rule</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
+            <th>Action</th>
+            <th>Default points</th>
+            <th>Ships</th>
+            <th>Plan</th>
           </tr>
         </thead>
         <tbody>
@@ -40,152 +35,180 @@ export default function EarnRulesPage() {
             <td>
               <strong>Purchase</strong>
             </td>
-            <td>Points per dollar</td>
-            <td>Configurable ratio</td>
+            <td>1 point per $1 spent</td>
+            <td>On</td>
             <td>
-              Customers earn points based on their order total. Set a dollar-per-point ratio (e.g.
-              $1 = 1 point) with an optional minimum order value
+              <PlanBadge plan="free" />
             </td>
           </tr>
           <tr>
             <td>
               <strong>Account signup</strong>
             </td>
-            <td>Fixed points</td>
-            <td>100 points</td>
-            <td>Awarded once when a customer creates their account for the first time</td>
+            <td>100</td>
+            <td>On</td>
+            <td>
+              <PlanBadge plan="free" />
+            </td>
           </tr>
           <tr>
             <td>
               <strong>Text review</strong>
             </td>
-            <td>Fixed points</td>
-            <td>100 points</td>
+            <td>100</td>
+            <td>On</td>
             <td>
-              Awarded when a customer submits a text review. Optional verified purchase requirement
+              <PlanBadge plan="free" />
             </td>
           </tr>
           <tr>
             <td>
               <strong>Photo review</strong>
             </td>
-            <td>Fixed points</td>
-            <td>200 points</td>
+            <td>200</td>
+            <td>On</td>
             <td>
-              Awarded when a customer submits a review with at least one photo. Optional verified
-              purchase requirement
+              <PlanBadge plan="essential" />
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Birthday</strong> <PlanBadge plan="essential" />
+              <strong>Birthday</strong>
             </td>
-            <td>Fixed points</td>
-            <td>200 points (inactive)</td>
+            <td>200</td>
             <td>
-              Awarded once per year on the customer&apos;s birthday. Inactive by default and
-              requires the Essential plan or above
+              <strong>Off</strong>
             </td>
-          </tr>
-          <tr>
             <td>
-              <strong>Social share</strong> <PlanBadge plan="essential" />
-            </td>
-            <td>Fixed points</td>
-            <td>100 points</td>
-            <td>
-              Awarded when a customer shares a product on social media. Requires the Essential plan
-              or above
+              <PlanBadge plan="essential" />
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Referral</strong> <PlanBadge plan="growth" />
+              <strong>Social share</strong>
             </td>
-            <td>Fixed points (dual)</td>
-            <td>500 / 200 points</td>
+            <td>100</td>
+            <td>On</td>
             <td>
-              Separate point amounts for the referrer (500) and referee (200). Requires the Referral
-              Program feature on the Growth plan or above
+              <PlanBadge plan="essential" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Referral</strong>
+            </td>
+            <td>500 referrer / 200 friend</td>
+            <td>
+              <strong>Off</strong>
+            </td>
+            <td>
+              <PlanBadge plan="growth" />
             </td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Purchase Rule Details</H2>
-      <p>
-        The purchase rule awards points proportionally to order value. You configure a
-        dollar-per-point ratio. For example, setting $1 per point means a $50 order earns 50 points.
-      </p>
+      <Callout type="warning">
+        Two rules ship <strong>off</strong> and must be turned on before they award anything:{" "}
+        <strong>Birthday</strong> and <strong>Referral</strong>. Social share ships <strong>on</strong>
+        . If you launch expecting birthday or referral points to flow automatically, enable those
+        rules first.
+      </Callout>
 
       <Callout type="info">
-        Internally, the ratio is stored as <code>pointsPerCurrencyUnit</code> using the inverse
-        value. If you set $1 per point, the stored value is <code>1.0000</code>. If you set $2 per
-        point, the stored value is <code>0.5000</code>. You don&apos;t need to worry about this
-        because the admin UI handles the conversion automatically.
+        Photo review, birthday, and social share require <PlanBadge plan="essential" /> or higher.
+        Referral requires <PlanBadge plan="growth" /> or higher. On lower plans these rules appear in
+        the list but are disabled, with an inline prompt naming the plan that unlocks them.
       </Callout>
 
+      <H2>Configure a rule</H2>
       <p>
-        You can also set an optional <strong>minimum order value</strong>. When configured, only
-        orders at or above this threshold will earn points. Orders below the minimum earn nothing.
+        In <strong>Loyalty &rarr; Earn Rules</strong>, open a rule to configure it. Every rule shares
+        these options:
       </p>
-
-      <H2>Review Rules</H2>
-      <p>
-        Text review and photo review are separate earn rules with independent point values. When a
-        review includes photos, the customer earns the <strong>photo review</strong> amount (not
-        both text and photo combined).
-      </p>
-      <p>
-        Both review rules support an optional <strong>verified purchase requirement</strong>. When
-        enabled, only reviews from customers who actually purchased the product will earn points.
-      </p>
-
-      <Callout type="tip">
-        Setting photo review points higher than text review points encourages customers to include
-        photos, which provides stronger social proof on your product pages.
-      </Callout>
-
-      <H2>Managing Earn Rules</H2>
-      <p>Each earn rule supports the following operations:</p>
       <ul>
         <li>
-          <strong>Toggle active/inactive</strong>: enable or disable a rule without deleting it.
-          Inactive rules do not award points
+          <strong>Active toggle</strong> &mdash; when active, customers earn points for this action.
         </li>
         <li>
-          <strong>Edit</strong>: open the edit modal to adjust point values, thresholds, and options
+          <strong>Points earned</strong> &mdash; the point value awarded (a fixed amount for every
+          rule except Purchase and Referral).
         </li>
         <li>
-          <strong>Delete</strong>: permanently remove the rule. Points already earned through this
-          rule are not affected
+          <strong>Description</strong> &mdash; free text shown to customers in the loyalty widget, so
+          they know what the action is worth.
         </li>
       </ul>
 
-      <Callout type="warning">
-        Deleting an earn rule is permanent. If you want to temporarily stop awarding points for an
-        action, use the active/inactive toggle instead.
+      <H3>Purchase</H3>
+      <p>
+        Purchase points scale with order value. Set <strong>dollars spent per point</strong> (how
+        many dollars a customer spends to earn one point &mdash; default $1, so a $50 order earns 50
+        points). You can also set a <strong>minimum order value</strong>: below it, an order earns
+        nothing. Leave the minimum empty for no threshold. You can enter fractional rates for finer
+        control.
+      </p>
+
+      <H3>Referral</H3>
+      <p>
+        The referral rule has two separate amounts: <strong>points for the referrer</strong>{" "}
+        (default 500) and <strong>points for the friend</strong> (default 200). See{" "}
+        <a href="/docs/loyalty/referrals">Referrals</a> for how the referral link and the friend&apos;s
+        discount work.
+      </p>
+
+      <H3>Text and photo reviews</H3>
+      <p>
+        Both review rules offer a <strong>Require verified purchase</strong> option &mdash; when on,
+        only reviewers who actually bought the product earn points. A review that includes at least
+        one photo earns the photo-review amount, not both. Setting photo review higher than text
+        review nudges customers toward richer, more persuasive reviews.
+      </p>
+
+      <H2>Multipliers: how purchase points can grow</H2>
+      <p>
+        Base purchase points are just the starting figure. Two multipliers can increase them:
+      </p>
+      <ul>
+        <li>
+          <strong>VIP tier multiplier</strong> &mdash; a customer&apos;s tier multiplies their
+          purchase points (for example, a 1.5x tier turns 50 points into 75). See{" "}
+          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>.
+        </li>
+        <li>
+          <strong>Campaign boost</strong> &mdash; a live points campaign multiplies earning during a
+          scheduled window. See <a href="/docs/loyalty/campaigns">Points Campaigns &amp; Boosts</a>.
+        </li>
+      </ul>
+      <p>
+        When both apply, they <strong>stack multiplicatively</strong>. A customer at a 2x tier
+        buying during a 2x boost earns <strong>4x</strong> the base points on that order.
+      </p>
+
+      <Callout type="tip">
+        Start simple: keep the default 1 point per $1 and turn on signup and text reviews to seed
+        balances. Add birthday, social, and referral earning as your program matures.
       </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works
+          <a href="/docs/loyalty/rewards">Rewards Catalog</a>: what customers spend earned points on.
         </li>
         <li>
-          <a href="/docs/loyalty/points-system">Points System</a>: how points are tracked and
-          managed
+          <a href="/docs/loyalty/points-system">How Points Work</a>: balances, history, expiry, and
+          delay.
         </li>
         <li>
-          <a href="/docs/loyalty/birthday-rewards">Birthday Rewards</a>: detailed birthday rule
-          setup
+          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>: the tier multiplier applied to purchase
+          points.
         </li>
         <li>
-          <a href="/docs/loyalty/social-sharing">Social Sharing</a>: detailed social share rule
-          setup
+          <a href="/docs/loyalty/campaigns">Points Campaigns &amp; Boosts</a>: time-boxed earning
+          multipliers.
         </li>
         <li>
-          <a href="/docs/loyalty/referrals">Referrals</a>: detailed referral rule setup
+          <a href="/docs/loyalty/referrals">Referrals</a>: the referral rule in detail.
         </li>
       </ul>
     </div>

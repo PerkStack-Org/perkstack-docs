@@ -1,178 +1,125 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/dashboard/extension-status", {
-  title: "Extension Status",
+  title: "Theme Setup & Status",
   description:
-    "Understand how PerkStack detects and displays the status of each Shopify extension on the dashboard.",
+    "The Theme Setup checklist shows which PerkStack blocks are live on your store, grouped into Loyalty, Reviews, and Admin pages, so you can confirm you are fully set up.",
 });
 
-export default function ExtensionStatusPage() {
+export default function ThemeSetupStatusPage() {
   return (
     <div className="docs-prose">
-      <h1>Extension Status</h1>
+      <h1>Theme Setup &amp; Status</h1>
       <p>
-        PerkStack ships with seven Shopify extensions. The dashboard displays a status card for each
-        one so you can verify your store is fully configured at a glance.
+        The <strong>Theme Setup</strong> checklist on your Dashboard is a live map of where PerkStack
+        appears on your store. Each row tells you whether a block is in place, so you can confirm your
+        storefront is fully set up at a glance and fix anything that&apos;s missing.
       </p>
 
-      <H2>How Detection Works</H2>
-      <p>When the dashboard loads, PerkStack performs two checks:</p>
-      <ol>
+      <H2>The three groups</H2>
+      <p>The checklist is organized into three sections:</p>
+
+      <H3>Loyalty</H3>
+      <ul>
         <li>
-          <strong>Theme JSON inspection</strong>: reads the main published theme&apos;s JSON
-          templates to look for PerkStack app blocks (launcher, review-display, star-rating,
-          rewards-page, etc.)
+          <strong>Loyalty Launcher</strong>: the floating rewards button, enabled as an app embed for
+          every page.
         </li>
         <li>
-          <strong>Extension API query</strong>: calls <code>app.extensions()</code> via App Bridge
-          to determine which extensions are registered and active for the store
+          <strong>Loyalty Page</strong>: an optional full-page rewards view you add to a page.
         </li>
-      </ol>
-      <p>The results are combined to produce the status indicators you see on the dashboard.</p>
+      </ul>
 
-      <H2>Extension Reference</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Extension</th>
-            <th>Type</th>
-            <th>Detection Method</th>
-            <th>Plan Required</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Theme App Extension</td>
-            <td>Storefront blocks</td>
-            <td>Theme JSON inspection</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>Checkout UI Extension</td>
-            <td>Checkout block</td>
-            <td>Theme JSON + Extension API</td>
-            <td>
-              <PlanBadge plan="growth" />
-            </td>
-          </tr>
-          <tr>
-            <td>Admin Block: Customer Loyalty</td>
-            <td>Admin extension</td>
-            <td>Extension API</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>Admin Block: Customer Reviews</td>
-            <td>Admin extension</td>
-            <td>Extension API</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>Customer Account Extension</td>
-            <td>Account page</td>
-            <td>Extension API</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>App Pixel</td>
-            <td>Web pixel</td>
-            <td>Extension API</td>
-            <td>
-              <PlanBadge plan="free" />
-            </td>
-          </tr>
-          <tr>
-            <td>Flow Trigger: New Review</td>
-            <td>Shopify Flow</td>
-            <td>Extension API</td>
-            <td>
-              <PlanBadge plan="growth" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <H3>Reviews</H3>
+      <ul>
+        <li>
+          <strong>Review Display</strong>, <strong>Review Form</strong>, and{" "}
+          <strong>Review Star Badge</strong> for product pages.
+        </li>
+        <li>
+          <strong>Review Collection Stars</strong> for collection pages, <strong>Review Carousel</strong>{" "}
+          for your homepage, and <strong>Review SEO</strong> so star ratings can show in search
+          results.
+        </li>
+      </ul>
 
-      <H2>Status Indicators</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Meaning</th>
-            <th>Action Required</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <strong>Active</strong>
-            </td>
-            <td>Extension is installed and functioning</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Not Installed</strong>
-            </td>
-            <td>Block is missing from the theme or extension is not active</td>
-            <td>Add the block via the theme editor or enable the extension</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Unavailable</strong>
-            </td>
-            <td>Extension requires a higher plan</td>
-            <td>Upgrade your plan to enable</td>
-          </tr>
-        </tbody>
-      </table>
+      <H3>Admin pages</H3>
+      <ul>
+        <li>
+          <strong>Loyalty program</strong> and <strong>Customer reviews</strong> blocks that appear
+          on Shopify&apos;s own customer detail pages in your admin, giving your team loyalty and
+          review context in place.
+        </li>
+      </ul>
 
-      <Callout type="warning">
-        If a block appears as &ldquo;Not Installed&rdquo; but you know you added it, make sure you
-        added it to the <strong>main published theme</strong>. Blocks in draft or unpublished themes
-        are not detected.
+      <p>
+        Each row has a button that opens a short video walkthrough, then sends you to the right editor
+        to add or manage that block.
+      </p>
+
+      <H2>What &ldquo;Active&rdquo; and &ldquo;Not added&rdquo; mean</H2>
+      <p>
+        Every row shows one of two states with a status dot:
+      </p>
+      <ul>
+        <li>
+          <strong>Active</strong>: the block is added and in place on your store.
+        </li>
+        <li>
+          <strong>Not added</strong>: PerkStack doesn&apos;t see the block yet — add it to go live.
+        </li>
+      </ul>
+      <p>
+        For the storefront blocks, PerkStack checks your published theme for the block. For the
+        checkout, customer-account, and admin-page blocks, a row shows <strong>Active</strong> once
+        the block has been added and has loaded recently for a customer or in your admin.
+      </p>
+
+      <Callout type="info">
+        Because those checkout, account, and admin rows are confirmed by real loads, a block you just
+        added can still read <strong>Not added</strong> until it is loaded once. Open the page it
+        lives on, then refresh your Dashboard and it will turn Active.
       </Callout>
 
-      <H2>Troubleshooting</H2>
-      <ol>
-        <li>
-          <strong>All blocks show &ldquo;Not Installed&rdquo;</strong>: ensure the PerkStack theme
-          app extension is enabled in your theme editor under <strong>App embeds</strong>
-        </li>
-        <li>
-          <strong>Checkout extension is unavailable</strong>: verify you are on the{" "}
-          <PlanBadge plan="growth" /> plan or higher, then add the block in{" "}
-          <strong>Settings → Checkout → Customize</strong>
-        </li>
-        <li>
-          <strong>Status does not update</strong>: refresh the dashboard page; detection runs on
-          each page load
-        </li>
-      </ol>
+      <Callout type="warning">
+        Storefront blocks are detected on your <strong>published</strong> theme. If a block shows as
+        not added but you know you placed it, check that you added it to the live theme rather than a
+        draft, and that it is saved.
+      </Callout>
+
+      <H2>Checkout and account rows</H2>
+      <p>
+        The <strong>Checkout Rewards</strong> and <strong>Loyalty Studio</strong> (customer account)
+        rows appear only for <strong>Shopify Plus</strong> stores, since those surfaces rely on
+        Shopify&apos;s checkout and account extensibility. Checkout Rewards also requires the{" "}
+        <PlanBadge plan="essential" /> plan or higher. If your store isn&apos;t on Shopify Plus, these
+        rows simply won&apos;t show.
+      </p>
+
+      <Callout type="info">
+        If PerkStack can&apos;t check your theme at that moment, a notice appears on the card. It
+        clears on its own — refresh the Dashboard to check again.
+      </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/dashboard/overview">Dashboard Overview</a>: summary metrics and quick links
+          <a href="/docs/getting-started/going-live">Going Live on Your Store</a>: step-by-step,
+          working through the checklist
         </li>
         <li>
-          <a href="/docs/advanced/admin-extensions">Admin Extensions</a>: details on the customer
-          loyalty and reviews admin blocks
+          <a href="/docs/dashboard/overview">Dashboard Overview</a>: where the Theme Setup card lives
         </li>
         <li>
-          <a href="/docs/widgets/overview">Widgets Overview</a>: storefront theme app extension
-          blocks
+          <a href="/docs/widgets/overview">Widgets Overview</a>: every storefront block explained
+        </li>
+        <li>
+          <a href="/docs/customers/admin-blocks">Customer Page Blocks</a>: the admin-page loyalty and
+          reviews blocks
         </li>
       </ul>
     </div>

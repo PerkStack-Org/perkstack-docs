@@ -5,196 +5,167 @@ import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/reviews/moderation", {
-  title: "Review Moderation",
+  title: "Moderation",
   description:
-    "Manage product reviews from your Shopify admin. Approve, reject, reply, feature, and use bulk actions.",
+    "Approve, reply to, and feature customer reviews from your Shopify admin, and set auto-approval rules so clean reviews publish instantly.",
 });
 
 export default function ReviewModerationPage() {
   return (
     <div className="docs-prose">
-      <h1>Review Moderation</h1>
+      <h1>Moderation</h1>
       <p>
-        The review moderation dashboard lives at <strong>PerkStack → Reviews</strong> in your
-        Shopify admin. From here you can view all submitted reviews, filter by status, take
-        individual or bulk actions, and reply to customers publicly.
+        Moderation is where you decide what appears on your storefront. Most clean, positive reviews
+        publish on their own; the moderation queue is for the rest — the lower ratings and flagged
+        submissions that deserve a quick look before they go live.
       </p>
 
-      <H2>Reviews List</H2>
+      <H2>The moderation queue</H2>
       <p>
-        The main reviews page displays a paginated table of all reviews for your store. Each row
-        shows the product name, customer, rating, review excerpt, status badge, and submission date.
+        Open <strong>PerkStack → Reviews</strong> to see every review for your store. To find what
+        you need, you can:
+      </p>
+      <ul>
+        <li>
+          <strong>Filter by status</strong> — All, Pending, Approved, Rejected, or Spam
+        </li>
+        <li>
+          <strong>Filter by rating</strong> — All, or 1 through 5 stars
+        </li>
+        <li>
+          <strong>Search</strong> the review text and reviewer
+        </li>
+        <li>
+          <strong>Sort</strong> by newest, oldest, highest rating, or lowest rating
+        </li>
+      </ul>
+      <p>
+        A typical routine is to open the <strong>Pending</strong> filter, scan what&apos;s waiting,
+        and approve or reject each one.
       </p>
 
-      <H3>Filters</H3>
-      <p>Use the status tabs at the top of the page to filter reviews:</p>
+      <H2>Auto-approval rules</H2>
+      <p>
+        Auto-approval keeps the queue small. A review publishes instantly when its rating is at or
+        above your threshold and it contains no blacklisted words. Everything else waits as pending.
+        Set these under <strong>PerkStack → Settings → Reviews</strong> in the{" "}
+        <strong>Review Moderation</strong> section:
+      </p>
+
       <table>
         <thead>
           <tr>
-            <th>Tab</th>
-            <th>Shows</th>
+            <th>Setting</th>
+            <th>What it does</th>
+            <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>Auto-approve threshold</td>
             <td>
-              <strong>All</strong>
+              The lowest rating that publishes automatically. At 4, clean 4- and 5-star reviews go
+              live instantly; 1- to 3-star reviews wait for you.
             </td>
-            <td>Every review regardless of status</td>
+            <td>4 stars</td>
           </tr>
           <tr>
+            <td>Blacklisted words</td>
             <td>
-              <strong>Pending</strong>
+              A comma-separated list. Any review containing one of these words is held for manual
+              approval, even a 5-star one.
             </td>
-            <td>Reviews awaiting your decision</td>
+            <td>None</td>
           </tr>
           <tr>
+            <td>Require verified purchase</td>
             <td>
-              <strong>Approved</strong>
+              When on, only customers PerkStack can confirm bought the product may leave a review.
             </td>
-            <td>Published reviews visible on the storefront</td>
+            <td>Off</td>
           </tr>
           <tr>
+            <td>Show reviewer names</td>
             <td>
-              <strong>Rejected</strong>
+              When on, reviews display the reviewer&apos;s name (as first name and last initial).
+              When off, every review shows as &quot;Anonymous.&quot;
             </td>
-            <td>Reviews you&apos;ve declined</td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Spam</strong>
-            </td>
-            <td>Reviews flagged as spam</td>
+            <td>On</td>
           </tr>
         </tbody>
       </table>
 
-      <p>
-        Results are paginated. Use the pagination controls at the bottom of the table to navigate
-        through large review sets.
-      </p>
-
-      <H2>Review Actions</H2>
-      <p>
-        Each review supports the following actions, available from the actions menu on the review
-        row or from the individual review detail page:
-      </p>
-
-      <H3>Approve</H3>
-      <p>Approving a review triggers the following sequence:</p>
-      <ol>
-        <li>
-          The review status changes to <code>approved</code> and the <code>approvedAt</code>{" "}
-          timestamp is recorded
-        </li>
-        <li>The review becomes visible on the storefront immediately</li>
-        <li>
-          A points award job is enqueued, and the customer earns points for the review (text or
-          photo amount depending on whether the review includes photos)
-        </li>
-        <li>
-          If your store is on the <PlanBadge plan="growth" /> plan or above, a Shopify Flow trigger fires with
-          the review data, enabling custom automations
-        </li>
-      </ol>
-
-      <Callout type="info">
-        Points are only awarded once per review. If you reject and later re-approve a review, points
-        are not awarded a second time.
+      <Callout type="tip">
+        A blacklisted-word match or a below-threshold rating always sends a review to the queue
+        instead of publishing it — so nothing flagged reaches your storefront unseen.
       </Callout>
 
-      <H3>Reject</H3>
+      <H2>Acting on a review</H2>
       <p>
-        Rejecting a review sets the status to <code>rejected</code> and records the{" "}
-        <code>rejectedAt</code> timestamp. The review is hidden from the storefront. You can
-        re-approve a rejected review at any time.
+        Open any review to see its full text, rating, photos, and history. From there you can:
       </p>
-
-      <H3>Feature / Unfeature</H3>
-      <p>
-        Toggle the <code>featured</code> flag on any approved review. Featured reviews appear in the{" "}
-        <code>/api/featured-reviews</code> endpoint and can be displayed in dedicated storefront
-        blocks (e.g. homepage testimonials carousel).
-      </p>
-
-      <H2>Admin Reply</H2>
-      <p>
-        You can write a public reply to any review using the <code>adminResponse</code> field. This
-        response is displayed below the customer&apos;s review on the storefront. Use admin replies
-        to thank customers for positive feedback or address concerns raised in negative reviews.
-      </p>
+      <ul>
+        <li>
+          <strong>Approve</strong> — publish it on your storefront
+        </li>
+        <li>
+          <strong>Reject</strong> — keep it off your storefront
+        </li>
+        <li>
+          <strong>Mark as spam</strong> — hide it and file it under the Spam filter
+        </li>
+        <li>
+          <strong>Reply</strong> — write a public response shown beneath the review
+        </li>
+        <li>
+          <strong>Feature</strong> — highlight it in featured-review surfaces like your homepage
+          carousel
+        </li>
+      </ul>
 
       <Callout type="tip">
-        Responding to reviews, especially negative ones, shows potential buyers that you care about
-        customer satisfaction. Keep replies professional, empathetic, and solution-oriented.
+        Replying to reviews — especially critical ones — shows future buyers you&apos;re engaged and
+        responsive. Keep replies calm, professional, and focused on a resolution.
       </Callout>
 
-      <H2>Bulk Actions</H2>
-      <p>
-        Select multiple reviews using the checkboxes in the list view to perform bulk operations:
-      </p>
+      <H3>What happens when you approve</H3>
+      <p>Approving a review does more than publish it. It also:</p>
       <ul>
+        <li>Awards the reviewer their loyalty points (a text-review reward, plus a photo bonus if the review has photos)</li>
         <li>
-          <strong>Bulk Approve</strong>: approve all selected reviews at once
+          Refreshes the product&apos;s star rating used for badges and search rich snippets
         </li>
         <li>
-          <strong>Bulk Reject</strong>: reject all selected reviews at once
+          On <PlanBadge plan="growth" /> and above, can kick off a Shopify Flow automation via the
+          &quot;review approved&quot; trigger
         </li>
       </ul>
+      <p>Points are only ever awarded once per review, so re-approving a review never double-pays.</p>
+
+      <H2>Moderating in bulk</H2>
       <p>
-        Bulk approve follows the same approval sequence as individual approvals. Each review
-        triggers its own points award and Flow trigger (if applicable).
+        On the <PlanBadge plan="studio" /> plan, you can select multiple reviews and approve, reject,
+        or mark them as spam all at once — handy for high review volumes. Moderating reviews one at a
+        time is available on every plan.
       </p>
-
-      <H2>Individual Review Detail</H2>
-      <p>
-        Click any review in the list to open its detail page at <code>/app/reviews/:id</code>. The
-        detail page shows:
-      </p>
-      <ul>
-        <li>Full review text and rating</li>
-        <li>Any uploaded photos</li>
-        <li>Customer name and link to the customer&apos;s Shopify admin profile</li>
-        <li>Product name and link to the product in Shopify admin</li>
-        <li>Verified purchase badge (if applicable)</li>
-        <li>Submission date and current status</li>
-        <li>Helpful vote count</li>
-        <li>Admin response field for writing or editing your reply</li>
-        <li>Action buttons: Approve, Reject, Feature/Unfeature</li>
-      </ul>
-
-      <H2>Moderation Workflow Example</H2>
-      <p>A typical daily moderation workflow looks like this:</p>
-      <ol>
-        <li>
-          Open the <strong>Pending</strong> tab to see new reviews
-        </li>
-        <li>Scan ratings and review text, then click into any review that needs a closer look</li>
-        <li>Approve genuine reviews individually or select multiple and use bulk approve</li>
-        <li>Reject or mark as spam any reviews that violate your guidelines</li>
-        <li>
-          Reply to reviews where a merchant response adds value (thank you notes, issue resolution)
-        </li>
-        <li>Feature your best reviews so they appear in storefront highlight blocks</li>
-      </ol>
-
-      <Callout type="warning">
-        Rejecting a review does not notify the customer. If you want to explain why a review was
-        removed, consider reaching out to the customer directly through Shopify.
-      </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/reviews/overview">Reviews Overview</a>: data model and status lifecycle
+          <a href="/docs/reviews/overview">Overview</a>: how review collection and auto-approval fit
+          together
         </li>
         <li>
-          <a href="/docs/reviews/shopify-flow">Shopify Flow Integration</a>: automate actions on
-          review approval
+          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: approving a review starts its
+          photos processing
         </li>
         <li>
-          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: manage reviews with uploaded
-          images
+          <a href="/docs/integrations/shopify-flow">Shopify Flow</a>: automate actions when a review
+          is approved
+        </li>
+        <li>
+          <a href="/docs/settings/review-settings">Review Settings</a>: set your auto-approve
+          threshold and blacklist
         </li>
       </ul>
     </div>

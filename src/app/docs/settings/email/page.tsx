@@ -2,153 +2,140 @@ import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
 import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
+import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/settings/email", {
-  title: "Email Settings",
+  title: "Email & Notifications",
   description:
-    "Configure your email sender name, reply-to address, and understand the email delivery infrastructure.",
+    "Set the sender name and reply-to address on your loyalty and review emails, manage the weekly digest, remove PerkStack branding, and track monthly email usage.",
 });
 
 export default function EmailSettingsPage() {
   return (
     <div className="docs-prose">
-      <h1>Email Settings</h1>
+      <h1>Email &amp; Notifications</h1>
       <p>
-        PerkStack sends transactional emails on your behalf, including review requests, points
-        notifications, reward confirmations, and referral invites. The email settings page (
-        <strong>PerkStack → Settings → Email</strong>) lets you control how these emails appear to
-        your customers.
+        PerkStack emails your customers on your behalf &mdash; points earned, rewards, expiry reminders,
+        and review requests. From <strong>PerkStack → Settings → Email</strong> you brand those emails,
+        choose which notifications you receive, and keep an eye on your monthly email usage.
       </p>
 
-      <H2>Configuration</H2>
+      <H2>Sender identity</H2>
+      <p>
+        These two fields brand every email so it looks like it comes from your store, not from an app.
+        A live preview updates as you type.
+      </p>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
-            <th>Field</th>
-            <th>Description</th>
+            <th>Default</th>
+            <th>What it does</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-              <strong>Sender Name</strong>
+              <strong>Sender name</strong>
             </td>
+            <td>Your store name</td>
             <td>
-              <code>emailFromName</code>
-            </td>
-            <td>
-              The display name customers see in their inbox. Typically your store name (e.g.
-              &ldquo;Acme Store&rdquo;).
+              The &ldquo;from&rdquo; name customers see in their inbox. Set it to your brand so emails
+              feel personal.
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Reply-To Address</strong>
+              <strong>Reply-to address</strong>
             </td>
+            <td>Empty</td>
             <td>
-              <code>emailReplyTo</code>
-            </td>
-            <td>
-              The email address used when a customer replies to a PerkStack email. Must be a valid
-              email address you monitor.
+              Where customer replies go. Enter a monitored address (like your support inbox) so replies
+              reach a real person.
             </td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Validation</H2>
+      <H2>Weekly analytics digest</H2>
       <p>
-        The reply-to address is validated on save to ensure it is a properly formatted email
-        address. Invalid addresses will be rejected with a validation error.
+        Once a week, PerkStack emails the store owner a short digest of how your loyalty and reviews
+        program is doing. It&apos;s <strong>on by default</strong>. To stop receiving it, turn off the
+        weekly digest toggle &mdash; this only affects your own notification and never touches customer
+        emails.
       </p>
 
-      <Callout type="tip">
-        Use an email address that your support team actively monitors (e.g.{" "}
-        <code>support@yourstore.com</code>). Customers may reply to review requests or reward emails
-        with questions.
-      </Callout>
-
-      <H2>Email Delivery</H2>
+      <H2>&ldquo;Powered by PerkStack&rdquo; branding</H2>
       <p>
-        All emails are sent via <strong>Resend</strong>, a transactional email provider. The
-        integration is handled entirely server-side, so you do not need to configure Resend
-        directly. PerkStack manages:
+        By default, a small &ldquo;Powered by PerkStack&rdquo; mark appears on your storefront widget
+        and email footers. On <PlanBadge plan="essential" /> and above you can turn it off for a fully
+        white-labeled look.
       </p>
-      <ul>
-        <li>Email rendering and templating</li>
-        <li>Delivery via the Resend API</li>
-        <li>Bounce and complaint handling</li>
-        <li>Rate limiting within your plan&apos;s email quota</li>
-      </ul>
-
-      <H2>Email Limits</H2>
-      <p>
-        The number of emails you can send per month depends on your plan. See the{" "}
-        <a href="/docs/settings/billing">Billing &amp; Plans</a> page for details.
-      </p>
-
-      <Callout type="warning">
-        On the Free plan, you are limited to <strong>50 emails per month</strong>. Once the limit is
-        reached, review request emails and non-critical notifications are queued until the next
-        billing cycle. Critical emails (e.g. reward confirmations) are always delivered.
-      </Callout>
-
-      <H2>Email Types</H2>
-      <p>PerkStack sends the following email types:</p>
       <table>
         <thead>
           <tr>
-            <th>Email Type</th>
-            <th>Trigger</th>
-            <th>Configurable</th>
+            <th>Plan</th>
+            <th>Branding</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Review Request</td>
-            <td>Order fulfilled (after configured delay)</td>
-            <td>Yes (subject, body, delay, enable/disable)</td>
+            <td>
+              <PlanBadge plan="free" />
+            </td>
+            <td>Always shown</td>
           </tr>
           <tr>
-            <td>Review Reminder</td>
-            <td>Follow-up after initial request</td>
-            <td>Yes (delay, enable/disable)</td>
-          </tr>
-          <tr>
-            <td>Points Earned</td>
-            <td>Customer earns points from any source</td>
-            <td>Enable/disable</td>
-          </tr>
-          <tr>
-            <td>Reward Confirmation</td>
-            <td>Customer redeems a reward</td>
-            <td>Always sent</td>
-          </tr>
-          <tr>
-            <td>Points Expiry Warning</td>
-            <td>Points nearing expiration</td>
-            <td>Notification days setting</td>
-          </tr>
-          <tr>
-            <td>Referral Invite</td>
-            <td>Customer shares referral link</td>
-            <td>Enable/disable</td>
+            <td>
+              <PlanBadge plan="essential" /> and above
+            </td>
+            <td>Toggle to show or hide</td>
           </tr>
         </tbody>
       </table>
+
+      <H2>Monthly email usage</H2>
+      <p>
+        A usage bar shows how many emails you&apos;ve sent this calendar month against your plan&apos;s
+        cap (5,000 on Essential, 25,000 on Growth, 50,000 on Studio). Usage resets on the 1st of each
+        month in your store&apos;s timezone. On Growth and Studio, going over the cap is billed as
+        overage; on Free and Essential, outbound emails pause until the cap resets.
+      </p>
+      <Callout type="info">
+        Only emails PerkStack sends to customers count toward this cap &mdash; review requests, points
+        notifications, and reminders. Your own weekly digest doesn&apos;t count.
+      </Callout>
+
+      <H2>Custom sender domain and templates <PlanBadge plan="studio" /></H2>
+      <p>
+        On <PlanBadge plan="studio" />, emails can be sent from your own domain (for example{" "}
+        <code>points@yourbrand.com</code>) so they&apos;re fully yours end to end, and you can replace
+        the built-in email designs with your own <strong>custom templates</strong>. Both are
+        Studio-only; on other plans PerkStack sends from a shared address using the built-in designs,
+        still branded with your sender name and logo.
+      </p>
+
+      <Callout type="tip">
+        Branding removal and the custom domain only require the higher plan when you turn them on. If
+        you downgrade, your other email settings keep working and stay saved.
+      </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/settings/review-settings">Review Settings</a> to configure review request
-          email content and timing
+          <a href="/docs/settings/general">General</a>: add the store logo that appears in your emails
         </li>
         <li>
-          <a href="/docs/settings/general">General Settings</a> to set your logo for email headers
+          <a href="/docs/reviews/review-requests">Review Requests</a>: timing and copy for the review
+          emails PerkStack sends
         </li>
         <li>
-          <a href="/docs/settings/billing">Billing &amp; Plans</a> for email quotas per plan
+          <a href="/docs/settings/review-settings">Review Settings</a>: customize review request and
+          reminder subject lines and bodies
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: email caps and which plan removes
+          branding
         </li>
       </ul>
     </div>

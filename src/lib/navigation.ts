@@ -11,9 +11,10 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Introduction", href: "/docs/getting-started/introduction" },
       { title: "How It Works", href: "/docs/getting-started/how-it-works" },
-      { title: "Installation", href: "/docs/getting-started/installation" },
-      { title: "Shopify Setup", href: "/docs/getting-started/shopify-setup" },
-      { title: "First-Time Configuration", href: "/docs/getting-started/first-time-config" },
+      { title: "Installing PerkStack", href: "/docs/getting-started/installation" },
+      { title: "Connecting Your Store", href: "/docs/getting-started/shopify-setup" },
+      { title: "First-Time Setup", href: "/docs/getting-started/first-time-config" },
+      { title: "Going Live on Your Store", href: "/docs/getting-started/going-live" },
     ],
   },
   {
@@ -21,32 +22,40 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Overview", href: "/docs/dashboard/overview" },
       { title: "Analytics", href: "/docs/dashboard/analytics" },
-      { title: "Extension Status", href: "/docs/dashboard/extension-status" },
+      { title: "Theme Setup & Status", href: "/docs/dashboard/extension-status" },
     ],
   },
   {
     title: "Loyalty Program",
     children: [
       { title: "Overview", href: "/docs/loyalty/overview" },
-      { title: "Earn Rules", href: "/docs/loyalty/earn-rules" },
+      { title: "Ways to Earn", href: "/docs/loyalty/earn-rules" },
       { title: "Rewards Catalog", href: "/docs/loyalty/rewards" },
-      { title: "Points System", href: "/docs/loyalty/points-system" },
+      { title: "How Points Work", href: "/docs/loyalty/points-system" },
       { title: "VIP Tiers", href: "/docs/loyalty/vip-tiers" },
-      { title: "Referrals", href: "/docs/loyalty/referrals", status: "new" },
+      { title: "Referrals", href: "/docs/loyalty/referrals" },
       { title: "Birthday Rewards", href: "/docs/loyalty/birthday-rewards" },
-      { title: "Social Sharing", href: "/docs/loyalty/social-sharing", status: "beta" },
+      { title: "Social Sharing", href: "/docs/loyalty/social-sharing" },
+      { title: "Points Campaigns & Boosts", href: "/docs/loyalty/campaigns", status: "new" },
     ],
   },
   {
     title: "Product Reviews",
     children: [
       { title: "Overview", href: "/docs/reviews/overview" },
-      { title: "Moderation", href: "/docs/reviews/moderation" },
-      { title: "Review Requests", href: "/docs/reviews/review-requests" },
+      { title: "Review Request Emails", href: "/docs/reviews/review-requests" },
       { title: "Photo Reviews", href: "/docs/reviews/photo-reviews" },
-      { title: "Importing Reviews", href: "/docs/reviews/importing" },
-      { title: "Shopify Flow", href: "/docs/reviews/shopify-flow", status: "new" },
+      { title: "Moderation", href: "/docs/reviews/moderation" },
       { title: "SEO & Rich Snippets", href: "/docs/reviews/seo" },
+      { title: "Importing Reviews", href: "/docs/reviews/importing" },
+    ],
+  },
+  {
+    title: "Integrations",
+    children: [
+      { title: "Shopify Flow", href: "/docs/integrations/shopify-flow" },
+      { title: "Judge.me Sync", href: "/docs/integrations/judgeme", status: "new" },
+      { title: "AI Agent Access", href: "/docs/integrations/agent-access", status: "beta" },
     ],
   },
   {
@@ -54,14 +63,14 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Overview", href: "/docs/widgets/overview" },
       { title: "Loyalty Launcher", href: "/docs/widgets/loyalty-launcher" },
+      { title: "Loyalty Page", href: "/docs/widgets/loyalty-page" },
       { title: "Review Display", href: "/docs/widgets/review-display" },
       { title: "Review Form", href: "/docs/widgets/review-form" },
-      { title: "Star Badge", href: "/docs/widgets/star-badge" },
-      { title: "Collection Stars", href: "/docs/widgets/collection-stars" },
+      { title: "Review Star Badge", href: "/docs/widgets/star-badge" },
+      { title: "Review Collection Stars", href: "/docs/widgets/collection-stars" },
       { title: "Review Carousel", href: "/docs/widgets/review-carousel" },
-      { title: "Loyalty Page", href: "/docs/widgets/loyalty-page" },
-      { title: "Checkout Widget", href: "/docs/widgets/checkout-widget" },
-      { title: "Customer Account", href: "/docs/widgets/customer-account" },
+      { title: "Checkout Rewards", href: "/docs/widgets/checkout-widget" },
+      { title: "Loyalty Studio", href: "/docs/widgets/customer-account" },
     ],
   },
   {
@@ -71,27 +80,18 @@ export const navigation: NavItem[] = [
       { title: "Customer Detail", href: "/docs/customers/detail" },
       { title: "Tier Overrides", href: "/docs/customers/tier-overrides" },
       { title: "Freeze & Unfreeze", href: "/docs/customers/freeze" },
+      { title: "Customer Page Blocks", href: "/docs/customers/admin-blocks" },
     ],
   },
   {
     title: "Settings",
     children: [
       { title: "General", href: "/docs/settings/general" },
-      { title: "Billing & Plans", href: "/docs/settings/billing" },
-      { title: "Email Configuration", href: "/docs/settings/email" },
+      { title: "Plans & Billing", href: "/docs/settings/billing" },
+      { title: "Email & Notifications", href: "/docs/settings/email" },
       { title: "Review Settings", href: "/docs/settings/review-settings" },
       { title: "Widget Customization", href: "/docs/settings/widget-customization" },
       { title: "Trigger Button", href: "/docs/settings/trigger-button" },
-    ],
-  },
-  {
-    title: "Advanced",
-    children: [
-      { title: "Architecture", href: "/docs/advanced/architecture" },
-      { title: "Webhooks", href: "/docs/advanced/webhooks" },
-      { title: "Status Reference", href: "/docs/advanced/status-reference" },
-      { title: "Admin Extensions", href: "/docs/advanced/admin-extensions" },
-      { title: "Web Pixel", href: "/docs/advanced/web-pixel", status: "beta" },
     ],
   },
   {
@@ -99,6 +99,7 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Common Issues", href: "/docs/troubleshooting/common-issues" },
       { title: "FAQ", href: "/docs/troubleshooting/faq" },
+      { title: "Status Reference", href: "/docs/troubleshooting/status-reference" },
     ],
   },
 ];

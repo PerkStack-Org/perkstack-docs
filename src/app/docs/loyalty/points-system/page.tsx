@@ -2,254 +2,135 @@ import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
 import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
+import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/loyalty/points-system", {
-  title: "Points System",
+  title: "How Points Work",
   description:
-    "Understand PerkStack's ledger-based points system, including transaction types, balances, idempotency, expiry, and how points flow through the system.",
+    "How a customer's points balance and activity history work in PerkStack, plus optional points expiry and points delay.",
 });
 
 export default function PointsSystemPage() {
   return (
     <div className="docs-prose">
-      <h1>Points System</h1>
+      <h1>How Points Work</h1>
       <p>
-        PerkStack uses a <strong>ledger-based points system</strong> where every point movement is
-        recorded as an immutable transaction. This ensures complete auditability and accurate
-        balance tracking across your entire loyalty program.
+        Every customer has a points balance and a running history of how they got there. Points go{" "}
+        <strong>up</strong> when a customer earns, <strong>down</strong> when they redeem a reward,
+        and you can adjust a balance by hand at any time. Every change is recorded, so a balance and
+        its full history are always accurate.
       </p>
 
-      <H2>The Points Ledger</H2>
+      <H2>Balances and activity</H2>
       <p>
-        All point movements are stored in the <code>point_transactions</code> table. Each
-        transaction records what happened, why it happened, and the resulting balance. The ledger is
-        append-only, meaning transactions are never modified or deleted.
+        A customer&apos;s balance is simply the points they have available to spend right now. Behind
+        it is an <strong>activity history</strong> &mdash; a dated list of every change, each with a
+        plain-language label:
       </p>
-
-      <H2>Transaction Types</H2>
-      <p>
-        Every transaction has a <code>type</code> that describes the nature of the point movement:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Direction</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>earn</code>
-            </td>
-            <td>+ (credit)</td>
-            <td>Points awarded for completing an action (purchase, review, etc.)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>redeem</code>
-            </td>
-            <td>- (debit)</td>
-            <td>Points spent on a reward from the catalog</td>
-          </tr>
-          <tr>
-            <td>
-              <code>expire</code>
-            </td>
-            <td>- (debit)</td>
-            <td>Points removed due to expiration policy</td>
-          </tr>
-          <tr>
-            <td>
-              <code>adjust</code>
-            </td>
-            <td>+/- (either)</td>
-            <td>Manual adjustment by the merchant (add or remove points)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>void</code>
-            </td>
-            <td>- (debit)</td>
-            <td>Points revoked (e.g. due to a refunded order)</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Source Types</H2>
-      <p>
-        Each transaction also has a <code>source</code> that identifies what triggered it:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Source</th>
-            <th>Triggered By</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>purchase</code>
-            </td>
-            <td>Order placed by the customer</td>
-          </tr>
-          <tr>
-            <td>
-              <code>signup</code>
-            </td>
-            <td>Customer account creation</td>
-          </tr>
-          <tr>
-            <td>
-              <code>birthday</code>
-            </td>
-            <td>Customer&apos;s birthday (annual)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>review</code>
-            </td>
-            <td>Approved product review (text or photo)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>social</code>
-            </td>
-            <td>Social media share of a product</td>
-          </tr>
-          <tr>
-            <td>
-              <code>referral</code>
-            </td>
-            <td>Completed referral (awarded to both referrer and referee)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>redemption</code>
-            </td>
-            <td>Points spent on a reward</td>
-          </tr>
-          <tr>
-            <td>
-              <code>expiry</code>
-            </td>
-            <td>Automated expiration of unused points</td>
-          </tr>
-          <tr>
-            <td>
-              <code>manual</code>
-            </td>
-            <td>Manual adjustment by the merchant from the admin</td>
-          </tr>
-          <tr>
-            <td>
-              <code>void</code>
-            </td>
-            <td>Points revoked after a refund or cancellation</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Balance Tracking</H2>
-      <p>
-        Every transaction record includes a <code>balanceAfter</code> field that stores the
-        customer&apos;s running point balance after that transaction. This makes it possible to
-        reconstruct the full balance history for any customer without re-summing all transactions.
-      </p>
-
-      <Callout type="info">
-        The <code>balanceAfter</code> field is the source of truth for a customer&apos;s current
-        point balance. It is always equal to the <code>balanceAfter</code> value of their most
-        recent transaction.
-      </Callout>
-
-      <H2>Idempotency</H2>
-      <p>
-        Each transaction carries an <strong>idempotency key</strong> that prevents duplicate awards.
-        If the same action is processed twice (e.g. due to a webhook retry or network issue), the
-        second attempt is silently ignored because the idempotency key already exists.
-      </p>
-      <p>
-        This ensures customers never receive double points for a single action, even under adverse
-        network conditions.
-      </p>
-
-      <H2>Points Expiry</H2>
-      <p>
-        You can optionally configure points to expire after a set number of months. This encourages
-        customers to use their points and keeps engagement high.
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Setting</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>pointsExpiryMonths</code>
-            </td>
-            <td>
-              Number of months after which unused points expire. Set to <code>null</code> for points
-              that never expire
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <code>expiryNotificationDays</code>
-            </td>
-            <td>
-              How many days before expiry to notify the customer. Defaults to{" "}
-              <strong>30 days</strong>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H3>Expiry Process</H3>
-      <p>Points expiry is handled by an automated background worker:</p>
-      <ol>
+      <ul>
         <li>
-          The <strong>points-expire</strong> worker runs daily at <strong>2:00 AM</strong>
+          <strong>Earned</strong> &mdash; from a purchase, signup, review, social share, birthday, or
+          referral.
         </li>
-        <li>It identifies all point transactions that have passed their expiry date</li>
         <li>
-          For each expired batch, it creates an <code>expire</code> transaction that debits the
-          expired points from the customer&apos;s balance
+          <strong>Redeemed</strong> &mdash; points spent on a reward from your catalog.
         </li>
-      </ol>
+        <li>
+          <strong>Adjusted</strong> &mdash; points you added or removed by hand from the customer&apos;s
+          page.
+        </li>
+        <li>
+          <strong>Expired</strong> &mdash; points removed by your expiry policy, if you use one.
+        </li>
+      </ul>
+      <p>
+        Customers see their own recent activity on the loyalty page and in their account, filtered by
+        type and time period. You see the same history, plus manual controls, on each customer&apos;s
+        detail page.
+      </p>
+
+      <H3>Refunds reverse points</H3>
+      <p>
+        If an order is refunded or cancelled, the points earned on it are reversed automatically, so
+        a customer can&apos;t keep points for a purchase they returned. You never have to chase this
+        down by hand.
+      </p>
 
       <Callout type="tip">
-        Before points expire, customers receive a notification based on your{" "}
-        <code>expiryNotificationDays</code> setting. This gives them time to redeem their points
-        before they&apos;re lost.
+        Need to correct a balance &mdash; a goodwill gesture, a fix after a support ticket? Use{" "}
+        <strong>Adjust points</strong> on the customer&apos;s detail page. The change and your reason
+        are recorded in their history.
       </Callout>
 
+      <H2>Points expiry</H2>
+      <p>
+        <PlanBadge plan="essential" /> By default, points never expire. If you&apos;d rather keep
+        balances active, you can set an <strong>expiry period</strong> so unused points clear after a
+        while &mdash; a gentle nudge for customers to come back and spend. Configure it in{" "}
+        <strong>PerkStack &rarr; Settings &rarr; General</strong>.
+      </p>
+      <ul>
+        <li>
+          <strong>Expiry period (months)</strong> &mdash; how long points last after they&apos;re
+          earned. Default: <strong>never</strong>. Expiry is based on when each batch of points was
+          earned.
+        </li>
+        <li>
+          <strong>Notification (days before)</strong> &mdash; how far ahead to warn customers.
+          Default: <strong>30 days</strong>.
+        </li>
+      </ul>
+      <p>
+        Before points expire, PerkStack sends two reminder emails so customers have time to earn or
+        redeem and reset the clock. Expired points are removed automatically &mdash; there&apos;s
+        nothing for you to run.
+      </p>
+
       <Callout type="warning">
-        Once points expire, they cannot be recovered automatically. If you need to restore expired
-        points for a customer, use a manual adjustment from the admin.
+        Turning on expiry applies to points customers have already earned. Consider giving customers
+        a heads-up before you enable it.
       </Callout>
+
+      <H2>Points delay</H2>
+      <p>
+        <PlanBadge plan="essential" /> Points delay holds a customer&apos;s <strong>purchase</strong>{" "}
+        points as <em>pending</em> for a set number of days after an order, then releases them. If
+        the order is refunded within that window, the pending points are simply cancelled &mdash; no
+        awkward clawback from a balance the customer thought they had. Configure it in{" "}
+        <strong>Settings &rarr; General</strong>.
+      </p>
+      <ul>
+        <li>
+          <strong>Delay purchase points</strong> &mdash; off by default (purchase points land right
+          away).
+        </li>
+        <li>
+          <strong>Delay (days)</strong> &mdash; how long to hold points. Default: <strong>30</strong>
+          , allowed range 1&ndash;365. Matching your return window is a good rule of thumb.
+        </li>
+      </ul>
+      <p>
+        Only purchase points are delayed &mdash; signup, review, birthday, social, and referral
+        points are awarded immediately. Pending points don&apos;t count toward a customer&apos;s
+        balance or VIP tier until they&apos;re released. Customers see their pending total on the
+        launcher, in their account, and at checkout, so there&apos;s no confusion about when points
+        arrive.
+      </p>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/loyalty/overview">Loyalty Overview</a>: how the loyalty system works
+          <a href="/docs/loyalty/earn-rules">Ways to Earn</a>: the actions that add points.
         </li>
         <li>
-          <a href="/docs/loyalty/earn-rules">Earn Rules</a>: configure how customers earn points
+          <a href="/docs/loyalty/rewards">Rewards Catalog</a>: what customers spend points on.
         </li>
         <li>
-          <a href="/docs/loyalty/rewards">Rewards Catalog</a>: set up what customers can redeem
+          <a href="/docs/settings/general">General Settings</a>: where you set expiry and delay.
         </li>
         <li>
-          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>: how lifetime points determine tier status
+          <a href="/docs/customers/detail">Customer Detail</a>: adjust a balance and view a
+          customer&apos;s full history.
         </li>
       </ul>
     </div>

@@ -2,142 +2,105 @@ import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
 import { H2 } from "@/components/Heading";
 import Callout from "@/components/Callout";
-import PlanBadge from "@/components/PlanBadge";
 import StarBadgePreview from "@/components/widget-previews/StarBadgePreview";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/star-badge", {
-  title: "Star Badge",
+  title: "Review Star Badge",
   description:
-    "Show average star ratings and review counts inline on product pages with the PerkStack Star Badge widget.",
+    "Show a compact star rating and review count near your product title so shoppers see social proof at a glance and can jump straight to the reviews.",
 });
 
 export default function StarBadgePage() {
   return (
     <div className="docs-prose">
-      <h1>Star Badge</h1>
+      <h1>Review Star Badge</h1>
       <p>
-        The Star Badge is a compact, inline widget that displays the average star rating and total
-        review count for a product. It is designed to sit near the product title or price, providing
-        a quick trust signal before customers scroll down to the full review list.
+        The Review Star Badge shows a product&apos;s average rating and review count in a small,
+        one-line summary — perfect just under the product title or price. When a shopper clicks it,
+        the page scrolls straight to the reviews. It&apos;s the quickest way to put social proof
+        where buyers look first.
       </p>
-
-      <PlanBadge plan="free" />
 
       <StarBadgePreview />
 
-      <H2>How It Works</H2>
+      <H2>How to add it</H2>
       <p>
-        The widget is rendered by <code>review-star-badge.liquid</code> and uses a{" "}
-        <code>section</code> target. It loads <code>perkstack-star-badge.js</code> to fetch and
-        render the rating data.
+        The star badge is a block you place inside a section, so you can position it exactly where it
+        belongs on the product page.
       </p>
-      <p>
-        The script reads the current product ID from the page context and fetches the aggregated
-        rating from the PerkStack API. If the product has no reviews, the badge can either be hidden
-        entirely or show &quot;No reviews yet&quot; depending on your configuration.
-      </p>
-
-      <H2>Placement</H2>
       <ol>
         <li>
-          Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
+          In your Shopify admin, go to <strong>Online Store &gt; Themes</strong> and click{" "}
+          <strong>Customize</strong>.
+        </li>
+        <li>Open your product template.</li>
+        <li>
+          Select the section near the product title or price, then click <strong>Add block</strong>.
         </li>
         <li>
-          Navigate to a <strong>product page</strong> template.
+          Choose <strong>Review Star Badge</strong>.
         </li>
         <li>
-          Click <strong>Add block</strong> inside the product information section (or add it as a
-          standalone section).
-        </li>
-        <li>
-          Search for <strong>PerkStack Star Badge</strong> and add it.
-        </li>
-        <li>
-          Drag it to the desired position, ideally just below the product title or next to the
-          price.
-        </li>
-        <li>
-          Click <strong>Save</strong>.
+          Drag it into place — typically just below the title — then click <strong>Save</strong>.
         </li>
       </ol>
 
       <Callout type="tip">
-        For the best conversion impact, place the Star Badge directly below the product title so it
-        is visible immediately without scrolling.
+        The badge scrolls to reviews only if the full{" "}
+        <a href="/docs/widgets/review-display">Review Display</a> block is also on the product page.
+        Add both so the link has somewhere to go.
       </Callout>
 
-      <H2>Display</H2>
-      <p>The Star Badge shows two pieces of information:</p>
-      <ul>
-        <li>
-          <strong>Average rating</strong>: displayed as filled, half-filled, and empty stars (e.g.
-          ★★★★☆ for 4.0)
-        </li>
-        <li>
-          <strong>Review count</strong>: the total number of approved reviews (e.g. &quot;(42
-          reviews)&quot;)
-        </li>
-      </ul>
+      <H2>What shoppers see</H2>
       <p>
-        Clicking the badge scrolls the page to the Review Display section (if present), giving
-        customers a quick way to jump to the full reviews.
+        A row of stars showing the average rating, optionally followed by the number of reviews (for
+        example, ★★★★☆ (24)). Products with no reviews yet show empty stars. Clicking the badge
+        smoothly scrolls the page down to the reviews.
       </p>
 
-      <H2>Configuration</H2>
-      <p>
-        The following settings are available in the theme editor when the Star Badge block is
-        selected:
-      </p>
+      <H2>Settings</H2>
+      <p>Select the block in the theme editor to adjust these:</p>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
-            <th>Description</th>
+            <th>What it does</th>
             <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Star colour</td>
-            <td>The fill colour for active stars</td>
-            <td>Accent colour from PerkStack settings</td>
-          </tr>
-          <tr>
-            <td>Show count</td>
-            <td>Whether to display the review count next to the stars</td>
-            <td>Enabled</td>
-          </tr>
-          <tr>
-            <td>Empty state</td>
+            <td>Star color</td>
+            <td>The fill color of the stars. Set it to match your brand or accent color.</td>
             <td>
-              What to show when a product has no reviews: <code>hide</code> (hide the badge
-              entirely) or <code>show</code> (display &quot;No reviews yet&quot;)
-            </td>
-            <td>
-              <code>hide</code>
+              <code>#f59e0b</code> (amber)
             </td>
           </tr>
           <tr>
-            <td>Link to reviews</td>
-            <td>When enabled, clicking the badge scrolls to the Review Display section</td>
-            <td>Enabled</td>
+            <td>Show review count</td>
+            <td>Shows the number of reviews next to the stars.</td>
+            <td>On</td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Troubleshooting</H2>
+      <H2>Related</H2>
       <ul>
         <li>
-          <strong>Badge not showing</strong>: the product may have no approved reviews and the empty
-          state is set to <code>hide</code>. Change the setting to <code>show</code> to verify.
+          <a href="/docs/widgets/review-display">Review Display</a>: the full reviews block the badge
+          scrolls to
         </li>
         <li>
-          <strong>Rating seems wrong</strong>: the average is calculated from approved reviews only.
-          Pending or rejected reviews are excluded.
+          <a href="/docs/widgets/collection-stars">Review Collection Stars</a>: show ratings on
+          product cards across collection pages
         </li>
         <li>
-          <strong>Click does not scroll to reviews</strong>: ensure the Review Display section is
-          present on the same product page template.
+          <a href="/docs/widgets/review-carousel">Review Carousel</a>: highlight top reviews on your
+          homepage
+        </li>
+        <li>
+          <a href="/docs/widgets/overview">Widgets Overview</a>: every storefront block and where it
+          goes
         </li>
       </ul>
     </div>

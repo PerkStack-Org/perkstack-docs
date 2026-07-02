@@ -1,150 +1,94 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
 
 export const metadata: Metadata = createDocMetadata("/docs/customers/tier-overrides", {
   title: "Tier Overrides",
   description:
-    "Manually assign or clear a customer's VIP tier. Learn how tier overrides work and when to use them.",
+    "Pin a customer to a chosen VIP tier regardless of their lifetime points, and reset them back to automatic when you're done.",
 });
 
 export default function TierOverridesPage() {
   return (
     <div className="docs-prose">
-      <h1>Tier Overrides</h1>
+      <h1>
+        Tier Overrides <PlanBadge plan="growth" />
+      </h1>
       <p>
-        VIP tiers are normally calculated automatically based on a customer&apos;s lifetime earned
-        points. Tier overrides let an admin manually place a customer into a specific tier,
-        bypassing the automatic calculation.
+        Normally a customer&apos;s VIP tier is worked out automatically from their lifetime earned
+        points. A tier override lets you place a specific customer in a tier of your choosing and
+        keep them there, no matter how many points they have. It&apos;s the tool for honoring a VIP
+        partnership, making a goodwill gesture, or matching a customer&apos;s status when you migrate
+        from another loyalty app.
       </p>
 
       <Callout type="info">
-        Tier overrides require the <PlanBadge plan="growth" /> plan or above. The VIP tiers feature must be
-        enabled in your settings before overrides can be applied.
+        Tier overrides are part of <a href="/docs/loyalty/vip-tiers">VIP tiers</a>, available on the{" "}
+        <PlanBadge plan="growth" /> plan and above. Tiers must be turned on in your settings before
+        you can set an override.
       </Callout>
 
-      <H2>How Tier Overrides Work</H2>
+      <H2>What an override does</H2>
+      <p>
+        An override pins the customer to the tier you pick and gives them that tier&apos;s benefits,
+        including its points multiplier. The customer keeps that tier until you change or remove the
+        override &mdash; earning more points won&apos;t move them, and losing points won&apos;t drop
+        them. A <strong>Manual override</strong> badge marks the customer so it&apos;s clear their
+        tier was set by hand.
+      </p>
+
+      <H2>Setting an override</H2>
+      <p>You can set one from two places:</p>
+      <H3>From the Customers list</H3>
       <ol>
         <li>
-          Navigate to a customer&apos;s detail page (
-          <strong>PerkStack → Customers → [Customer]</strong>)
+          Open <strong>Customers</strong> and click <strong>Manage</strong> on the customer&apos;s
+          row.
         </li>
         <li>
-          In the <strong>Tier Information</strong> section, click <strong>Override Tier</strong>
+          On the <strong>Overview</strong> tab, choose <strong>Change tier</strong>.
         </li>
-        <li>Select the desired tier from the dropdown</li>
-        <li>Save the change</li>
+        <li>Pick the tier you want and save.</li>
       </ol>
-      <p>
-        When an override is active, the customer&apos;s <code>tierOverrideId</code> field is set to
-        the selected tier. This value takes precedence over the automatically calculated tier.
-      </p>
-
-      <H2>Override vs. Automatic Tier</H2>
-      <table>
-        <thead>
-          <tr>
-            <th>Behaviour</th>
-            <th>Automatic Tier</th>
-            <th>Override Tier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Determined by</td>
-            <td>Lifetime earned points thresholds</td>
-            <td>Admin manual selection</td>
-          </tr>
-          <tr>
-            <td>Updates automatically</td>
-            <td>Yes, recalculated as points are earned</td>
-            <td>No, stays fixed until cleared or changed by admin</td>
-          </tr>
-          <tr>
-            <td>Displayed to customer</td>
-            <td>Yes</td>
-            <td>Yes (customer sees the override tier)</td>
-          </tr>
-          <tr>
-            <td>Affects benefits</td>
-            <td>Yes, tier benefits apply</td>
-            <td>Yes, override tier benefits apply</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Clearing an Override</H2>
-      <p>To revert a customer to their automatically calculated tier:</p>
+      <H3>From the customer detail page</H3>
       <ol>
-        <li>Open the customer&apos;s detail page</li>
+        <li>Click the customer&apos;s name to open their profile.</li>
         <li>
-          In the Tier Information section, click <strong>Clear Override</strong>
+          In the tier section, choose <strong>Change tier</strong> and select the tier.
         </li>
-        <li>Confirm the action</li>
       </ol>
-      <p>
-        The <code>tierOverrideId</code> is set to <code>null</code>, and the customer&apos;s tier
-        reverts to whatever their lifetime earned points qualify them for.
-      </p>
 
-      <Callout type="tip">
-        Use tier overrides for special situations such as VIP partnerships, customer service
-        gestures, or migration from another loyalty platform where a customer&apos;s existing status
-        should be honoured.
-      </Callout>
-
-      <H2>API Reference</H2>
+      <H2>Returning to automatic</H2>
       <p>
-        Tier overrides are managed through the <code>api.admin-customer-tier</code> route, which
-        accepts:
+        To hand the customer back to points-based tiers, choose <strong>Reset to auto</strong> in the
+        same place you set the override. The Manual override badge is removed and the customer&apos;s
+        tier returns to whatever their lifetime earned points qualify them for.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Parameter</th>
-            <th>Type</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>customerId</code>
-            </td>
-            <td>string</td>
-            <td>The PerkStack customer ID</td>
-          </tr>
-          <tr>
-            <td>
-              <code>tierOverrideId</code>
-            </td>
-            <td>string | null</td>
-            <td>
-              The tier ID to assign, or <code>null</code> to clear the override
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
       <Callout type="warning">
-        When a tier override is active, earning more points will not change the customer&apos;s
-        displayed tier. The override must be explicitly cleared for automatic tier calculation to
-        resume.
+        While an override is active, earning more points will not change the customer&apos;s tier.
+        If a customer is climbing tiers on their own, use <strong>Reset to auto</strong> so their
+        progress is reflected again.
       </Callout>
 
       <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/customers/detail">Customer Detail</a>: where tier overrides are managed
+          <a href="/docs/loyalty/vip-tiers">VIP Tiers</a>: how tiers, thresholds, and multipliers
+          work
         </li>
         <li>
-          <a href="/docs/settings/billing">Billing &amp; Plans</a>: VIP tiers require the Growth plan or above
+          <a href="/docs/customers/detail">Customer Detail</a>: where tier progress and overrides
+          live
         </li>
         <li>
-          <a href="/docs/advanced/admin-extensions">Admin Extensions</a>: the admin block also shows
-          tier information
+          <a href="/docs/customers/admin-blocks">Customer Page Blocks</a>: change a tier from
+          Shopify&apos;s customer page
+        </li>
+        <li>
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: VIP tiers require Growth or above
         </li>
       </ul>
     </div>

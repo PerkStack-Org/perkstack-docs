@@ -7,7 +7,7 @@ import PlanBadge from "@/components/PlanBadge";
 export const metadata: Metadata = createDocMetadata("/docs/widgets/loyalty-page", {
   title: "Loyalty Page",
   description:
-    "Add a full-page loyalty program display to your storefront showing earn rules, rewards, tiers, and referral information.",
+    "Embed a full rewards dashboard on a dedicated storefront page so customers can see their points, tier, ways to earn, and history in one place.",
 });
 
 export default function LoyaltyPagePage() {
@@ -15,160 +15,136 @@ export default function LoyaltyPagePage() {
     <div className="docs-prose">
       <h1>Loyalty Page</h1>
       <p>
-        The Loyalty Page widget provides a full-page, dedicated display of your entire loyalty
-        program. Unlike the compact Loyalty Launcher panel, this page gives you room to showcase all
-        earn rules, available rewards, VIP tiers, and your referral program in a spacious, branded
-        layout.
+        The Loyalty Page is a full rewards dashboard you embed on a page of your store &mdash; most
+        merchants create a dedicated &quot;Rewards&quot; page for it. It gives customers a roomy home
+        base for your program, with their balance, tier, ways to earn, referral link, and full
+        history all on one page.
       </p>
 
-      <PlanBadge plan="free" />
-
-      <H2>How It Works</H2>
-      <p>
-        The widget is rendered by <code>loyalty-page.liquid</code> and uses a <code>section</code>{" "}
-        target. It loads <code>perkstack-loyalty-page.js</code> to handle dynamic data fetching and
-        interactive elements.
-      </p>
-      <p>
-        When the page loads, the script fetches data from the same app proxy APIs used by the
-        Loyalty Launcher (points balance, earn rules, rewards, referral info, and tier information)
-        and renders them in a full-page layout.
-      </p>
-
-      <H2>Placement</H2>
-      <ol>
-        <li>
-          In your Shopify admin, create a new <strong>page</strong> (e.g. titled &quot;Rewards&quot;
-          or &quot;Loyalty Program&quot;) under <strong>Online Store &gt; Pages</strong>.
-        </li>
-        <li>
-          Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
-        </li>
-        <li>
-          In the template dropdown at the top of the theme editor, select or create a template for
-          the page you just created.
-        </li>
-        <li>
-          Click <strong>Add section</strong> and search for <strong>PerkStack Loyalty Page</strong>.
-        </li>
-        <li>
-          Remove any default content sections from the template so the loyalty page is the primary
-          content.
-        </li>
-        <li>
-          Click <strong>Save</strong>, then assign this template to your Rewards page.
-        </li>
-      </ol>
-
-      <Callout type="tip">
-        Add the loyalty page to your store&apos;s main navigation so customers can easily find it. A
-        link like &quot;Rewards&quot; in the header menu works well.
-      </Callout>
-
-      <H2>Page Sections</H2>
-      <p>
-        The loyalty page is divided into several sections, each of which can be toggled on or off:
-      </p>
-
-      <H3>Points Balance</H3>
-      <p>
-        For logged-in customers, a prominent banner shows their current points balance and lifetime
-        earned points. Guests see a prompt to log in or create an account.
-      </p>
-
-      <H3>Earn Rules</H3>
-      <p>A visual list of all the ways customers can earn points, including:</p>
+      <H2>What shoppers see</H2>
+      <p>Signed-in shoppers see the full dashboard:</p>
       <ul>
-        <li>Placing an order (points per dollar spent)</li>
-        <li>Creating an account</li>
-        <li>Leaving a product review</li>
-        <li>Referring a friend</li>
-        <li>Birthday bonus</li>
-        <li>Social media follows</li>
+        <li>Their points balance and pending points</li>
+        <li>Their VIP tier and progress to the next one</li>
+        <li>Ways to earn more points</li>
+        <li>Their referral section</li>
+        <li>A history of their points activity</li>
       </ul>
-
-      <H3>Available Rewards</H3>
       <p>
-        A grid of rewards customers can redeem with their points. Each reward card shows the reward
-        name, points cost, and a redeem button (if the customer has enough points).
-      </p>
-
-      <H3>VIP Tiers</H3>
-      <p>
-        If your loyalty program uses VIP tiers, this section displays the tier ladder with
-        requirements, benefits, and the customer&apos;s current tier highlighted.
+        Shoppers who aren&apos;t signed in see a welcome hero with a sign-in prompt, so the page
+        still works as a landing spot for your program.
       </p>
 
       <Callout type="info">
-        VIP tiers are available on the <PlanBadge plan="growth" /> plan and above. If tiers are not
-        enabled, this section is hidden automatically.
+        The Loyalty Page is a <strong>storefront</strong> page. It&apos;s different from{" "}
+        <a href="/docs/widgets/customer-account">Loyalty Studio</a>, which shows a similar dashboard
+        inside Shopify&apos;s customer account area. Use the Loyalty Page for a public
+        &quot;Rewards&quot; page; use Loyalty Studio for the signed-in account portal. You can run
+        both.
       </Callout>
 
-      <H3>Referral Program</H3>
-      <p>
-        Shows the customer&apos;s unique referral link, the reward for both referrer and referee,
-        and sharing options (copy link, email, social media).
-      </p>
+      <H2>How to add it</H2>
+      <ol>
+        <li>
+          In Shopify admin, create the page you want to use &mdash; for example a page called
+          &quot;Rewards&quot; &mdash; under <strong>Online Store &rarr; Pages</strong>.
+        </li>
+        <li>
+          Go to <strong>Online Store &rarr; Themes</strong> and click <strong>Customize</strong>.
+        </li>
+        <li>
+          Navigate to that page in the theme editor, then use <strong>Add block</strong> in a section
+          and choose <strong>Loyalty Page</strong>.
+        </li>
+        <li>
+          Adjust the settings below, then click <strong>Save</strong>.
+        </li>
+      </ol>
 
-      <H2>Configuration</H2>
+      <H2>Theme editor settings</H2>
       <table>
         <thead>
           <tr>
             <th>Setting</th>
-            <th>Description</th>
+            <th>What it does</th>
             <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Page heading</td>
-            <td>Main title at the top of the page</td>
-            <td>&quot;Our Rewards Program&quot;</td>
+            <td>Guest hero image</td>
+            <td>Background image shown to shoppers who aren&apos;t signed in (use roughly 1200&times;600 or larger)</td>
+            <td>None</td>
           </tr>
           <tr>
-            <td>Show earn rules</td>
-            <td>Toggle the earn rules section</td>
-            <td>Enabled</td>
+            <td>Color scheme</td>
+            <td>Light or dark, or auto to match the shopper&apos;s system setting</td>
+            <td>Auto</td>
           </tr>
           <tr>
-            <td>Show rewards</td>
-            <td>Toggle the available rewards section</td>
-            <td>Enabled</td>
+            <td>Show tier progress</td>
+            <td>Show the VIP tier section and progress bar</td>
+            <td>On</td>
           </tr>
           <tr>
-            <td>Show tiers</td>
-            <td>Toggle the VIP tiers section (only if tiers are configured)</td>
-            <td>Enabled</td>
+            <td>Show ways to earn</td>
+            <td>Show the list of earning actions</td>
+            <td>On</td>
           </tr>
           <tr>
-            <td>Show referral</td>
-            <td>Toggle the referral program section</td>
-            <td>Enabled</td>
+            <td>Show referral section</td>
+            <td>Show the customer&apos;s referral link</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show transaction history</td>
+            <td>Show the customer&apos;s points activity history</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Content alignment</td>
+            <td>Center or left-align the page content</td>
+            <td>Center</td>
+          </tr>
+          <tr>
+            <td>Background / Card background / Primary text / Secondary text</td>
+            <td>Optional color overrides for each part of the page</td>
+            <td>Follows the color scheme</td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Guest Experience</H2>
+      <H3>Heading, fonts, and brand come from the app</H3>
       <p>
-        When a guest (not logged in) visits the loyalty page, they see the full program details
-        (earn rules, rewards catalogue, and tier information), but personalised elements like points
-        balance and referral link are replaced with a call-to-action prompting them to create an
-        account or log in.
+        Like the launcher, the heading and subheading copy, accent color, fonts, and card radius are
+        managed in the app under{" "}
+        <a href="/docs/settings/widget-customization">Settings &rarr; Widget Customization</a>, not
+        the theme editor. The Loyalty Page and the launcher share those brand settings, so they stay
+        consistent. Full brand matching &mdash; custom colors, fonts, and hero &mdash; is available on
+        the <PlanBadge plan="growth" /> plan and above.
       </p>
 
-      <H2>Troubleshooting</H2>
+      <Callout type="tip">
+        Add your &quot;Rewards&quot; page to your store&apos;s main navigation or footer so customers
+        can always find it.
+      </Callout>
+
+      <H2>Related</H2>
       <ul>
         <li>
-          <strong>Page is blank</strong>: ensure the PerkStack Loyalty Page section is added to the
-          correct page template and that the template is assigned to the page.
+          <a href="/docs/widgets/loyalty-launcher">Loyalty Launcher</a>: the floating rewards button
+          that shares the same brand settings.
         </li>
         <li>
-          <strong>Tiers not showing</strong>: VIP tiers require the <PlanBadge plan="growth" /> plan
-          and must be configured in PerkStack admin under <strong>Loyalty &gt; Tiers</strong>.
+          <a href="/docs/widgets/customer-account">Loyalty Studio</a>: the same style of dashboard
+          inside the customer account area.
         </li>
         <li>
-          <strong>Points balance not updating</strong>: the page fetches data on load. A manual
-          refresh updates the balance.
+          <a href="/docs/settings/widget-customization">Widget Customization</a>: set the page&apos;s
+          heading, colors, and fonts.
+        </li>
+        <li>
+          <a href="/docs/loyalty/overview">Loyalty Overview</a>: how points, tiers, and rewards work.
         </li>
       </ul>
     </div>

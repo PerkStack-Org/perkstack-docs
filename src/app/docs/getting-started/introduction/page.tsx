@@ -7,147 +7,66 @@ import PlanBadge from "@/components/PlanBadge";
 export const metadata: Metadata = createDocMetadata("/docs/getting-started/introduction", {
   title: "Introduction",
   description:
-    "Learn what PerkStack is, what it can do for your store, and how the platform is structured.",
+    "PerkStack: Loyalty & Reviews brings a points program, product reviews, and referrals together in one Shopify app — turning one-time buyers into repeat customers.",
 });
 
 export default function IntroductionPage() {
   return (
     <div className="docs-prose">
-      <h1>Introduction to PerkStack</h1>
+      <h1>Introduction</h1>
       <p>
-        PerkStack is a Shopify embedded app that combines a{" "}
-        <strong>loyalty &amp; rewards program</strong> with <strong>product reviews</strong> in a
-        single, unified platform. It lives inside your Shopify admin with no external dashboards or
-        extra logins, and gives your customers a branded storefront experience powered by theme app
-        extensions.
+        <strong>PerkStack: Loyalty &amp; Reviews</strong> is a single Shopify app that runs three of
+        the most effective retention tools for your store — a loyalty points program, product
+        reviews, and a referral program — from one place. Customers earn points when they shop,
+        review, and refer friends, then spend those points on rewards that bring them back.
       </p>
 
-      <Callout type="tip">
-        PerkStack is built as an embedded Shopify app. Every feature is accessible directly from
-        your Shopify admin panel, so you never have to leave your store&apos;s dashboard.
-      </Callout>
-
-      <H2>What You Get</H2>
-
-      <div className="feature-grid">
-        <div className="feature-card">
-          <h4>Loyalty &amp; Rewards</h4>
-          <p>
-            Points-based loyalty program with configurable earn rules, tiered rewards, VIP tiers,
-            and referral campaigns, all managed from Shopify.
-          </p>
-        </div>
-        <div className="feature-card">
-          <h4>Product Reviews</h4>
-          <p>
-            Collect text and photo reviews, moderate them with auto-approve rules, and display them
-            on your storefront with rich snippet support.
-          </p>
-        </div>
-        <div className="feature-card">
-          <h4>Storefront Widgets</h4>
-          <p>
-            Eight theme app extension blocks including loyalty launcher, rewards page, reviews
-            display, star ratings, and more, all customisable from the theme editor.
-          </p>
-        </div>
-        <div className="feature-card">
-          <h4>Automated Emails</h4>
-          <p>
-            Review request emails, points-earned notifications, reward reminders, and referral
-            invites sent automatically on your behalf.
-          </p>
-        </div>
-      </div>
-
-      <H2>Platform Overview</H2>
-      <p>
-        Under the hood, PerkStack is a monorepo with three packages and a set of Shopify extensions:
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Component</th>
-            <th>Technology</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>packages/web</code>
-            </td>
-            <td>Remix, Polaris, App Bridge</td>
-            <td>Admin UI and API routes embedded in Shopify</td>
-          </tr>
-          <tr>
-            <td>
-              <code>packages/shared</code>
-            </td>
-            <td>Drizzle ORM, PostgreSQL</td>
-            <td>Database schema, queries, and shared utilities</td>
-          </tr>
-          <tr>
-            <td>
-              <code>packages/worker</code>
-            </td>
-            <td>BullMQ, Redis</td>
-            <td>Background jobs such as emails, point calculations, and webhooks</td>
-          </tr>
-          <tr>
-            <td>Extensions</td>
-            <td>Shopify CLI extensions</td>
-            <td>Theme blocks, checkout UI, admin blocks, pixel, Flow trigger</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <H2>Shopify Extensions</H2>
-      <p>
-        PerkStack ships with the following Shopify extensions that integrate directly into your
-        store:
-      </p>
+      <H2>What PerkStack does</H2>
       <ul>
         <li>
-          <strong>Theme App Extension</strong>: 8 blocks for your Online Store (loyalty launcher,
-          rewards page, review widgets, star ratings, and more)
+          <strong>Loyalty points</strong>: reward shoppers for buying, signing up, writing reviews,
+          sharing on social, celebrating birthdays, and more. They redeem points for discounts, free
+          shipping, free products, and other rewards.
         </li>
         <li>
-          <strong>Checkout UI Extension</strong>: displays loyalty points and rewards at checkout
+          <strong>Product reviews</strong>: automatically ask customers for a review after they buy,
+          collect star ratings and photos, and display that social proof on your product pages.
         </li>
         <li>
-          <strong>Admin Block: Customer Loyalty</strong>: view and manage a customer&apos;s points
-          balance and history from their admin profile
-        </li>
-        <li>
-          <strong>Admin Block: Customer Reviews</strong>: see all reviews submitted by a customer
-          directly on their admin profile
-        </li>
-        <li>
-          <strong>Customer Account Extension</strong>: lets customers view their points, rewards,
-          and review history in their account page
-        </li>
-        <li>
-          <strong>App Pixel</strong>: tracks storefront events for analytics and referral
-          attribution
-        </li>
-        <li>
-          <strong>Flow Trigger: New Review</strong>: fires a Shopify Flow trigger whenever a new
-          review is submitted, enabling custom automations
+          <strong>Referrals</strong>: let happy customers share a personal link. Their friend gets a
+          welcome discount, and both sides earn points when the friend buys.
         </li>
       </ul>
+      <p>
+        Everything is managed inside your Shopify admin. Shoppers interact with it through a floating
+        rewards launcher and blocks you add to your storefront.
+      </p>
 
-      <H2>Plans &amp; Pricing</H2>
-      <p>PerkStack offers four plans to fit stores of every size:</p>
+      <H2>Who it&apos;s for</H2>
+      <p>
+        PerkStack is built for Shopify merchants and their teams — store owners, marketing managers,
+        and support staff who want more repeat purchases and stronger trust without stitching
+        together separate loyalty and reviews apps. You already know Shopify; PerkStack fits on top
+        of it.
+      </p>
 
+      <H2>Why it helps</H2>
+      <p>
+        Winning a new customer costs far more than keeping an existing one. A loyalty program gives
+        shoppers a reason to come back, reviews turn browsers into buyers, and referrals bring in new
+        customers who already trust a friend&apos;s recommendation. Running all three together means
+        each one feeds the others — a review earns points, points bring the customer back, and their
+        next purchase can spark a referral.
+      </p>
+
+      <H2>The plans at a glance</H2>
+      <p>PerkStack has four plans, so you can start free and grow into more features:</p>
       <table>
         <thead>
           <tr>
             <th>Plan</th>
             <th>Price</th>
-            <th>Trial</th>
-            <th>Highlights</th>
+            <th>Best for</th>
           </tr>
         </thead>
         <tbody>
@@ -155,64 +74,52 @@ export default function IntroductionPage() {
             <td>
               <PlanBadge plan="free" />
             </td>
-            <td>$0 / month</td>
-            <td>-</td>
-            <td>Core loyalty + unlimited text reviews, up to 100 monthly orders</td>
+            <td>$0/mo</td>
+            <td>Newer stores running a percentage-off points program and collecting reviews</td>
           </tr>
           <tr>
             <td>
               <PlanBadge plan="essential" />
             </td>
-            <td>$29 / month</td>
-            <td>14-day free trial</td>
-            <td>Photo reviews, checkout extension, branding removal, 500 orders/mo</td>
+            <td>$29/mo</td>
+            <td>Stores wanting photo reviews, more reward types, and branding removal</td>
           </tr>
           <tr>
             <td>
               <PlanBadge plan="growth" />
             </td>
-            <td>$99 / month</td>
-            <td>21-day free trial</td>
-            <td>
-              Referrals, VIP tiers, Shopify Flow, Klaviyo &amp; Judge.me integrations, 2,500
-              orders/mo
-            </td>
+            <td>$99/mo</td>
+            <td>Scaling stores that want VIP tiers, referrals, and integrations</td>
           </tr>
           <tr>
             <td>
               <PlanBadge plan="studio" />
             </td>
-            <td>$299 / month</td>
-            <td>30-day free trial</td>
-            <td>Full white-label, custom domain &amp; CSS, bulk ops, 10,000 orders/mo</td>
+            <td>$299/mo</td>
+            <td>High-volume brands wanting white-label branding and data import</td>
           </tr>
         </tbody>
       </table>
 
-      <Callout type="info">
-        All paid plans include a free trial (14 / 21 / 30 days). You can upgrade or downgrade at any
-        time from the PerkStack settings page in your Shopify admin. See{" "}
-        <a href="/docs/settings/billing">Billing &amp; Plans</a> for the full feature comparison.
+      <Callout type="tip">
+        You can run a real loyalty program and collect unlimited text reviews on the free plan — it
+        is a full product, not a trial. See <a href="/docs/settings/billing">Plans &amp; Billing</a>{" "}
+        for the full feature comparison, caps, and trial lengths.
       </Callout>
 
-      <H2>Next Steps</H2>
-      <p>Ready to get started? Here&apos;s what to read next:</p>
+      <H2>Related</H2>
       <ul>
         <li>
-          <a href="/docs/getting-started/how-it-works">How It Works</a>: understand the architecture
-          and data flow
+          <a href="/docs/getting-started/how-it-works">How It Works</a>: the loyalty and reviews
+          flywheel explained in plain terms
         </li>
         <li>
-          <a href="/docs/getting-started/installation">Installation</a>: install PerkStack from the
+          <a href="/docs/getting-started/installation">Installing PerkStack</a>: add the app from the
           Shopify App Store
         </li>
         <li>
-          <a href="/docs/getting-started/shopify-setup">Shopify Setup</a>: configure webhooks, app
-          proxy, and theme extensions
-        </li>
-        <li>
-          <a href="/docs/getting-started/first-time-config">First-Time Configuration</a>: walk
-          through the onboarding wizard and default settings
+          <a href="/docs/settings/billing">Plans &amp; Billing</a>: full plan comparison, prices, and
+          caps
         </li>
       </ul>
     </div>

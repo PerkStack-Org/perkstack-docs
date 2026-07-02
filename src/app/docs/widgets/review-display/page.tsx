@@ -3,12 +3,11 @@ import { createDocMetadata } from "@/lib/seo";
 import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
-import ReviewDisplayPreview from "@/components/widget-previews/ReviewDisplayPreview";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/review-display", {
   title: "Review Display",
   description:
-    "Display approved product reviews on your storefront with ratings, photos, verified badges, and helpful votes.",
+    "Show customer reviews on your product pages with a rating summary, photos, verified badges, and sortable review list or grid.",
 });
 
 export default function ReviewDisplayPage() {
@@ -16,173 +15,146 @@ export default function ReviewDisplayPage() {
     <div className="docs-prose">
       <h1>Review Display</h1>
       <p>
-        The Review Display widget renders a full list of approved reviews on any product page. It
-        shows star ratings, reviewer names, review body text, uploaded photos, verified purchase
-        badges, and helpful vote counts, giving shoppers the social proof they need to buy with
-        confidence.
+        Review Display is the main reviews block for your product pages. It shows an overall rating
+        summary with a breakdown by star, then a sortable list or grid of individual reviews
+        complete with photos, verified-purchase badges, and helpful votes &mdash; the social proof
+        shoppers look for before they buy.
       </p>
 
-      <PlanBadge plan="free" />
+      <H2>What shoppers see</H2>
+      <ul>
+        <li>A rating summary with the average score and a distribution of stars</li>
+        <li>Each review with its rating, title, text, and any photos</li>
+        <li>A verified-purchase badge on reviews from real buyers</li>
+        <li>A helpful button so shoppers can upvote useful reviews</li>
+        <li>Sorting controls to reorder reviews by most recent, highest, lowest, or most helpful</li>
+      </ul>
 
-      <ReviewDisplayPreview />
-
-      <H2>How It Works</H2>
-      <p>
-        The widget is powered by <code>review-display.liquid</code> and uses a <code>section</code>{" "}
-        target, so it must be added to each template where you want reviews to appear (typically the
-        product page template).
-      </p>
-      <p>When the section loads, it calls the app proxy endpoint:</p>
-      <pre>
-        <code>/apps/perkstack/api/reviews?product_id=&#123;product.id&#125;</code>
-      </pre>
-      <p>
-        This returns all approved reviews for the current product, including ratings, review text,
-        photos, and metadata.
-      </p>
-
-      <H2>Placement</H2>
+      <H2>How to add it</H2>
       <ol>
         <li>
-          Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
+          In Shopify admin, go to <strong>Online Store &rarr; Themes</strong> and click{" "}
+          <strong>Customize</strong>.
+        </li>
+        <li>Open your product template.</li>
+        <li>
+          In the section where you want reviews (usually below the product info), click{" "}
+          <strong>Add block</strong> and choose <strong>Review Display</strong>.
         </li>
         <li>
-          Navigate to a <strong>product page</strong> template in the theme editor.
-        </li>
-        <li>
-          Click <strong>Add section</strong> and search for{" "}
-          <strong>PerkStack Review Display</strong>.
-        </li>
-        <li>
-          Drag the section to your preferred position (typically below the product description or
-          below the &quot;Add to Cart&quot; section).
-        </li>
-        <li>
-          Click <strong>Save</strong>.
+          Adjust the settings below, then click <strong>Save</strong>.
         </li>
       </ol>
 
       <Callout type="tip">
-        Place the Review Display section below the main product content so customers see the product
-        details first and reviews second, which follows established e-commerce patterns.
+        Add the <a href="/docs/widgets/review-form">Review Form</a> to the same product page so
+        shoppers can write a review right where they read them. Add{" "}
+        <strong>Review SEO</strong> as well to earn star ratings in Google search results.
       </Callout>
 
-      <H2>What Each Review Shows</H2>
+      <H2>Theme editor settings</H2>
       <table>
         <thead>
           <tr>
-            <th>Element</th>
-            <th>Description</th>
+            <th>Setting</th>
+            <th>What it does</th>
+            <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Star rating</td>
-            <td>1–5 star visual rating for the review</td>
-          </tr>
-          <tr>
-            <td>Reviewer name</td>
-            <td>Display name of the customer who left the review</td>
-          </tr>
-          <tr>
-            <td>Review body</td>
-            <td>The full text of the review</td>
-          </tr>
-          <tr>
-            <td>Photos</td>
+            <td>Star &amp; accent color</td>
+            <td>Color of the stars and accents</td>
             <td>
-              Customer-uploaded images displayed as thumbnails that expand on click. Photos are
-              served from Cloudflare R2 via the URL stored in{" "}
-              <code>shop.metafields.perkstack.r2_public_url</code>.
+              <code>#f59e0b</code> (amber)
             </td>
           </tr>
           <tr>
-            <td>Verified badge</td>
-            <td>Shown when the reviewer has a confirmed purchase of the product</td>
+            <td>Custom heading</td>
+            <td>Replaces the default &quot;Customer Reviews&quot; heading</td>
+            <td>Default heading</td>
           </tr>
           <tr>
-            <td>Helpful votes</td>
-            <td>Count of &quot;helpful&quot; votes from other customers, with a button to vote</td>
+            <td>Layout</td>
+            <td>Show reviews as a single-column list or a two-column grid</td>
+            <td>List</td>
+          </tr>
+          <tr>
+            <td>Reviews per page</td>
+            <td>How many reviews to show before paging (3&ndash;25)</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Default sort order</td>
+            <td>Starting sort: most recent, highest, most helpful, or lowest</td>
+            <td>Most recent</td>
+          </tr>
+          <tr>
+            <td>Show rating summary</td>
+            <td>Show the average score and star breakdown at the top</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show sort buttons</td>
+            <td>Let shoppers reorder the reviews themselves</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show review photos</td>
+            <td>Display photos that customers attached to their reviews</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show helpful button</td>
+            <td>Let shoppers upvote reviews they find useful</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show verified purchase badge</td>
+            <td>Mark reviews written by verified buyers</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Allow customers to delete own reviews</td>
+            <td>Let a customer remove a review they wrote</td>
+            <td>On</td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Features</H2>
-      <H3>Pagination</H3>
+      <H3>Photos and plans</H3>
       <p>
-        Reviews are paginated automatically. The widget loads a configurable number of reviews per
-        page and displays navigation controls to browse through additional pages. This keeps the
-        product page fast even for products with hundreds of reviews.
+        Photo reviews are available on the <PlanBadge plan="essential" /> plan and above. The{" "}
+        <strong>Show review photos</strong> setting only has an effect where photo reviews exist, so
+        on the <PlanBadge plan="free" /> plan reviews display as text only.
       </p>
 
-      <H3>Sorting</H3>
-      <p>Customers can sort reviews by:</p>
-      <ul>
-        <li>
-          <strong>Most recent</strong>: newest reviews first
-        </li>
-        <li>
-          <strong>Highest rated</strong>: 5-star reviews first
-        </li>
-        <li>
-          <strong>Lowest rated</strong>: 1-star reviews first
-        </li>
-        <li>
-          <strong>Most helpful</strong>: reviews with the most helpful votes first
-        </li>
-      </ul>
-
-      <H3>Photo Gallery</H3>
+      <H2>Global review look</H2>
       <p>
-        When a review includes photos, they are displayed as thumbnails below the review text.
-        Clicking a thumbnail opens a lightbox gallery. All images are served from Cloudflare R2 for
-        fast global delivery.
+        The color above sets this block on its own. To style all of your review blocks together
+        &mdash; star color, card style, and typography &mdash; set them in{" "}
+        <a href="/docs/settings/review-settings">Review Settings</a>. Custom review design (colors,
+        card styling, and fonts) is available on the <PlanBadge plan="growth" /> plan and above; a
+        per-block color still overrides the global setting.
       </p>
 
-      <H2>Configuration</H2>
-      <p>The Review Display block exposes the following settings in the theme editor sidebar:</p>
+      <H2>Related</H2>
       <ul>
         <li>
-          <strong>Reviews per page</strong>: number of reviews to show before pagination kicks in
-          (default: 10)
+          <a href="/docs/widgets/review-form">Review Form</a>: the &quot;Write a review&quot; block
+          to pair on the same page.
         </li>
         <li>
-          <strong>Default sort order</strong>: the initial sort applied when the page loads
+          <a href="/docs/widgets/star-badge">Review Star Badge</a>: a compact rating near the product
+          title.
         </li>
         <li>
-          <strong>Show photos</strong>: toggle photo thumbnails on or off
+          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: let customers add photos to their
+          reviews.
         </li>
         <li>
-          <strong>Show verified badge</strong>: toggle the verified purchase indicator
-        </li>
-      </ul>
-
-      <H2>Structured Data</H2>
-      <p>
-        The Review Display widget automatically outputs JSON-LD structured data for each
-        product&apos;s reviews. This enables search engines to display{" "}
-        <strong>rich snippets</strong> (star ratings and review counts) in Google search results,
-        which can improve click-through rates.
-      </p>
-
-      <Callout type="info">
-        Rich snippets may take a few days to appear in search results after reviews are published.
-        Google re-crawls pages on its own schedule.
-      </Callout>
-
-      <H2>Troubleshooting</H2>
-      <ul>
-        <li>
-          <strong>No reviews showing</strong>: confirm you have at least one approved review for the
-          product. Draft or pending reviews are not displayed.
-        </li>
-        <li>
-          <strong>Photos not loading</strong>: verify that the <code>perkstack.r2_public_url</code>{" "}
-          metafield is set on the shop. This is configured automatically during installation.
-        </li>
-        <li>
-          <strong>Section not available</strong>: ensure your theme supports Online Store 2.0
-          sections on product pages.
+          <a href="/docs/settings/review-settings">Review Settings</a>: set the global look for all
+          review blocks.
         </li>
       </ul>
     </div>

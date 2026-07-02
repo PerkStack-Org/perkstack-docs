@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { createDocMetadata } from "@/lib/seo";
-import { H2 } from "@/components/Heading";
+import { H2, H3 } from "@/components/Heading";
 import Callout from "@/components/Callout";
 import PlanBadge from "@/components/PlanBadge";
-import ReviewFormPreview from "@/components/widget-previews/ReviewFormPreview";
 
 export const metadata: Metadata = createDocMetadata("/docs/widgets/review-form", {
   title: "Review Form",
   description:
-    "Let customers submit product reviews with ratings, text, and photo uploads directly on your product pages.",
+    "Add a 'Write a review' form to your product pages so customers can rate, review, and upload photos, with an optional points incentive.",
 });
 
 export default function ReviewFormPage() {
@@ -16,170 +15,151 @@ export default function ReviewFormPage() {
     <div className="docs-prose">
       <h1>Review Form</h1>
       <p>
-        The Review Form widget lets customers submit reviews directly on your product pages. It
-        supports star ratings, a title, body text, and photo uploads, providing everything needed to
-        collect rich, authentic customer feedback without redirecting to an external page.
+        Review Form is the &quot;Write a review&quot; block. It gives customers a simple way to rate
+        a product, add a title and comments, and upload photos &mdash; right on the product page.
+        Pair it with an earn rule and it can also reward customers with points for leaving a review.
       </p>
 
-      <PlanBadge plan="free" />
-
-      <ReviewFormPreview />
-
-      <H2>How It Works</H2>
+      <H2>What shoppers see</H2>
+      <ul>
+        <li>A star rating selector, a title field, and a comments box</li>
+        <li>Photo upload, so customers can show the product in real life</li>
+        <li>A points-incentive badge when leaving a review earns points</li>
+        <li>A hint that verified buyers get recognized</li>
+        <li>A celebratory confetti animation when their review is submitted</li>
+      </ul>
       <p>
-        The widget is rendered by <code>review-form.liquid</code> and uses a <code>section</code>{" "}
-        target. When a customer submits a review, the form sends a <code>POST</code> request to:
-      </p>
-      <pre>
-        <code>/apps/perkstack/api/reviews</code>
-      </pre>
-      <p>
-        The review is saved with a status determined by your moderation settings. If auto-approve is
-        enabled and the review meets the criteria, it goes live immediately. Otherwise, it enters a
-        pending state for manual moderation.
+        Reviews land pending approval by default, so you can moderate before they appear on your
+        store.
       </p>
 
-      <H2>Placement</H2>
+      <H2>How to add it</H2>
       <ol>
         <li>
-          Go to <strong>Online Store &gt; Themes &gt; Customize</strong>.
+          In Shopify admin, go to <strong>Online Store &rarr; Themes</strong> and click{" "}
+          <strong>Customize</strong>.
+        </li>
+        <li>Open your product template.</li>
+        <li>
+          In the section where you want the form (usually with your reviews), click{" "}
+          <strong>Add block</strong> and choose <strong>Review Form</strong>.
         </li>
         <li>
-          Navigate to a <strong>product page</strong> template.
-        </li>
-        <li>
-          Click <strong>Add section</strong> and search for <strong>PerkStack Review Form</strong>.
-        </li>
-        <li>Position the section, typically directly above or below the Review Display section.</li>
-        <li>
-          Click <strong>Save</strong>.
+          Adjust the settings below, then click <strong>Save</strong>.
         </li>
       </ol>
 
       <Callout type="tip">
-        Place the Review Form above the Review Display section so customers see the invitation to
-        write a review before scrolling through existing ones.
+        Add the <a href="/docs/widgets/review-display">Review Display</a> block on the same page so
+        customers can read existing reviews and write their own in one place.
       </Callout>
 
-      <H2>Form Fields</H2>
+      <H2>Theme editor settings</H2>
       <table>
         <thead>
           <tr>
-            <th>Field</th>
-            <th>Required</th>
-            <th>Description</th>
+            <th>Setting</th>
+            <th>What it does</th>
+            <th>Default</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Rating</td>
-            <td>Yes</td>
-            <td>1–5 star selector. Customers click or tap to choose a rating.</td>
-          </tr>
-          <tr>
-            <td>Title</td>
-            <td>No</td>
-            <td>Optional headline for the review (e.g. &quot;Great product!&quot;).</td>
-          </tr>
-          <tr>
-            <td>Body</td>
-            <td>Yes</td>
-            <td>The main review text. Minimum length is enforced based on your settings.</td>
-          </tr>
-          <tr>
-            <td>Photos</td>
-            <td>No</td>
+            <td>Accent color</td>
+            <td>Color of the stars and buttons</td>
             <td>
-              Up to 5 images per review. Accepted formats: JPEG, PNG, WebP. Max file size: 10 MB
-              each.
+              <code>#f59e0b</code> (amber)
             </td>
+          </tr>
+          <tr>
+            <td>Custom heading</td>
+            <td>Replaces the default &quot;Write a review&quot; heading</td>
+            <td>Default heading</td>
+          </tr>
+          <tr>
+            <td>Custom submit button text</td>
+            <td>Replaces the default submit button label</td>
+            <td>Default label</td>
+          </tr>
+          <tr>
+            <td>Custom success heading</td>
+            <td>The message shown after a review is submitted</td>
+            <td>Default message</td>
+          </tr>
+          <tr>
+            <td>Require login to review</td>
+            <td>Only signed-in customers can submit</td>
+            <td>Off</td>
+          </tr>
+          <tr>
+            <td>Require review title</td>
+            <td>Make the title field mandatory</td>
+            <td>Off</td>
+          </tr>
+          <tr>
+            <td>Minimum review length</td>
+            <td>Smallest number of characters a review can be (0&ndash;100)</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Allow photo uploads</td>
+            <td>Let customers attach photos to their review</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Max photos per review</td>
+            <td>How many photos a customer can attach (1&ndash;10)</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Show points incentive</td>
+            <td>Show a badge advertising the points a review earns</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show verified buyer hint</td>
+            <td>Note that verified buyers are recognized</td>
+            <td>On</td>
+          </tr>
+          <tr>
+            <td>Show confetti on submission</td>
+            <td>Play a confetti animation after a review is sent</td>
+            <td>On</td>
           </tr>
         </tbody>
       </table>
 
-      <H2>Validation</H2>
-      <p>
-        The form validates inputs on the client side before submission and displays contextual error
-        messages inline next to the relevant field:
-      </p>
+      <H3>Points incentive and photos</H3>
       <ul>
         <li>
-          <strong>Rating</strong>: must select at least 1 star
+          The points-incentive badge only appears if you&apos;ve set up an earn rule that rewards
+          reviews. Turning on <strong>Show points incentive</strong> without a review earn rule shows
+          nothing. See <a href="/docs/loyalty/earn-rules">Ways to Earn</a> to add one.
         </li>
         <li>
-          <strong>Body</strong>: must meet the minimum character length (configurable in PerkStack
-          admin)
-        </li>
-        <li>
-          <strong>Photos</strong>: file type and size are validated before upload begins
+          Photo uploads are only meaningful on the <PlanBadge plan="essential" /> plan and above,
+          where photo reviews are supported. On the <PlanBadge plan="free" /> plan reviews are text
+          only.
         </li>
       </ul>
 
-      <Callout type="warning">
-        If a customer is not logged in, the form will prompt them to log in or create an account
-        before they can submit a review. Anonymous reviews are not supported.
-      </Callout>
-
-      <H2>Submission Flow</H2>
-      <ol>
-        <li>
-          Customer fills in the form and clicks <strong>Submit Review</strong>.
-        </li>
-        <li>Client-side validation runs. If errors exist, they are shown inline.</li>
-        <li>Photos (if any) are uploaded to Cloudflare R2 via a presigned URL.</li>
-        <li>
-          The review payload is sent to <code>POST /apps/perkstack/api/reviews</code>.
-        </li>
-        <li>
-          A success message confirms the submission and explains the moderation status (e.g.
-          &quot;Your review has been submitted and is awaiting approval&quot; or &quot;Your review
-          is now live&quot;).
-        </li>
-      </ol>
-
-      <H2>Internationalisation</H2>
-      <p>
-        All form labels, placeholder text, validation messages, and success/error messages use
-        translations defined in <code>locales/en.default.json</code>. If your store operates in
-        multiple languages, Shopify&apos;s translation system handles the localisation
-        automatically.
-      </p>
-
-      <H2>Configuration</H2>
-      <p>
-        Review form behaviour is configured in the PerkStack admin under{" "}
-        <strong>Reviews &gt; Settings</strong>:
-      </p>
+      <H2>Related</H2>
       <ul>
         <li>
-          <strong>Auto-approve</strong>: automatically approve reviews that meet your criteria (e.g.
-          4+ stars, no profanity)
+          <a href="/docs/widgets/review-display">Review Display</a>: show the reviews customers
+          submit.
         </li>
         <li>
-          <strong>Minimum body length</strong>: minimum number of characters required in the review
-          body
+          <a href="/docs/reviews/moderation">Moderation</a>: approve or reject reviews before they go
+          live.
         </li>
         <li>
-          <strong>Allow photos</strong>: enable or disable photo uploads on the form
+          <a href="/docs/loyalty/earn-rules">Ways to Earn</a>: reward customers with points for
+          leaving a review.
         </li>
         <li>
-          <strong>Max photos per review</strong>: limit the number of photos a customer can attach
-        </li>
-      </ul>
-
-      <H2>Troubleshooting</H2>
-      <ul>
-        <li>
-          <strong>Form not appearing</strong>: make sure the section is added to your product page
-          template in the theme editor.
-        </li>
-        <li>
-          <strong>Upload errors</strong>: check that file sizes are within the 10 MB limit and the
-          format is JPEG, PNG, or WebP.
-        </li>
-        <li>
-          <strong>Review not visible after submission</strong>: the review is likely awaiting
-          moderation. Check the <strong>Reviews</strong> page in PerkStack admin.
+          <a href="/docs/reviews/photo-reviews">Photo Reviews</a>: how photo reviews work and which
+          plans include them.
         </li>
       </ul>
     </div>
