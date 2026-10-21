@@ -23,12 +23,38 @@ async function trello(method, path, params = {}) {
   return res.json();
 }
 
+// A release PR (develop into main) lists no cards itself: they are on the
+// feature PRs merged into develop. So for every PR behind the deployed commit,
+// also read the PRs behind each of its commits (GitHub returns at most 250).
+async function prsBehind(sha) {
+  const direct = await github(`repos/${GITHUB_REPOSITORY}/commits/${sha}/pulls`);
+  const found = new Map(direct.map((pr) => [pr.number, pr]));
+  const messages = [];
+  for (const pr of direct) {
+    for (let page = 1; page <= 3; page++) {
+      const commits = await github(
+        `repos/${GITHUB_REPOSITORY}/pulls/${pr.number}/commits?per_page=100&page=${page}`,
+      );
+      for (const c of commits) {
+        messages.push(c.commit.message);
+        for (const inner of await github(`repos/${GITHUB_REPOSITORY}/commits/${c.sha}/pulls`)) {
+          if (!found.has(inner.number)) found.set(inner.number, inner);
+        }
+      }
+      if (commits.length < 100) break;
+    }
+  }
+  return { prs: [...found.values()], messages };
+}
+
 async function main() {
-  const prs = await github(`repos/${GITHUB_REPOSITORY}/commits/${DEPLOYED_SHA}/pulls`);
+  const { prs, messages } = await prsBehind(DEPLOYED_SHA);
   const commit = await github(`repos/${GITHUB_REPOSITORY}/commits/${DEPLOYED_SHA}`);
-  const text = [commit.commit.message, ...prs.flatMap((pr) => [pr.title, pr.body ?? ""])].join(
-    "\n",
-  );
+  const text = [
+    commit.commit.message,
+    ...messages,
+    ...prs.flatMap((pr) => [pr.title, pr.body ?? ""]),
+  ].join("\n");
   const shortLinks = [
     ...new Set([...text.matchAll(/trello\.com\/c\/([A-Za-z0-9]{8})/g)].map((m) => m[1])),
   ];
