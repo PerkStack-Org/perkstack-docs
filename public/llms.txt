@@ -80,6 +80,10 @@
 - [FAQ](https://docs.perk-stack.com/docs/troubleshooting/faq): Answers to the questions merchants ask most about PerkStack — plans and pricing, trials, order caps, downgrades, branding, and how points and reviews behave.
 - [Status Reference](https://docs.perk-stack.com/docs/troubleshooting/status-reference): A plain-language glossary of the statuses you see across PerkStack — for reviews, redemptions, referrals, customers, and points activity — and what each one means for you.
 
+## Changelog
+
+- [Changelog](https://docs.perk-stack.com/docs/changelog): What's new and what changed in PerkStack, newest first.
+
 ## More
 
 - [PerkStack Website](https://perk-stack.com): Product site and Shopify app listing.
