@@ -1,0 +1,21 @@
+name: Changelog check
+
+# Blocks changelog wording that breaks the rules (em/en dashes, hype words,
+# exclamation marks, emoji, overly long entries), including edits made by hand in a PR.
+
+on:
+  pull_request:
+    paths: [src/content/changelog.json, scripts/changelog/**]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/changelog/lint.mjs

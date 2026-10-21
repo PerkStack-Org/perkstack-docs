@@ -15,6 +15,7 @@ export const navigation: NavItem[] = [
       { title: "Connecting Your Store", href: "/docs/getting-started/shopify-setup" },
       { title: "First-Time Setup", href: "/docs/getting-started/first-time-config" },
       { title: "Going Live on Your Store", href: "/docs/getting-started/going-live" },
+      { title: "Changelog", href: "/docs/changelog" },
     ],
   },
   {

@@ -1,0 +1,133 @@
+[
+  {
+    "date": "2026-10-19",
+    "type": "fixed",
+    "area": "Reviews",
+    "title": "Collection stars skip banner slides",
+    "summary": "Star ratings no longer appear on slideshow banners that link to a product. They only show on product cards.",
+    "docsHref": "/docs/widgets/collection-stars"
+  },
+  {
+    "date": "2026-10-17",
+    "type": "improved",
+    "area": "Reviews",
+    "title": "Collection stars alignment, and stars in featured products",
+    "summary": "Collection stars line up with the product title by default, or you can pick left, center or right. The star badge now also works in featured product sections, and collection stars show on every product on the Eurus theme.",
+    "docsHref": "/docs/widgets/collection-stars"
+  },
+  {
+    "date": "2026-10-15",
+    "type": "new",
+    "area": "Storefront",
+    "title": "Open rewards from your header and menus",
+    "summary": "Add a rewards icon to your store header that shows signed-in customers their balance, or link any menu item to your rewards. You can hide the floating button while the header icon is showing.",
+    "docsHref": "/docs/widgets/loyalty-launcher"
+  },
+  {
+    "date": "2026-10-15",
+    "type": "fixed",
+    "area": "Storefront",
+    "title": "Your text always wins",
+    "summary": "Text you write in PerkStack now takes priority over older edits made in the theme editor, so customers see exactly what you set.",
+    "docsHref": "/docs/settings/widget-customization"
+  },
+  {
+    "date": "2026-10-15",
+    "type": "new",
+    "area": "Admin",
+    "title": "Change any storefront text from Sidekick",
+    "summary": "Ask Shopify Sidekick or your AI assistant to change PerkStack text on your store, including reward and earn rule titles in each language. Sidekick prepares the change and you click Save."
+  },
+  {
+    "date": "2026-10-14",
+    "type": "new",
+    "area": "Loyalty",
+    "title": "Reward and earn rule titles in every language",
+    "summary": "Give each reward and way to earn its own title per language. Customers see them in the language they shop in.",
+    "docsHref": "/docs/loyalty/rewards"
+  },
+  {
+    "date": "2026-10-14",
+    "type": "new",
+    "area": "Storefront",
+    "title": "Edit storefront text in every language",
+    "summary": "Every word PerkStack shows on your store can be edited, separately for each language your store supports.",
+    "docsHref": "/docs/settings/widget-customization"
+  },
+  {
+    "date": "2026-10-12",
+    "type": "improved",
+    "area": "Integrations",
+    "title": "Klaviyo profiles stay in sync",
+    "summary": "Points balances and tiers now update in Klaviyo after every change, including manual adjustments, redemptions, refunds and expiry. No more resync button, and PerkStack runs on Klaviyo's current API."
+  },
+  {
+    "date": "2026-10-09",
+    "type": "new",
+    "area": "Integrations",
+    "title": "Send review requests from Mailchimp",
+    "summary": "Review request emails can now go out through your Mailchimp account, and Mailchimp sync is more reliable.",
+    "docsHref": "/docs/reviews/review-requests"
+  },
+  {
+    "date": "2026-10-09",
+    "type": "fixed",
+    "area": "Loyalty",
+    "title": "Fairer points on cancelled and refunded orders",
+    "summary": "Refunding and then cancelling an order no longer takes back more points than the customer earned, and reward codes from cash-on-delivery orders can't be reused.",
+    "docsHref": "/docs/loyalty/points-system"
+  },
+  {
+    "date": "2026-10-08",
+    "type": "new",
+    "area": "Storefront",
+    "title": "Checkout block in your customers' language",
+    "summary": "The PerkStack checkout block is now translated into every storefront language.",
+    "docsHref": "/docs/widgets/checkout-widget"
+  },
+  {
+    "date": "2026-10-08",
+    "type": "fixed",
+    "area": "Storefront",
+    "title": "Icons and launcher colours on more themes",
+    "summary": "Outline icons display correctly on themes that fill every icon, and a custom launcher colour now stays after the panel opens.",
+    "docsHref": "/docs/widgets/loyalty-launcher"
+  },
+  {
+    "date": "2026-10-07",
+    "type": "new",
+    "area": "Loyalty",
+    "title": "Shadow mode",
+    "summary": "Moving from another loyalty app? Run PerkStack in the background on your live store: only customers tagged perkstack-preview see it, orders keep earning points, and one switch takes it live.",
+    "docsHref": "/docs/loyalty/overview"
+  },
+  {
+    "date": "2026-10-07",
+    "type": "improved",
+    "area": "Loyalty",
+    "title": "Faster import of your previous program's codes",
+    "summary": "Importing unused reward codes from your previous loyalty app now skips codes that were already used and handles large programs without stopping."
+  },
+  {
+    "date": "2026-10-06",
+    "type": "new",
+    "area": "Loyalty",
+    "title": "Points and rewards named in each customer's language",
+    "summary": "The points name and reward names are set automatically in each customer's language and currency. Earn rules show spend per point in the shopper's currency.",
+    "docsHref": "/docs/loyalty/points-system"
+  },
+  {
+    "date": "2026-10-06",
+    "type": "new",
+    "area": "Loyalty",
+    "title": "Bring over your previous program",
+    "summary": "Points import can now bring unused reward codes from your previous program, and reads Love Loyalty exports including lifetime points and dates."
+  },
+  {
+    "date": "2026-10-06",
+    "type": "new",
+    "area": "Storefront",
+    "title": "Hungarian on the storefront",
+    "summary": "PerkStack's storefront widgets are now available in Hungarian."
+  }
+]
