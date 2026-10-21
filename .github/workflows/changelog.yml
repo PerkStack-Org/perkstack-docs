@@ -1,0 +1,81 @@
+name: Changelog
+
+# Collects customer changelog notes from Trello cards in "Deployed" and opens
+# (or updates) one PR that adds them to the docs changelog. Merging it publishes.
+#
+# Runs when perkstack or perkstack-landing finish a production deploy
+# (repository_dispatch "deployed"), when this repo's main changes, daily, and by hand.
+#
+# Secrets: TRELLO_KEY, TRELLO_TOKEN, ANTHROPIC_API_KEY
+
+on:
+  repository_dispatch:
+    types: [deployed]
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: changelog
+  cancel-in-progress: false
+
+env:
+  TRELLO_KEY: ${{ secrets.TRELLO_KEY }}
+  TRELLO_TOKEN: ${{ secrets.TRELLO_TOKEN }}
+  TRELLO_BOARD: WVkpUiQo
+  # Trello username the deploy workflows run as; hand-dragged cards are skipped.
+  TRELLO_BOT_MEMBER: ${{ vars.TRELLO_BOT_MEMBER }}
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Move this repo's deployed cards to Deployed
+        if: github.event_name == 'push'
+        run: node .github/scripts/trello-mark-deployed.mjs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOYED_SHA: ${{ github.sha }}
+
+      - name: Draft missing customer notes
+        run: node scripts/changelog/draft-notes.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Collect deployed notes
+        run: node scripts/changelog/collect.mjs --pr-body "$RUNNER_TEMP/pr-body.md"
+
+      - name: Open or update the changelog PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- src/content/changelog.json; then
+            echo "No new changelog entries."
+            exit 0
+          fi
+          git config user.name "perkstack-changelog"
+          git config user.email "changelog@perk-stack.com"
+          git checkout -B changelog/auto
+          git add src/content/changelog.json
+          git commit -m "docs(changelog): add deployed changes"
+          git push --force origin changelog/auto
+          if gh pr view changelog/auto --json state -q .state 2>/dev/null | grep -q OPEN; then
+            gh pr edit changelog/auto --body-file "$RUNNER_TEMP/pr-body.md"
+          else
+            gh pr create --base main --head changelog/auto \
+              --title "Changelog: new deployed changes" \
+              --body-file "$RUNNER_TEMP/pr-body.md"
+          fi
